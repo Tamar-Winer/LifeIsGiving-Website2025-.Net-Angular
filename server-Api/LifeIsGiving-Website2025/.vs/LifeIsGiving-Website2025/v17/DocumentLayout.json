@@ -1,0 +1,839 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F262AD5F-E6B1-44F7-98E3-25DC71545E31}|LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving.tests\\controllers\\usercontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F262AD5F-E6B1-44F7-98E3-25DC71545E31}|LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj|solutionrelative:lifeisgiving.tests\\controllers\\usercontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F262AD5F-E6B1-44F7-98E3-25DC71545E31}|LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving.tests\\repositories\\prizerepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F262AD5F-E6B1-44F7-98E3-25DC71545E31}|LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj|solutionrelative:lifeisgiving.tests\\repositories\\prizerepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\data\\storecontextdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\data\\storecontextdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F262AD5F-E6B1-44F7-98E3-25DC71545E31}|LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F262AD5F-E6B1-44F7-98E3-25DC71545E31}|LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj|solutionrelative:lifeisgiving.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F262AD5F-E6B1-44F7-98E3-25DC71545E31}|LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving.tests\\lifeisgiving.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F262AD5F-E6B1-44F7-98E3-25DC71545E31}|LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj|solutionrelative:lifeisgiving.tests\\lifeisgiving.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\lifeisgiving-website2025.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\lifeisgiving-website2025.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\repositories\\winningrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\repositories\\winningrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\repositories\\purchaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\repositories\\purchaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\repositories\\prizerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\repositories\\prizerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\controller\\winningcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\controller\\winningcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\controller\\prizecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\controller\\prizecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\controller\\purchasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\controller\\purchasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\services\\userservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\services\\userservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\services\\winningservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\services\\winningservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\services\\purchaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\services\\purchaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\models\\winning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\models\\winning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\models\\purchase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\models\\purchase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\models\\prize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\models\\prize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\models\\enums\\winningstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\models\\enums\\winningstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\services\\prizeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\services\\prizeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\interfaces\\ipurchaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\interfaces\\ipurchaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\interfaces\\ipurchaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\interfaces\\ipurchaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\models\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\models\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\interfaces\\iprizeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\interfaces\\iprizeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\dtos\\purchasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\dtos\\purchasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\interfaces\\iprizerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\interfaces\\iprizerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\models\\enums\\prizesortby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\models\\enums\\prizesortby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\interfaces\\iwinningrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\interfaces\\iwinningrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\interfaces\\iwinningservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\interfaces\\iwinningservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\interfaces\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\interfaces\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\dtos\\prizedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\dtos\\prizedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\models\\enums\\purchasestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\models\\enums\\purchasestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\migrations\\20251221165042_updatepasswordlength.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\migrations\\20251221165042_updatepasswordlength.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\models\\enums\\prizecategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\models\\enums\\prizecategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\data\\storedbfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\data\\storedbfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\migrations\\20251216102711_initialcreateaddusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\migrations\\20251216102711_initialcreateaddusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\lifeisgiving-website2025.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\lifeisgiving-website2025.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\migrations\\20251218133717_addprizestableandupdateusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\migrations\\20251218133717_addprizestableandupdateusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|c:\\users\\user1\\desktop\\programing\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\project-api-angular-2025\\server-api\\lifeisgiving-website2025\\lifeisgiving-website2025\\migrations\\20251218105811_makeaddressnullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FA3CBD6-45F6-4331-A698-C3B9DD3859D7}|LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj|solutionrelative:lifeisgiving-website2025\\migrations\\20251218105811_makeaddressnullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PrizeRepositoryTests.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving.Tests\\Repositories\\PrizeRepositoryTests.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving.Tests\\Repositories\\PrizeRepositoryTests.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving.Tests\\Repositories\\PrizeRepositoryTests.cs",
+              "RelativeToolTip": "LifeIsGiving.Tests\\Repositories\\PrizeRepositoryTests.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAYwA0AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:27:56.131Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving.Tests\\Controllers\\UserControllerTests.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving.Tests\\Controllers\\UserControllerTests.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving.Tests\\Controllers\\UserControllerTests.cs",
+              "RelativeToolTip": "LifeIsGiving.Tests\\Controllers\\UserControllerTests.cs",
+              "ViewState": "AQIAALIAAAAAAAAAAAAqwMEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:26:46.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving.Tests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving.Tests\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving.Tests\\UnitTest1.cs",
+              "RelativeToolTip": "LifeIsGiving.Tests\\UnitTest1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:25:39.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LifeIsGiving.Tests",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj",
+              "RelativeDocumentMoniker": "LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj",
+              "RelativeToolTip": "LifeIsGiving.Tests\\LifeIsGiving.Tests.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-04T21:25:18.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "StoreContextDB.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Data\\StoreContextDB.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Data\\StoreContextDB.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Data\\StoreContextDB.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Data\\StoreContextDB.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAABbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T09:54:11.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Dtos\\UserDto.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Dtos\\UserDto.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Dtos\\UserDto.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Dtos\\UserDto.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAQwFIAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T20:16:57.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Controller\\UserController.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Controller\\UserController.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Controller\\UserController.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Controller\\UserController.cs",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAUwGIAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T20:23:27.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IUserService.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Interfaces\\IUserService.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IUserService.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Interfaces\\IUserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAABrAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T11:26:37.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LifeIsGiving-Website2025",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\LifeIsGiving-Website2025.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-04T21:25:23.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Controller\\AuthController.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Controller\\AuthController.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Controller\\AuthController.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Controller\\AuthController.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAqwFQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T21:15:15.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PrizeController.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Controller\\PrizeController.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Controller\\PrizeController.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Controller\\PrizeController.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Controller\\PrizeController.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAA0wEQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T12:51:45.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "WinningController.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Controller\\WinningController.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Controller\\WinningController.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Controller\\WinningController.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Controller\\WinningController.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAIwCwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-28T21:34:47.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PrizeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Repositories\\PrizeRepository.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Repositories\\PrizeRepository.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Repositories\\PrizeRepository.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Repositories\\PrizeRepository.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAiwFgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T12:34:01.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PurchaseRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Repositories\\PurchaseRepository.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Repositories\\PurchaseRepository.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Repositories\\PurchaseRepository.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Repositories\\PurchaseRepository.cs",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAcwHsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T11:16:58.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Repositories\\UserRepository.cs",
+              "ViewState": "AQIAAF8AAAAAAAAAAAAcwIgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T13:02:58.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "WinningRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Repositories\\WinningRepository.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Repositories\\WinningRepository.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Repositories\\WinningRepository.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Repositories\\WinningRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T18:41:44.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PurchasesController.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Controller\\PurchasesController.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Controller\\PurchasesController.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Controller\\PurchasesController.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Controller\\PurchasesController.cs",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAUwIEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T11:40:56.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Program.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Program.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Program.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Program.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAqwGQAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T09:41:27.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UserService .cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Services\\UserService .cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Services\\UserService .cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Services\\UserService .cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Services\\UserService .cs",
+              "ViewState": "AQIAAKwBAAAAAAAAAAAswC0CAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T16:27:34.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Prize.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Prize.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Models\\Prize.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Prize.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Models\\Prize.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T11:24:35.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "UserRole.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Enums\\UserRole.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Models\\Enums\\UserRole.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Enums\\UserRole.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Models\\Enums\\UserRole.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:05:23.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "WinningService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Services\\WinningService.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Services\\WinningService.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Services\\WinningService.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Services\\WinningService.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwDwAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T18:45:17.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "PurchaseService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Services\\PurchaseService.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Services\\PurchaseService.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Services\\PurchaseService.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Services\\PurchaseService.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAH0BAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T11:28:07.437Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\User.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\User.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Models\\User.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAuwBIAAABRAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T09:44:40.602Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Winning.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Winning.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Models\\Winning.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Winning.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Models\\Winning.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T18:29:34.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "PrizeService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Services\\PrizeService.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Services\\PrizeService.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Services\\PrizeService.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Services\\PrizeService.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBcAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T12:50:10.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Purchase.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Purchase.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Models\\Purchase.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Purchase.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Models\\Purchase.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAzwBYAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T10:47:40.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IPrizeService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IPrizeService.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Interfaces\\IPrizeService.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IPrizeService.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Interfaces\\IPrizeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T12:47:41.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "WinningStatus.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Enums\\WinningStatus.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Models\\Enums\\WinningStatus.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Enums\\WinningStatus.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Models\\Enums\\WinningStatus.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-28T21:25:01.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IPurchaseService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IPurchaseService.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Interfaces\\IPurchaseService.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IPurchaseService.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Interfaces\\IPurchaseService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T11:27:20.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "PurchaseDto.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Dtos\\PurchaseDto.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Dtos\\PurchaseDto.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Dtos\\PurchaseDto.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Dtos\\PurchaseDto.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T11:09:15.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IPurchaseRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IPurchaseRepository.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Interfaces\\IPurchaseRepository.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IPurchaseRepository.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Interfaces\\IPurchaseRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T11:15:08.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IPrizeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IPrizeRepository.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Interfaces\\IPrizeRepository.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IPrizeRepository.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Interfaces\\IPrizeRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T12:33:05.959Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "PrizeSortBy.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Enums\\PrizeSortBy.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Models\\Enums\\PrizeSortBy.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Enums\\PrizeSortBy.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Models\\Enums\\PrizeSortBy.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-28T19:23:26.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T13:05:13.864Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "IWinningRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IWinningRepository.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Interfaces\\IWinningRepository.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IWinningRepository.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Interfaces\\IWinningRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T18:39:18.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "IWinningService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IWinningService.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Interfaces\\IWinningService.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IWinningService.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Interfaces\\IWinningService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T18:44:29.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IEmailService.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Interfaces\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Interfaces\\IEmailService.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Interfaces\\IEmailService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T18:50:35.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "PrizeDto.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Dtos\\PrizeDto.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Dtos\\PrizeDto.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Dtos\\PrizeDto.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Dtos\\PrizeDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAD0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T12:10:09.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "PurchaseStatus.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Enums\\PurchaseStatus.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Models\\Enums\\PurchaseStatus.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Enums\\PurchaseStatus.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Models\\Enums\\PurchaseStatus.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T10:45:41.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Dtos\\LoginDto.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Dtos\\LoginDto.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Dtos\\LoginDto.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Dtos\\LoginDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAUAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T21:22:22.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Services\\EmailService.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Services\\EmailService.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAYwBcAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T18:51:42.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\appsettings.json",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\appsettings.json",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\appsettings.json",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-16T10:23:44.909Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "20251221165042_UpdatePasswordLength.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Migrations\\20251221165042_UpdatePasswordLength.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Migrations\\20251221165042_UpdatePasswordLength.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Migrations\\20251221165042_UpdatePasswordLength.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Migrations\\20251221165042_UpdatePasswordLength.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAzwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T16:50:42.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "StoreDBFactory.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Data\\StoreDBFactory.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Data\\StoreDBFactory.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Data\\StoreDBFactory.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Data\\StoreDBFactory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T12:15:35.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "PrizeCategory.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Enums\\PrizeCategory.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Models\\Enums\\PrizeCategory.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Models\\Enums\\PrizeCategory.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Models\\Enums\\PrizeCategory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T11:28:21.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "20251218133717_AddPrizesTableAndUpdateUsers.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Migrations\\20251218133717_AddPrizesTableAndUpdateUsers.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Migrations\\20251218133717_AddPrizesTableAndUpdateUsers.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Migrations\\20251218133717_AddPrizesTableAndUpdateUsers.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Migrations\\20251218133717_AddPrizesTableAndUpdateUsers.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T13:37:17.474Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "20251218105811_MakeAddressNullable.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Migrations\\20251218105811_MakeAddressNullable.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Migrations\\20251218105811_MakeAddressNullable.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Migrations\\20251218105811_MakeAddressNullable.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Migrations\\20251218105811_MakeAddressNullable.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:58:12.198Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "20251216102711_initialCreateAddUsers.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Migrations\\20251216102711_initialCreateAddUsers.cs",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\Migrations\\20251216102711_initialCreateAddUsers.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\Migrations\\20251216102711_initialCreateAddUsers.cs",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\Migrations\\20251216102711_initialCreateAddUsers.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T10:27:22.713Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "LifeIsGiving-Website2025.http",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025.http",
+              "RelativeDocumentMoniker": "LifeIsGiving-Website2025\\LifeIsGiving-Website2025.http",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\PROGRAMING\\\u05EA\u05E9\u05E4\u05D5 \u05D9\u05D3\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025.http",
+              "RelativeToolTip": "LifeIsGiving-Website2025\\LifeIsGiving-Website2025.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-12-16T09:03:52.499Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

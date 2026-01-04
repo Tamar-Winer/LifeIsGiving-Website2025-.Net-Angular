@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\LifeIsGiving-Website2025.props" />
+</Project>
