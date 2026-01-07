@@ -20,6 +20,7 @@ namespace LifeIsGiving_Website2025.Services
 
             return prizes.Select(p => new PrizeDto
             {
+                Id = p.Id,
                 Name = p.Name,
                 Description = p.Description,
                 Category = p.Category,
@@ -36,6 +37,7 @@ namespace LifeIsGiving_Website2025.Services
 
             return new PrizeDto
             {
+                Id = p.Id,
                 Name = p.Name,
                 Description = p.Description,
                 Category = p.Category,

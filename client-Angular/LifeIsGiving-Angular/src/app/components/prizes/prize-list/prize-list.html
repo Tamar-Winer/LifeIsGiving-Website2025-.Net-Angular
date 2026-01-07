@@ -1,0 +1,22 @@
+<div class="prize-list">
+  <h1>Prize List</h1>
+
+  <div class="prize-card" *ngFor="let prize of prizes(); trackBy: trackByName">
+    <div class="prize-image" *ngIf="prize.imageUrl">
+      <img [src]="prize.imageUrl" [alt]="prize.name" />
+    </div>
+
+    <div class="prize-content">
+      <h3>
+        <a [routerLink]="['/prizes', prize.id]">{{ prize.name }}</a>
+      </h3>
+      <p>{{ prize.description }}</p>
+
+      <div class="prize-details">
+        <span>קטגוריה: {{ prize.category }}</span>
+        <span>מחיר כרטיס: {{ prize.price }} ₪</span>
+        <span>תורם: {{ prize.donorId }}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<ng-container *ngIf="prize; else loading">
+  <div class="prize-details-page">
+    <h1>{{ prize.name }}</h1>
+
+    <div *ngIf="prize.imageUrl" class="prize-image">
+      <img [src]="prize.imageUrl" [alt]="prize.name" />
+    </div>
+
+    <p>{{ prize.description }}</p>
+
+    <div class="prize-details">
+      <span>קטגוריה: {{ prize.category }}</span>
+      <span>מחיר כרטיס: {{ prize.price }} ₪</span>
+      <span>תורם: {{ prize.donorId }}</span>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <p>Loading prize details...</p>
+</ng-template>

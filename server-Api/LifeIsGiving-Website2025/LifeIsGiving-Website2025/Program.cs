@@ -10,10 +10,25 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// ---------------------
+// CORS
+// ---------------------
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy =>
+        {
+            policy
+                .WithOrigins("http://localhost:4200") // Angular Dev
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 
+// ---------------------
+// Services
+// ---------------------
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -24,7 +39,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "������: Bearer {�����}"
+        Description = "Bearer {token}"
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -43,7 +58,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
+// Scoped services
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPrizeService, PrizeService>();
@@ -54,21 +69,14 @@ builder.Services.AddScoped<IWinningRepository, WinningRepository>();
 builder.Services.AddScoped<IWinningService, WinningService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
-
-
-
-
+// DB
 builder.Services.AddDbContext<StoreContextDB>(options =>
-options.UseSqlServer("Server=localhost;Database=LifeIsGivingDB;Trusted_Connection=True;TrustServerCertificate=True;"
-));
+    options.UseSqlServer("Server=localhost;Database=LifeIsGivingDB;Trusted_Connection=True;TrustServerCertificate=True;")
+);
 
 // JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-var secretKey = jwtSettings["SecretKey"]
-    ?? throw new Exception("JWT SecretKey is missing in configuration");
-
-var key = Encoding.UTF8.GetBytes(secretKey);
-
+var secretKey = jwtSettings["SecretKey"] ?? throw new Exception("JWT SecretKey is missing in configuration");
 
 builder.Services.AddAuthentication(options =>
 {
@@ -80,30 +88,42 @@ builder.Services.AddAuthentication(options =>
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:SecretKey"])),
-        ValidateIssuer = false, 
-        ValidateAudience = false, 
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
+        ValidateIssuer = false,
+        ValidateAudience = false,
         ValidateLifetime = true
     };
 });
 
-
+// ---------------------
+// Build app
+// ---------------------
 var app = builder.Build();
 
+// ---------------------
+// Middleware
+// ---------------------
 
-// Configure the HTTP request pipeline.
+// CORS MUST be BEFORE everything else
+app.UseCors("AllowAngular");
+
+// HTTPS redirection only in Production
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+// Swagger only in Development
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-
-app.UseAuthentication();
-app.UseAuthorization();
-
+// Controllers
 app.MapControllers();
 
 app.Run();

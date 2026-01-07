@@ -6,6 +6,7 @@ namespace LifeIsGiving_Website2025.Dtos
 {
     public class PrizeDto
     {
+        public int Id { get; set; }
         [Required]
         [MaxLength(100)]
         public string Name { get; set; } = string.Empty;
