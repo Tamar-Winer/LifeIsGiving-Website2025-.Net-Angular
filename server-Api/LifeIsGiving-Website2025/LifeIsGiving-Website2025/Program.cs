@@ -24,7 +24,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "äëðéñé: Bearer {äèå÷ï}"
+        Description = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: Bearer {ï¿½ï¿½ï¿½ï¿½ï¿½}"
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -64,7 +64,11 @@ options.UseSqlServer("Server=localhost;Database=LifeIsGivingDB;Trusted_Connectio
 
 // JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-var key = Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]);
+var secretKey = jwtSettings["SecretKey"]
+    ?? throw new Exception("JWT SecretKey is missing in configuration");
+
+var key = Encoding.UTF8.GetBytes(secretKey);
+
 
 builder.Services.AddAuthentication(options =>
 {

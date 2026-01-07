@@ -8,22 +8,21 @@ namespace LifeIsGiving_Website2025.Dtos
     {
         [Required]
         [MaxLength(50)]
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(50)]
-        public string Name { get; set; }
-
+        public string Name { get; set; } = string.Empty;
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         
         [MaxLength(20)]
-        public string Phone { get; set; }
+        public string Phone { get; set; } = string.Empty;
 
         [MaxLength(100)]
-        public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
 
         //[Required]
         //[MaxLength(256)]
@@ -72,22 +71,19 @@ namespace LifeIsGiving_Website2025.Dtos
     {
         [Required]
         [MaxLength(50)]
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(50)]
-        public string Name { get; set; }
-
+        public string Name { get; set; } = string.Empty;
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
-
-
+        public string Email { get; set; } = string.Empty;
         [MaxLength(20)]
-        public string Phone { get; set; }
+        public string Phone { get; set; } = string.Empty;
 
         [MaxLength(100)]
-        public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
         public UserRole Role { get; set; }
         public List<PrizeDto> PrizesDonated { get; set; } = new List<PrizeDto>();
         

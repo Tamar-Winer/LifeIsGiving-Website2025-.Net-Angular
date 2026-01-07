@@ -7,11 +7,11 @@
         public class PurchaseDto
         {
             public int Id { get; set; }
-            public string UserName { get; set; }      // שם המשתמש בלבד
-            public string PrizeName { get; set; }
+            public string UserName { get; set; } = string.Empty;    // שם המשתמש בלבד
+            public string PrizeName { get; set; } = string.Empty;
             public decimal PriceAtPurchase { get; set; }
             public int Quantity { get; set; }
-            public string Status { get; set; }
+            public string Status { get; set; } = string.Empty;
             public DateTime CreatedAt { get; set; }
         }
 

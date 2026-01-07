@@ -1,106 +1,4 @@
-﻿//using LifeIsGiving_Website2025.Dtos.LifeIsGiving_Website2025.Dtos;
-//using LifeIsGiving_Website2025.Interfaces;
-//using LifeIsGiving_Website2025.Models;
-//using Microsoft.EntityFrameworkCore;
-
-//namespace LifeIsGiving_Website2025.Services
-//{
-//    public class PurchaseService : IPurchaseService
-//    {
-//        private readonly IPurchaseRepository _repo;
-
-//        public PurchaseService(IPurchaseRepository repo)
-//        {
-//            _repo = repo;
-//        }
-
-//        private PurchaseDto MapToDto(Purchase p)
-//        {
-//            return new PurchaseDto
-//            {
-//                Id = p.Id,
-//                UserName = p.User.Name,
-//                PrizeName = p.Prize.Name,
-//                PriceAtPurchase = p.PriceAtPurchase,
-//                Quantity = p.Quantity,
-//                Status = p.Status.ToString(),
-//                CreatedAt = p.CreatedAt
-//            };
-//        }
-
-//        public async Task<List<PurchaseDto>> GetAll()
-//        {
-//            var purchases = await _repo.GetAll();
-//            return purchases.Select(MapToDto).ToList();
-//        }
-
-//        public async Task<PurchaseDto?> GetById(int id)
-//        {
-//            var purchase = await _repo.GetById(id);
-//            return purchase == null ? null : MapToDto(purchase);
-//        }
-
-//        public async Task Add(Purchase purchase)
-//        {
-//            await _repo.Add(purchase);
-//        }
-
-//        public async Task<bool> Update(Purchase purchase)
-//        {
-//            return await _repo.Update(purchase);
-//        }
-//        public async Task<bool> CompletePurchase(int purchaseId)
-//        {
-//            return await _repo.CompletePurchase(purchaseId);
-//        }
-
-
-//        public async Task<bool> Delete(int id)
-//        {
-//            return await _repo.Delete(id);
-//        }
-
-//        public async Task<List<PurchaseDto>> GetAllSorted(string sortBy = null)
-//        {
-//            var purchases = await _repo.GetAllSorted(sortBy);
-//            return purchases.Select(MapToDto).ToList();
-//        }
-
-//        public async Task<List<PurchaseDto>> GetDraftPurchases(int userId)
-//        {
-//            var purchases = await _repo.GetDraftPurchases(userId);
-
-//            return purchases.Select(p => new PurchaseDto
-//            {
-//                Id = p.Id,
-//                UserName = p.User.Name,
-//                PrizeName = p.Prize != null ? p.Prize.Name : "Unknown",
-//                PriceAtPurchase = p.PriceAtPurchase,
-//                Quantity = p.Quantity,
-//                Status = p.Status.ToString(),
-//                CreatedAt = p.CreatedAt
-//            }).ToList();
-//        }
-
-//        public async Task<List<PurchaseDto>> GetCompletedPurchases(int? userId = null)
-//        {
-//            var purchases = await _repo.GetCompletedPurchases(userId);
-
-//            return purchases.Select(p => new PurchaseDto
-//            {
-//                Id = p.Id,
-//                UserName = p.User.Name,
-//                PrizeName = p.Prize.Name,
-//                PriceAtPurchase = p.PriceAtPurchase,
-//                Quantity = p.Quantity,
-//                Status = p.Status.ToString(),
-//                CreatedAt = p.CreatedAt
-//            }).ToList();
-//        }
-
-//    }
-//}
-
+﻿
 using LifeIsGiving_Website2025.Dtos.LifeIsGiving_Website2025.Dtos;
 using LifeIsGiving_Website2025.Interfaces;
 using LifeIsGiving_Website2025.Models;
@@ -282,7 +180,7 @@ namespace LifeIsGiving_Website2025.Services
             }
         }
 
-        public async Task<List<PurchaseDto>> GetAllSorted(string sortBy = null)
+        public async Task<List<PurchaseDto>> GetAllSorted(string? sortBy = null)
         {
             _logger.LogInformation("GetAllSorted started. SortBy: {SortBy}", sortBy ?? "default");
 

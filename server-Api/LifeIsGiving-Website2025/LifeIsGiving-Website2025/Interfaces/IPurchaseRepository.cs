@@ -11,7 +11,7 @@ namespace LifeIsGiving_Website2025.Interfaces
         Task<bool> CompletePurchase(int purchaseId);
 
         Task<bool> Delete(int id);
-        Task<List<Purchase>> GetAllSorted(string sortBy = null);
+        Task<List<Purchase>> GetAllSorted(string? sortBy = null);
         Task<List<Purchase>> GetDraftPurchases(int userId);     
         Task<List<Purchase>> GetCompletedPurchases(int? userId = null);
     }

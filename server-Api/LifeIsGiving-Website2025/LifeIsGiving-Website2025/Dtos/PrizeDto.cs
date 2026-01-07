@@ -8,11 +8,11 @@ namespace LifeIsGiving_Website2025.Dtos
     {
         [Required]
         [MaxLength(100)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(500)]
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         [Required]
         public PrizeCategory Category { get; set; }
@@ -32,12 +32,11 @@ namespace LifeIsGiving_Website2025.Dtos
     {
         [Required]
         [MaxLength(100)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(500)]
-        public string Description { get; set; }
-
+        public string Description { get; set; } = string.Empty;
         [Required]
         public PrizeCategory Category { get; set; }
 
@@ -55,8 +54,8 @@ namespace LifeIsGiving_Website2025.Dtos
     public class PrizeSearchDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string DonorName { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string DonorName { get; set; } = string.Empty;
         public int PurchasesCount { get; set; }  // סך הרכישות
     }
 

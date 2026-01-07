@@ -2,15 +2,15 @@
 {
     public class WinningDto
     {
-        public string PrizeName { get; set; }
-        public string WinnerName { get; set; }
-        public DateTime LotteryDate { get; set; }= DateTime.Now;
+        public string PrizeName { get; set; }   = string.Empty;
+        public string WinnerName { get; set; } = string.Empty;
+        public DateTime LotteryDate { get; set; } = DateTime.Now;
     }
     public class WinningReportDto
     {
-        public string PrizeName { get; set; }
-        public string WinnerName { get; set; }
-        public DateTime LotteryDate { get; set; }
+        public string PrizeName { get; set; } = string.Empty;
+        public string WinnerName { get; set; } = string.Empty;
+        public DateTime LotteryDate { get; set; } = DateTime.Now;
     }
 
 }

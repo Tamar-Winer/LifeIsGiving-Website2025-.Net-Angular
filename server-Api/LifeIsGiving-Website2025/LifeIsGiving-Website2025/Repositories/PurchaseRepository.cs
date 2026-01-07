@@ -81,7 +81,7 @@ namespace LifeIsGiving_Website2025.Repositories
         }
 
 
-        public async Task<List<Purchase>> GetAllSorted(string sortBy = null)
+        public async Task<List<Purchase>> GetAllSorted(string? sortBy = null)
         {
             var query = _context.Purchases
                                 .Include(p => p.User)

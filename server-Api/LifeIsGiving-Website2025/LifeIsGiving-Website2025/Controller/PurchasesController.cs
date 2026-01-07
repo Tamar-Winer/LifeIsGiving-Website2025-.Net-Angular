@@ -91,7 +91,7 @@ namespace LifeIsGiving_Website2025.Controller
         }
 
         [HttpGet("sorted")]
-        public async Task<ActionResult<List<PurchaseDto>>> GetAllSorted([FromQuery] string sortBy = null)
+        public async Task<ActionResult<List<PurchaseDto>>> GetAllSorted([FromQuery] string? sortBy = null)
         {
             var purchases = await _service.GetAllSorted(sortBy);
             return Ok(purchases);
