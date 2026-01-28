@@ -1,21 +1,95 @@
 <ng-container *ngIf="prize; else loading">
-  <div class="prize-details-page">
-    <h1>{{ prize.name }}</h1>
-
-    <div *ngIf="prize.imageUrl" class="prize-image">
-      <img [src]="prize.imageUrl" [alt]="prize.name" />
+  <div class="details-page">
+    <div class="breadcrumb">
+      <a routerLink="/prizes" class="back-link">
+        <i class="pi pi-arrow-left"></i>
+        חזרה לרשימת פרסים
+      </a>
     </div>
 
-    <p>{{ prize.description }}</p>
+    <p-card class="details-card">
+      <div class="details-grid">
+        <!-- תמונה -->
+        <div class="media">
+         <img
+  class="main-image"
+  [src]="prize.imageUrl || 'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg'"
+  [alt]="prize.name"
+/>
 
-    <div class="prize-details">
-      <span>קטגוריה: {{ prize.category }}</span>
-      <span>מחיר כרטיס: {{ prize.price }} ₪</span>
-      <span>תורם: {{ prize.donorId }}</span>
-    </div>
+        </div>
+
+        <!-- מידע -->
+        <div class="info">
+          <div class="category">{{ prize.category }}</div>
+          <h1 class="title">{{ prize.name }}</h1>
+
+          <div class="price-row">
+            <div class="price">{{ prize.price }} ₪</div>
+            <span class="chip">כרטיס הגרלה</span>
+          </div>
+
+          <p class="description">{{ prize.description }}</p>
+
+          <p-divider></p-divider>
+          <div class="meta">
+            <div class="meta-row">
+              <span class="meta-label">קטגוריה</span>
+              <span class="meta-value">{{ prize.category }}</span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">תורם</span>
+              <span class="meta-value">{{ prize.donorId }}</span>
+            </div>
+          </div>
+
+          <div class="actions">
+            <p-button
+              label="קנייה עכשיו"
+              icon="pi pi-shopping-cart"
+              styleClass="buy-btn"
+            ></p-button>
+
+            <p-button
+              label="הוספה למועדפים"
+              icon="pi pi-heart"
+              [outlined]="true"
+              styleClass="fav-btn"
+            ></p-button>
+          </div>
+
+          <div class="note">
+            רכישה מאובטחת • קבלה במייל • תמיכה 24/7
+          </div>
+        </div>
+      </div>
+    </p-card>
   </div>
 </ng-container>
 
 <ng-template #loading>
-  <p>Loading prize details...</p>
+  <div class="details-page">
+    <p-card class="details-card">
+      <div class="details-grid">
+        <div class="media">
+          <p-skeleton width="100%" height="420px"></p-skeleton>
+        </div>
+
+        <div class="info">
+          <p-skeleton width="40%" height="16px"></p-skeleton>
+          <p-skeleton width="80%" height="30px" styleClass="mt-2"></p-skeleton>
+          <p-skeleton width="30%" height="28px" styleClass="mt-3"></p-skeleton>
+          <p-skeleton width="100%" height="80px" styleClass="mt-3"></p-skeleton>
+          <p-skeleton width="100%" height="1px" styleClass="mt-4"></p-skeleton>
+          <p-skeleton width="70%" height="14px" styleClass="mt-3"></p-skeleton>
+          <p-skeleton width="60%" height="14px" styleClass="mt-2"></p-skeleton>
+          <div class="mt-4" style="display:flex; gap:12px;">
+            <p-skeleton width="60%" height="42px"></p-skeleton>
+            <p-skeleton width="40%" height="42px"></p-skeleton>
+          </div>
+        </div>
+      </div>
+    </p-card>
+  </div>
 </ng-template>

@@ -1,13 +1,17 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { PrizeService } from '../../../core/services/prize-service';
 import { Prize } from '../../../core/models/Prize';
 
+import { Card } from 'primeng/card';
+import { Button } from 'primeng/button';
+import { Divider } from 'primeng/divider';
+import { Skeleton } from 'primeng/skeleton';
+
 @Component({
   selector: 'app-prize-details',
-  standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, Card, Button, Divider, Skeleton],
   templateUrl: './prize-details.html',
   styleUrls: ['./prize-details.scss'],
 })
@@ -21,15 +25,13 @@ export class PrizeDetails {
   ) {}
 
   ngOnInit(): void {
-    // מאזין לכל שינוי ב־params
     this.route.params.subscribe(params => {
       const id = +params['id'];
-      console.log('Route param id:', id);
       if (id) {
         this.prizeService.getPrizeById(id).subscribe({
           next: prize => {
             this.prize = prize;
-            this.cdr.detectChanges(); // מכריח Angular לרענן את ה־template
+            this.cdr.detectChanges();
           },
           error: err => console.error('Error loading prize:', err)
         });

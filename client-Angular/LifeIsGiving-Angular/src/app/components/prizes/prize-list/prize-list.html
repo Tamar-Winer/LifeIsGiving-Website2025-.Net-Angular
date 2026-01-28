@@ -1,22 +1,59 @@
-<div class="prize-list">
-  <h1>Prize List</h1>
+<div class="prize-page">
+  <h1 class="page-title">Prize List</h1>
+  <a routerLink="/about">על LifeIsGiving</a>
 
-  <div class="prize-card" *ngFor="let prize of prizes(); trackBy: trackByName">
-    <div class="prize-image" *ngIf="prize.imageUrl">
-      <img [src]="prize.imageUrl" [alt]="prize.name" />
-    </div>
+  <div class="cards-grid">
+    @for (prize of prizes(); track trackById($index, prize)) {
+      <a
+        class="card-link"
+        [routerLink]="['/prizes', prize.id]"
+      >
+        <p-card class="product-card">
+          <div class="image-wrap">
+            @if (prize.imageUrl) {
+              <img
+                [src]="prize.imageUrl"
+                [alt]="prize.name"
+                class="product-image"
+              />
+            }
 
-    <div class="prize-content">
-      <h3>
-        <a [routerLink]="['/prizes', prize.id]">{{ prize.name }}</a>
-      </h3>
-      <p>{{ prize.description }}</p>
+            <img
+              [src]="prize.imageUrl || 'https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg
+'"
+              alt="Placeholder Image"
+              class="product-image"
+            />
+          </div>
 
-      <div class="prize-details">
-        <span>קטגוריה: {{ prize.category }}</span>
-        <span>מחיר כרטיס: {{ prize.price }} ₪</span>
-        <span>תורם: {{ prize.donorId }}</span>
-      </div>
-    </div>
+          <div class="card-body">
+            <div class="category">{{ prize.category }}</div>
+            <div class="name">{{ prize.name }}</div>
+
+            <div class="price-row">
+              <div class="price">{{ prize.price }} ₪</div>
+            </div>
+
+            <div class="actions-row">
+              <p-button
+                label="Buy Now"
+                icon="pi pi-shopping-cart"
+                styleClass="buy-btn"
+              ></p-button>
+
+              <button
+                type="button"
+                class="heart-btn"
+                (click)="toggleFavorite(prize, $event)"
+                aria-label="Favorite"
+                title="Favorite"
+              >
+                <i class="pi pi-heart"></i>
+              </button>
+            </div>
+          </div>
+        </p-card>
+      </a>
+    }
   </div>
 </div>

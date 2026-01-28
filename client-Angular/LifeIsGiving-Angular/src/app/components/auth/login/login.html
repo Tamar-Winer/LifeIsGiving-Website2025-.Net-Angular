@@ -1,0 +1,61 @@
+<p-toast position="top-center" [baseZIndex]="9999"></p-toast>
+
+<div class="auth-bg">
+  <p-card styleClass="auth-card">
+    <ng-template pTemplate="header">
+      <div class="auth-header">
+        <h2>התחברות</h2>
+        <p>הכניסי פרטים כדי להמשיך</p>
+      </div>
+    </ng-template>
+
+    <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="submit()">
+
+      <div class="field">
+        <label>Username</label>
+        <input pInputText class="w-full" formControlName="username" />
+
+        @if (hasError('username')) {
+          <p-message
+            severity="error"
+            text="מינימום 3 תווים"
+            styleClass="msg"
+          />
+        }
+      </div>
+
+      <div class="field">
+        <label>סיסמה</label>
+        <p-password
+          formControlName="password"
+          [toggleMask]="true"
+          [feedback]="false"
+          inputStyleClass="w-full"
+          styleClass="w-full"
+        />
+
+        @if (hasError('password')) {
+          <p-message
+            severity="error"
+            text="מינימום 6 תווים"
+            styleClass="msg"
+          />
+        }
+      </div>
+
+      <button
+        pButton
+        type="submit"
+        class="w-full auth-btn"
+        label="התחברי"
+        icon="pi pi-sign-in"
+        [disabled]="loginForm.invalid"
+      ></button>
+
+      <div class="links">
+        <span>אין לך משתמש?</span>
+        <a routerLink="/register">להרשמה</a>
+      </div>
+    </form>
+  </p-card>
+</div>

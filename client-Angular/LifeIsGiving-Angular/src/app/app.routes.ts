@@ -1,16 +1,17 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { PrizeList } from './components/prizes/prize-list/prize-list';
 import { PrizeDetails } from './components/prizes/prize-details/prize-details';
+import { About } from './components/about/about';
+import { Login } from './components/auth/login/login';
+import { Register } from './components/auth/register/register';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: 'prizes', pathMatch: 'full' },
+  { path: 'login', component: Login },
+  { path: 'register', component: Register },
   { path: 'prizes', component: PrizeList },
-  { path: 'prizes/:id', component: PrizeDetails }, // כאן נקבל פרס לפי id
+  { path: 'prizes/:id', component: PrizeDetails },
+  { path: 'about', component: About }, 
+  { path: '**', redirectTo: 'prizes' },  
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}

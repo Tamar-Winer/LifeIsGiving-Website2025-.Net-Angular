@@ -1,0 +1,134 @@
+:host {
+  display: block;
+  direction: rtl;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+/* הכי חשוב: למנוע גלילה */
+.auth-bg {
+  height: 100vh;        /* במקום min-height */
+  overflow: hidden;     /* אין גלילה */
+  display: grid;
+  place-items: center;
+  padding: 18px;
+
+  background:
+    radial-gradient(900px 420px at 80% 0%, rgba(220, 38, 38, 0.10), transparent 55%),
+    radial-gradient(700px 380px at 0% 20%, rgba(220, 38, 38, 0.06), transparent 55%),
+    #f7f7f8;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+
+  border-radius: 18px;
+  overflow: hidden;
+
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.10);
+}
+
+.auth-header {
+  padding: 18px 20px 6px 20px;
+
+  h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 900;
+    color: #111827;
+  }
+
+  p {
+    margin: 8px 0 0;
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+.auth-form {
+  padding: 14px 20px 18px 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+
+  label {
+    font-size: 13px;
+    font-weight: 800;
+    color: #111827;
+  }
+}
+
+/* 2 עמודות בדסקטופ, עמודה אחת במובייל */
+.grid-2 {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 520px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.msg {
+  margin-top: 4px;
+}
+
+.links {
+  margin-top: 4px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  color: #374151;
+
+  a {
+    color: #dc2626;
+    font-weight: 900;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.auth-btn {
+  border-radius: 12px !important;
+  font-weight: 900 !important;
+  border: 0 !important;
+  background: #dc2626 !important;
+  color: #ffffff !important;
+
+  &:hover {
+    background: #b91c1c !important;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+  }
+}
+
+/* אחידות לשדות */
+:host ::ng-deep .p-inputtext,
+:host ::ng-deep .p-password input {
+  border-radius: 12px !important;
+  padding: 11px 12px !important;
+  font-size: 14px;
+  color: #111827;
+  background: #ffffff;
+}
+
+/* פוקוס אדום עדין */
+:host ::ng-deep .p-inputtext:focus,
+:host ::ng-deep .p-password input:focus {
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.18) !important;
+  border-color: rgba(220, 38, 38, 0.55) !important;
+}
