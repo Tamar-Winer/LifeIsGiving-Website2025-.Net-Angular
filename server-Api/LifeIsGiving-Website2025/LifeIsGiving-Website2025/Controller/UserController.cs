@@ -68,7 +68,7 @@ namespace LifeIsGiving_Website2025.Controller
 
 
         [HttpGet("donors")]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
 
         public async Task<ActionResult<List<UserDonorDto>>> GetDonors()
         {
@@ -96,7 +96,7 @@ namespace LifeIsGiving_Website2025.Controller
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var deleted = await _userService.DeleteUser(id);
@@ -105,8 +105,8 @@ namespace LifeIsGiving_Website2025.Controller
             return NoContent();
         }
 
-        [HttpGet("/filteringBy")]
-        [Authorize(Roles = "Admin")]
+        [HttpGet("filteringBy")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetBySort([FromQuery] string? name, [FromQuery] string? email, [FromQuery] string? prizeName)
         {
             var donors = await _userService.GetBySort(name, email, prizeName);

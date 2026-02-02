@@ -69,6 +69,7 @@ namespace LifeIsGiving_Website2025.Dtos
     }
     public class UserDonorDto 
     {
+        public int Id { get; set; }
         [Required]
         [MaxLength(50)]
         public string UserName { get; set; } = string.Empty;
@@ -89,4 +90,5 @@ namespace LifeIsGiving_Website2025.Dtos
         
 
     }
+
 }

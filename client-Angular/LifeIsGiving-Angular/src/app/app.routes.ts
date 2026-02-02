@@ -5,6 +5,8 @@ import { PrizeDetails } from './components/prizes/prize-details/prize-details';
 import { About } from './components/about/about';
 import { Login } from './components/auth/login/login';
 import { Register } from './components/auth/register/register';
+import { DonorList } from './components/manager/donor-list/donor-list';
+import { AddDonor } from './components/manager/add-donor/add-donor';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'prizes', pathMatch: 'full' },
@@ -13,5 +15,7 @@ export const routes: Routes = [
   { path: 'prizes', component: PrizeList },
   { path: 'prizes/:id', component: PrizeDetails },
   { path: 'about', component: About }, 
+  { path: 'admin/donors', component: DonorList },
+  { path: 'admin/addDonor', component: AddDonor },
   { path: '**', redirectTo: 'prizes' },  
 ];
