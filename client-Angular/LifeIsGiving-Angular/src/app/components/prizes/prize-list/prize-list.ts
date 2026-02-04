@@ -7,6 +7,7 @@ import { Prize } from '../../../core/models/Prize';
 
 import { Card } from 'primeng/card';
 import { Button } from 'primeng/button';
+import { CartService } from '../../../core/services/cart-service';
 
 @Component({
   selector: 'app-prize-list',
@@ -17,7 +18,9 @@ import { Button } from 'primeng/button';
 export class PrizeList {
   prizes = signal<Prize[]>([]);
 
-  constructor(private prizeService: PrizeService) {}
+  constructor(private prizeService: PrizeService,
+     private cart: CartService
+  ) {}
 
   ngOnInit(): void {
     this.prizeService.getAllPrizes().subscribe({
@@ -35,5 +38,11 @@ export class PrizeList {
     ev.preventDefault();
     ev.stopPropagation();
     console.log('favorite:', prize);
+  }
+
+   addToCart(prize: Prize, ev: MouseEvent) {
+    ev.preventDefault();  // שלא ינווט לפרטים כשנלחץ כפתור
+    ev.stopPropagation();
+    this.cart.add(prize, 1);
   }
 }

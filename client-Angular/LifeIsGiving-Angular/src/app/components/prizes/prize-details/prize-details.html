@@ -45,11 +45,13 @@
           </div>
 
           <div class="actions">
-            <p-button
-              label="קנייה עכשיו"
-              icon="pi pi-shopping-cart"
-              styleClass="buy-btn"
-            ></p-button>
+           <p-button
+  label="קנייה עכשיו"
+  icon="pi pi-shopping-cart"
+  styleClass="buy-btn"
+  (onClick)="addToCart()"
+></p-button>
+
 
             <p-button
               label="הוספה למועדפים"

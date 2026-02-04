@@ -1,0 +1,42 @@
+.cart-page { padding: 20px; }
+.page-title { font-size: 28px; margin-bottom: 16px; }
+
+.empty { color: #6b7280; }
+
+.cart-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 16px;
+  align-items: start;
+}
+
+.cart-card { margin-bottom: 12px; }
+.row { display: grid; grid-template-columns: 90px 1fr 120px; gap: 14px; align-items: center; }
+
+.thumb {
+  width: 90px; height: 90px; border-radius: 14px; object-fit: cover;
+  border: 1px solid #eee;
+}
+
+.info .name { font-weight: 900; font-size: 14px; margin-bottom: 4px; }
+.info .desc { color: #6b7280; font-size: 12px; line-height: 1.35; }
+.line { display: flex; gap: 10px; margin-top: 8px; align-items: center; }
+.price { font-weight: 900; }
+.muted { color: #6b7280; font-size: 12px; }
+
+.qty-row { display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+.qty { min-width: 24px; text-align: center; font-weight: 900; }
+.remove { margin-inline-start: auto; }
+
+.sum { text-align: end; font-weight: 900; font-size: 14px; }
+
+.summary { position: sticky; top: 12px; }
+.sum-title { font-weight: 900; font-size: 16px; margin-bottom: 12px; }
+.sum-row { display: flex; justify-content: space-between; margin: 8px 0; }
+.sum-actions { display: grid; gap: 10px; margin-top: 12px; }
+
+@media (max-width: 900px) {
+  .cart-grid { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 80px 1fr; }
+  .sum { grid-column: 1 / -1; text-align: start; }
+}

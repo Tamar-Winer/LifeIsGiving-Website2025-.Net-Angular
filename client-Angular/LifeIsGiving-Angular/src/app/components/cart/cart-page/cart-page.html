@@ -1,0 +1,74 @@
+<div class="cart-page">
+  <h1 class="page-title">הסל שלי</h1>
+
+  @if (cart.items().length === 0) {
+    <p class="empty">הסל ריק כרגע</p>
+  } @else {
+    <div class="cart-grid">
+      <div class="cart-items">
+        @for (item of cart.items(); track trackById($index, item)) {
+          <p-card class="cart-card">
+            <div class="row">
+              <img
+                class="thumb"
+                [src]="item.prize.imageUrl || 'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg'"
+                [alt]="item.prize.name"
+              />
+
+              <div class="info">
+                <div class="name">{{ item.prize.name }}</div>
+                <div class="desc">{{ item.prize.description }}</div>
+
+                <div class="line">
+                  <span class="price">₪{{ item.prize.price }}</span>
+                  <span class="muted">קטגוריה: {{ item.prize.category }}</span>
+                </div>
+
+                <div class="qty-row">
+                  <button pButton type="button" class="p-button-outlined" (click)="dec(item)">-</button>
+                  <span class="qty">{{ item.qty }}</span>
+                  <button pButton type="button" class="p-button-outlined" (click)="inc(item)">+</button>
+
+                  <button
+                    pButton
+                    type="button"
+                    class="p-button-danger p-button-text remove"
+                    (click)="cart.remove(item.prize.id)"
+                  >
+                    הסרה
+                  </button>
+                </div>
+              </div>
+
+              <div class="sum">
+                ₪{{ item.qty * item.prize.price }}
+              </div>
+            </div>
+          </p-card>
+        }
+      </div>
+
+      <p-card class="summary">
+        <div class="sum-title">סיכום</div>
+        <div class="sum-row">
+          <span>כמות פריטים</span>
+          <strong>{{ cart.totalQty() }}</strong>
+        </div>
+        <div class="sum-row">
+          <span>לתשלום</span>
+          <strong>₪{{ cart.totalPrice() }}</strong>
+        </div>
+
+        <div class="sum-actions">
+          <button pButton type="button" class="p-button-outlined" (click)="cart.clear()">
+            ריקון סל
+          </button>
+
+          <button pButton type="button" class="p-button">
+            מעבר לתשלום
+          </button>
+        </div>
+      </p-card>
+    </div>
+  }
+</div>

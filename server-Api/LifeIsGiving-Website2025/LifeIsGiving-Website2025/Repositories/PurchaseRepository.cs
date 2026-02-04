@@ -32,17 +32,36 @@ namespace LifeIsGiving_Website2025.Repositories
         }
 
         public async Task Add(Purchase purchase)
-        {
-            var prize = await _context.Prizes.FirstOrDefaultAsync(p => p.Id == purchase.PrizeId);
-            if (prize == null)
-                throw new Exception("Prize not found");
+{
+    var prize = await _context.Prizes.FirstOrDefaultAsync(p => p.Id == purchase.PrizeId);
+    if (prize == null)
+        throw new Exception("Prize not found");
 
-            if (!prize.CanPurchase)
-                throw new Exception("Cannot purchase this prize. Lottery already done or purchasing disabled.");
+    if (!prize.CanPurchase)
+        throw new Exception("Cannot purchase this prize. Lottery already done or purchasing disabled.");
 
-            _context.Purchases.Add(purchase);
-            await _context.SaveChangesAsync();
-        }
+    // ✅ קיבוע מחיר בזמן יצירת Draft
+    purchase.PriceAtPurchase = prize.Price;
+
+    // ✅ Upsert Draft: אם כבר יש Draft לאותו משתמש + אותו פרס → מגדילים Quantity
+    var existing = await _context.Purchases.FirstOrDefaultAsync(p =>
+        p.UserId == purchase.UserId &&
+        p.PrizeId == purchase.PrizeId &&
+        p.Status == PurchaseStatus.Draft
+    );
+
+    if (existing != null)
+    {
+        existing.Quantity += purchase.Quantity;
+        if (existing.Quantity < 1) existing.Quantity = 1;
+
+        await _context.SaveChangesAsync();
+        return;
+    }
+
+    _context.Purchases.Add(purchase);
+    await _context.SaveChangesAsync();
+}
 
         public async Task<bool> Update(Purchase purchase)
         {

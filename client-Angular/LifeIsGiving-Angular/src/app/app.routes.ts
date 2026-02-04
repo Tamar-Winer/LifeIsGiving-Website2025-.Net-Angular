@@ -7,6 +7,7 @@ import { Login } from './components/auth/login/login';
 import { Register } from './components/auth/register/register';
 import { DonorList } from './components/manager/donor-list/donor-list';
 import { AddDonor } from './components/manager/add-donor/add-donor';
+import { CartPage } from './components/cart/cart-page/cart-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'prizes', pathMatch: 'full' },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'about', component: About }, 
   { path: 'admin/donors', component: DonorList },
   { path: 'admin/addDonor', component: AddDonor },
+  { path: 'cart', component: CartPage },
   { path: '**', redirectTo: 'prizes' },  
 ];

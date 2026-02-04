@@ -8,6 +8,7 @@ import { Card } from 'primeng/card';
 import { Button } from 'primeng/button';
 import { Divider } from 'primeng/divider';
 import { Skeleton } from 'primeng/skeleton';
+import { CartService } from '../../../core/services/cart-service';
 
 @Component({
   selector: 'app-prize-details',
@@ -21,7 +22,8 @@ export class PrizeDetails {
   constructor(
     private route: ActivatedRoute,
     private prizeService: PrizeService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private cart: CartService
   ) {}
 
   ngOnInit(): void {
@@ -37,5 +39,10 @@ export class PrizeDetails {
         });
       }
     });
+  }
+
+   addToCart() {
+    if (!this.prize) return;
+    this.cart.add(this.prize, 1);
   }
 }

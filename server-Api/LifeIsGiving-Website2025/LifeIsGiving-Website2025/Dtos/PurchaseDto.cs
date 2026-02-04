@@ -17,10 +17,10 @@
 
         public class PurchaseCreateDto
         {
-            public int UserId { get; set; }
             public int PrizeId { get; set; }
             public int Quantity { get; set; }
         }
+
 
     }
 

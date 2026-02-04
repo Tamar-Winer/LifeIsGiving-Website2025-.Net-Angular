@@ -36,10 +36,12 @@
 
             <div class="actions-row">
               <p-button
-                label="Buy Now"
-                icon="pi pi-shopping-cart"
-                styleClass="buy-btn"
-              ></p-button>
+  label="Buy Now"
+  icon="pi pi-shopping-cart"
+  styleClass="buy-btn"
+  (onClick)="addToCart(prize, $event)"
+></p-button>
+
 
               <button
                 type="button"

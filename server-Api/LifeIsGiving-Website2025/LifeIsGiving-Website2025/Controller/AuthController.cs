@@ -52,11 +52,13 @@ namespace LifeIsGiving_Website2025.Controller
                 _ => "Buyer"
             };
 
-            var claims = new List<Claim>
-    {
-        new Claim(ClaimTypes.Name, user.UserName),
-        new Claim(ClaimTypes.Role, role)
-    };
+           var claims = new List<Claim>
+{
+    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()), // ✅ NEW: userId בטוקן
+    new Claim(ClaimTypes.Name, user.UserName),
+    new Claim(ClaimTypes.Role, role)
+};
+
 
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_configuration["JwtSettings:SecretKey"])
