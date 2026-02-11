@@ -1,68 +1,76 @@
 <ng-container *ngIf="prize; else loading">
-  <div class="details-page">
-    <div class="breadcrumb">
+  <div class="luxury-details-page" dir="ltr">
+    <div class="breadcrumb-nav">
       <a routerLink="/prizes" class="back-link">
         <i class="pi pi-arrow-left"></i>
-        חזרה לרשימת פרסים
+        <span>Back to Prizes Gallery</span>
       </a>
     </div>
 
-    <p-card class="details-card">
-      <div class="details-grid">
-        <!-- תמונה -->
-        <div class="media">
-         <img
-  class="main-image"
-  [src]="prize.imageUrl || 'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg'"
-  [alt]="prize.name"
-/>
-
+    <p-card styleClass="premium-glass-card">
+      <div class="main-grid">
+        <div class="media-column">
+          <div class="image-container">
+            <div class="floating-price">{{ prize.price }} ₪</div>
+            <img
+              class="hero-image"
+              [src]="prize.imageUrl || 'assets/gift-placeholder.png'"
+              [alt]="prize.name"
+            />
+          </div>
         </div>
 
-        <!-- מידע -->
-        <div class="info">
-          <div class="category">{{ prize.category }}</div>
-          <h1 class="title">{{ prize.name }}</h1>
-
-          <div class="price-row">
-            <div class="price">{{ prize.price }} ₪</div>
-            <span class="chip">כרטיס הגרלה</span>
+        <div class="info-column">
+          <div class="content-header">
+            <span class="category-tag">{{ prize.category }}</span>
+            <h1 class="main-title">{{ prize.name }}</h1>
+            <div class="status-badge">
+              <span class="dot"></span> Active Raffle
+            </div>
           </div>
-
-          <p class="description">{{ prize.description }}</p>
 
           <p-divider></p-divider>
-          <div class="meta">
-            <div class="meta-row">
-              <span class="meta-label">קטגוריה</span>
-              <span class="meta-value">{{ prize.category }}</span>
-            </div>
 
-            <div class="meta-row">
-              <span class="meta-label">תורם</span>
-              <span class="meta-value">{{ prize.donorId }}</span>
+          <div class="description-area">
+            <h3 class="section-subtitle">About this prize</h3>
+            <p class="text">{{ prize.description }}</p>
+          </div>
+
+          <div class="specs-row">
+            <div class="spec-box">
+              <i class="pi pi-th-large"></i>
+              <div class="spec-text">
+                <span class="label">Category</span>
+                <span class="val">{{ prize.category }}</span>
+              </div>
+            </div>
+            <div class="spec-box">
+              <i class="pi pi-user"></i>
+              <div class="spec-text">
+                <span class="label">Donor ID</span>
+                <span class="val">#{{ prize.donorId }}</span>
+              </div>
             </div>
           </div>
 
-          <div class="actions">
-           <p-button
-  label="קנייה עכשיו"
-  icon="pi pi-shopping-cart"
-  styleClass="buy-btn"
-  (onClick)="addToCart()"
-></p-button>
+          <div class="action-zone">
+            <div class="buttons-wrapper">
+              <p-button
+                label="ADD TO CART"
+                icon="pi pi-shopping-bag"
+                styleClass="cta-button"
+                (onClick)="addToCart()"
+              ></p-button>
 
-
-            <p-button
-              label="הוספה למועדפים"
-              icon="pi pi-heart"
-              [outlined]="true"
-              styleClass="fav-btn"
-            ></p-button>
-          </div>
-
-          <div class="note">
-            רכישה מאובטחת • קבלה במייל • תמיכה 24/7
+              <button type="button" class="heart-btn">
+                <i class="pi pi-heart"></i>
+              </button>
+            </div>
+            
+            <div class="security-footer">
+              <span><i class="pi pi-shield"></i> Secure Checkout</span>
+              <span><i class="pi pi-verified"></i> Legal Supervision</span>
+            </div>
           </div>
         </div>
       </div>
@@ -71,24 +79,19 @@
 </ng-container>
 
 <ng-template #loading>
-  <div class="details-page">
-    <p-card class="details-card">
-      <div class="details-grid">
-        <div class="media">
-          <p-skeleton width="100%" height="420px"></p-skeleton>
+  <div class="luxury-details-page">
+    <p-card styleClass="premium-glass-card">
+      <div class="main-grid">
+        <div class="media-column">
+          <p-skeleton width="100%" height="500px" borderRadius="30px"></p-skeleton>
         </div>
-
-        <div class="info">
-          <p-skeleton width="40%" height="16px"></p-skeleton>
-          <p-skeleton width="80%" height="30px" styleClass="mt-2"></p-skeleton>
-          <p-skeleton width="30%" height="28px" styleClass="mt-3"></p-skeleton>
-          <p-skeleton width="100%" height="80px" styleClass="mt-3"></p-skeleton>
-          <p-skeleton width="100%" height="1px" styleClass="mt-4"></p-skeleton>
-          <p-skeleton width="70%" height="14px" styleClass="mt-3"></p-skeleton>
-          <p-skeleton width="60%" height="14px" styleClass="mt-2"></p-skeleton>
-          <div class="mt-4" style="display:flex; gap:12px;">
-            <p-skeleton width="60%" height="42px"></p-skeleton>
-            <p-skeleton width="40%" height="42px"></p-skeleton>
+        <div class="info-column">
+          <p-skeleton width="30%" height="20px" styleClass="mb-3"></p-skeleton>
+          <p-skeleton width="70%" height="50px" styleClass="mb-5"></p-skeleton>
+          <p-skeleton width="100%" height="120px" styleClass="mb-5"></p-skeleton>
+          <div class="specs-row">
+            <p-skeleton width="100%" height="60px" borderRadius="15px"></p-skeleton>
+            <p-skeleton width="100%" height="60px" borderRadius="15px"></p-skeleton>
           </div>
         </div>
       </div>

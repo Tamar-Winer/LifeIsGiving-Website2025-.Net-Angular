@@ -27,6 +27,7 @@ namespace LifeIsGiving_Website2025.Services
                 Id = p.Id,
                 UserName = p.User.Name,
                 PrizeName = p.Prize.Name,
+                PrizeId = p.PrizeId,
                 PriceAtPurchase = p.PriceAtPurchase,
                 Quantity = p.Quantity,
                 Status = p.Status.ToString(),
@@ -222,6 +223,7 @@ namespace LifeIsGiving_Website2025.Services
                 {
                     Id = p.Id,
                     UserName = p.User.Name,
+                    PrizeId = p.PrizeId,
                     PrizeName = p.Prize != null ? p.Prize.Name : "Unknown",
                     PriceAtPurchase = p.PriceAtPurchase,
                     Quantity = p.Quantity,
@@ -266,6 +268,7 @@ namespace LifeIsGiving_Website2025.Services
                 {
                     Id = p.Id,
                     UserName = p.User.Name,
+                    PrizeId = p.PrizeId,
                     PrizeName = p.Prize.Name,
                     PriceAtPurchase = p.PriceAtPurchase,
                     Quantity = p.Quantity,

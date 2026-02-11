@@ -1,154 +1,133 @@
 <p-toast></p-toast>
 
 <div class="donor-page">
-  <h1 class="page-title">רשימת תורמים</h1>
+  <div class="header-section">
+    <h1 class="page-title">DONORS DIRECTORY</h1>
+    <div class="title-underline"></div>
+  </div>
 
-  <!-- ===== Filter Bar (NEW) ===== -->
-  <div class="filter-bar" [formGroup]="filterForm">
-    <div class="filter-field">
-      <label>שם</label>
-      <input pInputText formControlName="name" placeholder="חיפוש לפי שם..." />
-    </div>
+  <div class="filter-container">
+    <div class="search-pill-wrapper" [formGroup]="filterForm">
+      <div class="main-search-section">
+        <i class="pi pi-search search-icon"></i>
+        <input pInputText formControlName="name" placeholder="Search name..." class="search-input" />
+      </div>
 
-    <div class="filter-field">
-      <label>אימייל</label>
-      <input pInputText formControlName="email" placeholder="חיפוש לפי אימייל..." />
-    </div>
-
-    <div class="filter-field">
-      <label>מתנה</label>
-      <input pInputText formControlName="prizeName" placeholder="חיפוש לפי מתנה..." />
-    </div>
-
-    <div class="filter-actions">
-      <button pButton type="button" class="p-button-outlined btn-cancel" (click)="clearFilter()">
-        נקה
-      </button>
+      <div class="quick-filters-section">
+        <div class="icon-field">
+          <i class="pi pi-envelope"></i>
+          <input pInputText formControlName="email" placeholder="Email..." />
+        </div>
+        <div class="icon-field">
+          <i class="pi pi-gift"></i>
+          <input pInputText formControlName="prizeName" placeholder="Prize..." />
+        </div>
+        <button type="button" class="refresh-btn" (click)="clearFilter()" pTooltip="Clear Search">
+          <i class="pi pi-refresh"></i>
+        </button>
+      </div>
     </div>
   </div>
 
   @if (donors().length === 0) {
-    <p class="empty-text">אין תורמים להצגה כרגע...</p>
+    <div class="empty-state">
+      <p>No donors match your search criteria.</p>
+    </div>
   } @else {
     <div class="donors-grid">
       @for (donor of donors(); track donor.id) {
         <div class="donor-card">
-          <h2 class="donor-name">{{ donor.name }}</h2>
-          <p><strong>שם משתמש:</strong> {{ donor.userName }}</p>
-          <p><strong>אימייל:</strong> {{ donor.email }}</p>
-          <p><strong>טלפון:</strong> {{ donor.phone }}</p>
-          <p><strong>כתובת:</strong> {{ donor.address }}</p>
+          <div class="card-pills-actions">
+            <button type="button" class="action-pill edit" (click)="openEditDialog(donor)" pTooltip="Edit">
+              <i class="pi pi-pencil"></i>
+            </button>
+            <button type="button" class="action-pill delete" (click)="deleteDonor(donor.id)" pTooltip="Delete">
+              <i class="pi pi-trash"></i>
+            </button>
+          </div>
 
-          <div class="donations-block">
-            <div class="donations-title">
-              <strong>מתנות שנתרמו:</strong>
-              <span class="donations-count">{{ donor.prizesDonated.length }}</span>
+          <div class="donor-main-content">
+            <div class="avatar-circle">
+              {{ donor.name.charAt(0) }}
             </div>
-
-            @if (donor.prizesDonated.length === 0) {
-              <div class="donations-empty">אין מתנות להצגה</div>
-            } @else {
-              <div class="prizes-grid">
-                @for (p of donor.prizesDonated; track p.id) {
-                  <div class="prize-row">
-                    <div class="prize-left">
-                      @if (p.imageUrl) {
-                        <img class="prize-thumb" [src]="p.imageUrl" [alt]="p.name" />
-                      } @else {
-                        <div class="prize-thumb placeholder">🎁</div>
-                      }
-                    </div>
-
-                    <div class="prize-main">
-                      <div class="prize-name">{{ p.name }}</div>
-                      <div class="prize-desc">{{ p.description }}</div>
-
-                      <div class="prize-meta">
-                        <span class="chip">קטגוריה: {{ p.category }}</span>
-                        <span class="chip">₪{{ p.price }}</span>
-                      </div>
-                    </div>
-                  </div>
-                }
+            <h2 class="donor-name">{{ donor.name }}</h2>
+            <span class="donor-username">@{{ donor.userName }}</span>
+            
+            <div class="mini-info-list">
+              <div class="mini-info-item">
+                <i class="pi pi-phone"></i>
+                <span>{{ donor.phone }}</span>
               </div>
-            }
+              <div class="mini-info-item">
+                <i class="pi pi-map-marker"></i>
+                <span>{{ donor.address }}</span>
+              </div>
+            </div>
           </div>
 
-          <div class="actions-row">
-            <button pButton type="button" class="p-button-outlined edit-btn"
-              (click)="openEditDialog(donor)">
-              עריכה
-            </button>
-
-            <button pButton type="button" class="p-button-danger delete-button"
-              (click)="deleteDonor(donor.id)">
-              מחק תורם
-            </button>
-          </div>
+          <details class="donations-dropdown">
+            <summary>
+              <span class="summary-label">Donations ({{ donor.prizesDonated.length }})</span>
+              <i class="pi pi-chevron-down"></i>
+            </summary>
+            <div class="prizes-expanded-list">
+              @for (p of donor.prizesDonated; track p.id) {
+                <div class="prize-item-premium">
+                  <img [src]="p.imageUrl || 'assets/gift-placeholder.png'" alt="prize" />
+                  <div class="prize-details">
+                    <span class="p-name">{{ p.name }}</span>
+                    <span class="p-price">₪{{ p.price }}</span>
+                  </div>
+                </div>
+              } @empty {
+                <p class="empty-prizes">No donations found</p>
+              }
+            </div>
+          </details>
         </div>
       }
     </div>
   }
 </div>
 
-<!-- ===== PrimeNG Edit Dialog ===== -->
 <p-dialog
-  header="עריכת תורם"
+  header="Edit Donor Profile"
   [visible]="editDialogVisible()"
   (visibleChange)="editDialogVisible.set($event)"
   [modal]="true"
   [draggable]="false"
   [resizable]="false"
-  [style]="{ width: '520px', maxWidth: '95vw' }"
+  [style]="{ width: '450px' }"
+  styleClass="custom-edit-dialog"
   (onHide)="closeEditDialog()"
 >
-  <form [formGroup]="editForm" class="edit-form">
-    <div class="field">
-      <label>שם</label>
+  <form [formGroup]="editForm" class="edit-dialog-form">
+    <div class="form-group">
+      <label>Full Name</label>
       <input pInputText formControlName="name" />
-      @if (hasError('name','required')) { <small class="err">חובה למלא שם</small> }
-      @if (hasError('name','minlength')) { <small class="err">מינימום 2 תווים</small> }
     </div>
-
-    <div class="field">
-      <label>שם משתמש</label>
+    <div class="form-group">
+      <label>Username</label>
       <input pInputText formControlName="userName" />
-      @if (hasError('userName','required')) { <small class="err">חובה למלא שם משתמש</small> }
-      @if (hasError('userName','minlength')) { <small class="err">מינימום 2 תווים</small> }
     </div>
-
-    <div class="field">
-      <label>אימייל</label>
+    <div class="form-group">
+      <label>Email</label>
       <input pInputText formControlName="email" />
-      @if (hasError('email','required')) { <small class="err">חובה למלא אימייל</small> }
-      @if (hasError('email','email')) { <small class="err">אימייל לא תקין</small> }
     </div>
-
-    <div class="field">
-      <label>טלפון</label>
-      <input pInputText formControlName="phone" />
-      @if (hasError('phone','required')) { <small class="err">חובה למלא טלפון</small> }
-      @if (hasError('phone','minlength')) { <small class="err">טלפון קצר מדי</small> }
-    </div>
-
-    <div class="field">
-      <label>כתובת</label>
-      <input pInputText formControlName="address" />
-      @if (hasError('address','required')) { <small class="err">חובה למלא כתובת</small> }
-      @if (hasError('address','minlength')) { <small class="err">מינימום 2 תווים</small> }
+    <div class="form-row">
+      <div class="form-group flex-1">
+        <label>Phone</label>
+        <input pInputText formControlName="phone" />
+      </div>
+      <div class="form-group flex-1">
+        <label>Address</label>
+        <input pInputText formControlName="address" />
+      </div>
     </div>
   </form>
 
   <ng-template pTemplate="footer">
-    <button pButton type="button" class="p-button-outlined btn-cancel"
-      (click)="closeEditDialog()">
-      ביטול
-    </button>
-
-    <button pButton type="button" class="btn-save"
-      [disabled]="editForm.invalid"
-      (click)="saveEdit()">
-      שמירה
-    </button>
+    <button pButton type="button" class="p-button-text btn-cancel" (click)="closeEditDialog()">Cancel</button>
+    <button pButton type="button" class="p-button-danger btn-save" [disabled]="editForm.invalid" (click)="saveEdit()">Save Changes</button>
   </ng-template>
 </p-dialog>

@@ -1,74 +1,89 @@
-<div class="cart-page">
-  <h1 class="page-title">הסל שלי</h1>
+<div class="cart-container" dir="ltr">
+  <div class="cart-header">
+    <h1 class="page-title">My Shopping Cart</h1>
+    @if (cart.items().length > 0) {
+      <span class="items-count">{{ cart.totalQty() }} Items</span>
+    }
+  </div>
 
   @if (cart.items().length === 0) {
-    <p class="empty">הסל ריק כרגע</p>
+    <div class="empty-state">
+      <div class="empty-icon-wrapper">
+        <i class="pi pi-shopping-cart" style="font-size: 3.5rem;"></i>
+      </div>
+      <p>Your cart is waiting to be filled</p>
+      <button pButton label="Continue Shopping" routerLink="/prizes" class="p-button-danger p-button-raised p-button-rounded"></button>
+    </div>
   } @else {
     <div class="cart-grid">
-      <div class="cart-items">
-        @for (item of cart.items(); track trackById($index, item)) {
-          <p-card class="cart-card">
-            <div class="row">
-              <img
-                class="thumb"
-                [src]="item.prize.imageUrl || 'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg'"
-                [alt]="item.prize.name"
-              />
-
-              <div class="info">
-                <div class="name">{{ item.prize.name }}</div>
-                <div class="desc">{{ item.prize.description }}</div>
-
-                <div class="line">
-                  <span class="price">₪{{ item.prize.price }}</span>
-                  <span class="muted">קטגוריה: {{ item.prize.category }}</span>
-                </div>
-
-                <div class="qty-row">
-                  <button pButton type="button" class="p-button-outlined" (click)="dec(item)">-</button>
-                  <span class="qty">{{ item.qty }}</span>
-                  <button pButton type="button" class="p-button-outlined" (click)="inc(item)">+</button>
-
-                  <button
-                    pButton
-                    type="button"
-                    class="p-button-danger p-button-text remove"
-                    (click)="cart.remove(item.prize.id)"
-                  >
-                    הסרה
-                  </button>
+      <div class="items-list">
+        @for (item of cart.items(); track item.id || item.Id) {
+          <div class="cart-card">
+            <div class="card-body">
+              <div class="item-img-container">
+                <img class="item-img" 
+                     [src]="item.prize?.imageUrl || item.Prize?.imageUrl || 'assets/gift-placeholder.png'" 
+                     [alt]="item.prizeName || item.prize?.name">
+              </div>
+              
+              <div class="item-info">
+                <h3 class="name">{{ item.prizeName || item.PrizeName || item.prize?.name || item.Prize?.name }}</h3>
+                
+                <div class="controls-row">
+                  <div class="qty-picker">
+                    <button pButton icon="pi pi-minus" class="p-button-text p-button-danger" 
+                            (click)="cart.updateQuantity(item, -1)" 
+                            [disabled]="(item.quantity || item.Quantity) <= 1"></button>
+                    
+                    <span class="qty-val">{{ item.quantity || item.Quantity }}</span>
+                    
+                    <button pButton icon="pi pi-plus" class="p-button-text p-button-danger" 
+                            (click)="cart.updateQuantity(item, 1)"></button>
+                  </div>
+                  <button pButton icon="pi pi-trash" class="p-button-text p-button-secondary remove-btn" 
+                          (click)="cart.remove(item.id || item.Id)" pTooltip="Remove Item"></button>
                 </div>
               </div>
 
-              <div class="sum">
-                ₪{{ item.qty * item.prize.price }}
+              <div class="item-price">
+                <div class="unit-price">Unit Price</div>
+                <div class="total-line">
+                  {{ (item.priceAtPurchase || item.PriceAtPurchase || item.prize?.price || item.Prize?.price || 0) }}
+                </div>
               </div>
             </div>
-          </p-card>
+          </div>
         }
       </div>
 
-      <p-card class="summary">
-        <div class="sum-title">סיכום</div>
-        <div class="sum-row">
-          <span>כמות פריטים</span>
-          <strong>{{ cart.totalQty() }}</strong>
+      <aside class="cart-summary">
+        <div class="summary-box">
+          <h2>Order Summary</h2>
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <span>${{ cart.totalPrice() }}</span>
+          </div>
+          <div class="summary-line">
+            <span>Shipping</span>
+            <span class="free">Free</span>
+          </div>
+          
+          <div class="summary-line total">
+            <span>Total</span>
+            <span class="price">{{ cart.totalPrice() }}</span>
+          </div>
+          
+          <div class="actions">
+            <button pButton label="Proceed to Checkout" class="checkout-btn w-full" (click)="cart.checkout()"></button>
+            <button pButton label="Clear Shopping Cart" class="p-button-text p-button-secondary clear-btn w-full" (click)="cart.clear()"></button>
+          </div>
+          
+          <div class="secure-checkout" style="margin-top: 20px; text-align: center; color: #9ca3af; font-size: 0.85rem;">
+            <i class="pi pi-shield" style="margin-right: 5px;"></i>
+            Secure Checkout Guaranteed
+          </div>
         </div>
-        <div class="sum-row">
-          <span>לתשלום</span>
-          <strong>₪{{ cart.totalPrice() }}</strong>
-        </div>
-
-        <div class="sum-actions">
-          <button pButton type="button" class="p-button-outlined" (click)="cart.clear()">
-            ריקון סל
-          </button>
-
-          <button pButton type="button" class="p-button">
-            מעבר לתשלום
-          </button>
-        </div>
-      </p-card>
+      </aside>
     </div>
   }
 </div>

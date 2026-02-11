@@ -38,21 +38,33 @@ export class Register {
     phone: ['', [Validators.required, Validators.pattern(/^0\d{8,9}$/)]],
     address: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(6)]],
+
   });
 
-  submit() {
-    if (this.registerForm.invalid) {
-      this.registerForm.markAllAsTouched();
-      return;
-    }
-
-    const payload = this.registerForm.getRawValue();
-
-    this.auth.register(payload).subscribe({
-      next: () => this.router.navigateByUrl('/login'),
-      error: (err: unknown) => console.error('Register failed:', err),
-    });
+submit() {
+  if (this.registerForm.invalid) {
+    this.registerForm.markAllAsTouched();
+    return;
   }
+
+  const values = this.registerForm.getRawValue();
+
+  // שימוש ב-any מונע מ-TypeScript לבדוק אם זה מתאים ל-RegisterRequest
+  const payload: any = {
+    UserName: values.username,
+    Name: values.name,
+    Email: values.email,
+    Phone: values.phone,
+    Address: values.address,
+    Password: values.password,
+    Role: 3 
+  };
+
+  this.auth.register(payload).subscribe({
+    next: () => this.router.navigateByUrl('/login'),
+    error: (err) => console.error('Register failed:', err),
+  });
+}
 
   hasError(field: string) {
     const c = this.registerForm.get(field);

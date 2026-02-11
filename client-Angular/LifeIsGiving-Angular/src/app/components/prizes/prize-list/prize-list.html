@@ -1,61 +1,77 @@
-<div class="prize-page">
-  <h1 class="page-title">Prize List</h1>
-  <a routerLink="/about">על LifeIsGiving</a>
+<div class="prize-page" dir="ltr">
+  <div class="header-section">
+    <h1 class="page-title">Exquisite Prizes</h1>
+    <p class="subtitle">Every donation is a step towards giving. Choose your prize.</p>
+    
+    <div class="header-actions">
+      <a routerLink="/about" class="about-link">
+        <i class="pi pi-info-circle"></i> Learn about LifeIsGiving
+      </a>
+
+      @if (isAdmin()) {
+        <p-button 
+          label="Add New Prize" 
+          icon="pi pi-plus" 
+          styleClass="p-button-success p-button-rounded admin-main-add-btn"
+          (onClick)="addPrize()">
+        </p-button>
+      }
+    </div>
+  </div>
 
   <div class="cards-grid">
-    @for (prize of prizes(); track trackById($index, prize)) {
-      <a
-        class="card-link"
-        [routerLink]="['/prizes', prize.id]"
-      >
-        <p-card class="product-card">
-          <div class="image-wrap">
-            @if (prize.imageUrl) {
-              <img
-                [src]="prize.imageUrl"
-                [alt]="prize.name"
-                class="product-image"
-              />
-            }
+    @for (prize of prizes(); track prize.id) {
+      <div class="card-item">
+        <p-card styleClass="custom-product-card">
+          
+          @if (isAdmin()) {
+            <div class="admin-floating-controls">
+              <button class="admin-btn edit" (click)="editPrize(prize, $event)" title="Edit Prize">
+                <i class="pi pi-pencil"></i>
+              </button>
+              <button class="admin-btn delete" (click)="deletePrize(prize.id, $event)" title="Delete Prize">
+                <i class="pi pi-trash"></i>
+              </button>
+            </div>
+          }
 
+          <div class="price-badge">{{ prize.price }} ₪</div>
+          
+          <div class="image-header" [routerLink]="['/prizes', prize.id]">
             <img
-              [src]="prize.imageUrl || 'https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg
-'"
-              alt="Placeholder Image"
+              [src]="prize.imageUrl || 'assets/gift-placeholder.png'"
+              [alt]="prize.name"
               class="product-image"
             />
+            <div class="image-overlay">
+              <span>View Details</span>
+            </div>
           </div>
 
-          <div class="card-body">
-            <div class="category">{{ prize.category }}</div>
-            <div class="name">{{ prize.name }}</div>
+          <div class="card-content">
+            <span class="category-text">{{ prize.category }}</span>
+            <h3 class="prize-name" [routerLink]="['/prizes', prize.id]">{{ prize.name }}</h3>
 
-            <div class="price-row">
-              <div class="price">{{ prize.price }} ₪</div>
-            </div>
-
-            <div class="actions-row">
+            <div class="actions-group">
               <p-button
-  label="Buy Now"
-  icon="pi pi-shopping-cart"
-  styleClass="buy-btn"
-  (onClick)="addToCart(prize, $event)"
-></p-button>
-
+                label="Add to Cart"
+                icon="pi pi-shopping-bag"
+                class="full-width-btn"
+                (onClick)="addToCart(prize, $event)"
+              ></p-button>
 
               <button
                 type="button"
-                class="heart-btn"
+                class="wishlist-btn"
                 (click)="toggleFavorite(prize, $event)"
-                aria-label="Favorite"
-                title="Favorite"
+                title="Add to wishlist"
               >
                 <i class="pi pi-heart"></i>
               </button>
             </div>
           </div>
         </p-card>
-      </a>
+      </div>
     }
   </div>
 </div>

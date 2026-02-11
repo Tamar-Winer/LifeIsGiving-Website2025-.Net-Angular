@@ -1,422 +1,184 @@
-/* =========================
-   Layout
-========================= */
+:host {
+  display: block;
+  direction: ltr;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
 .donor-page {
-  padding: 22px;
-  background: #fafafa;
-  min-height: 100%;
+  padding: 50px 20px;
+  background: radial-gradient(circle at top right, #fffafa 0%, #ffffff 100%);
+  min-height: 100vh;
+  height: auto;
+  overflow-y: visible;
 }
 
-.page-title {
-  font-size: 28px;
-  margin: 0 0 18px;
-  font-weight: 800;
-  letter-spacing: 0.2px;
-  color: #141414;
+/* Header Section */
+.header-section {
+  text-align: center;
+  margin-bottom: 45px;
+  .page-title { font-size: 26px; font-weight: 200; letter-spacing: 6px; color: #1a1a1a; margin: 0; }
+  .title-underline { width: 45px; height: 3px; background: #dc2626; margin: 12px auto; border-radius: 5px; opacity: 0.8; }
 }
 
-.empty-text {
-  font-size: 16px;
-  color: #6b7280;
-  padding: 14px 10px;
-  background: #fff;
-  border: 1px solid #eeeeee;
-  border-radius: 14px;
-  width: fit-content;
+/* --- THE PILL SEARCH BAR --- */
+.filter-container { display: flex; justify-content: center; margin-bottom: 55px; }
+.search-pill-wrapper {
+  background: #ffffff; padding: 8px 15px; border-radius: 50px; display: flex; align-items: center;
+  width: 100%; max-width: 750px; box-shadow: 0 10px 35px rgba(220, 38, 38, 0.06);
+  border: 1px solid #fceaea;
+}
+.main-search-section {
+  display: flex; align-items: center; flex: 1;
+  .search-icon { color: #dc2626; font-size: 1.1rem; margin-right: 12px; }
+  .search-input { border: none !important; background: transparent !important; font-size: 14px; box-shadow: none !important; width: 100%; }
+}
+.quick-filters-section {
+  display: flex; align-items: center; gap: 10px; border-left: 1px solid #f0f0f0; padding-left: 15px;
+  .icon-field {
+    display: flex; align-items: center; background: #fff5f5; padding: 6px 14px; border-radius: 50px;
+    i { font-size: 0.85rem; color: #dc2626; margin-right: 8px; opacity: 0.7; }
+    input { border: none !important; background: transparent !important; width: 70px; font-size: 12px; &:focus { width: 120px; } }
+  }
+}
+.refresh-btn { 
+  background: #dc2626; border: none; width: 34px; height: 34px; border-radius: 50%; color: #fff; cursor: pointer;
+  transition: all 0.3s; &:hover { transform: rotate(180deg); background: #b91c1c; }
 }
 
-/* =========================
-   Cards Grid
-========================= */
+/* --- SMALL SQUARE DONORS GRID --- */
 .donors-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, 260px);
+  justify-content: center;
+  gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .donor-card {
   background: #ffffff;
-  border-radius: 18px;
-  padding: 16px 16px 14px;
-  border: 1px solid #eeeeee;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-}
-
-.donor-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.09);
-  border-color: #f1d0d0;
-}
-
-.donor-name {
-  margin: 0 0 10px;
-  color: #111827;
-  font-weight: 800;
-  font-size: 18px;
-}
-
-.donor-card p {
-  margin: 6px 0;
-  color: #374151;
-  font-size: 14px;
-}
-
-.donor-card strong {
-  color: #111827;
-  font-weight: 700;
-}
-
-.donations {
-  margin-top: 10px;
-  font-weight: 700;
-  color: #0f766e;
-  background: #ecfdf5;
-  border: 1px solid #c8f1df;
-  padding: 8px 10px;
-  border-radius: 12px;
-}
-
-/* =========================
-   Buttons Row
-========================= */
-.actions-row {
+  width: 260px;
+  height: 260px;
+  border-radius: 24px;
+  padding: 25px;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.02);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
   display: flex;
-  gap: 10px;
-  margin-top: 14px;
-}
+  flex-direction: column;
+  /* ממרכז את הכל אנכית ואופקית */
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 
-/* PrimeNG buttons look better when we override a bit */
-:host ::ng-deep .p-button {
-  border-radius: 14px;
-  padding: 10px 12px;
-  font-weight: 800;
-  box-shadow: none;
-}
-
-:host ::ng-deep .p-button:focus {
-  box-shadow: 0 0 0 4px rgba(196, 0, 0, 0.12);
-}
-
-:host ::ng-deep .p-button.p-button-outlined {
-  border-width: 1px;
-}
-
-/* Edit button - white/red outlined */
-:host ::ng-deep .p-button.edit-btn {
-  border-color: #c40000;
-  color: #c40000;
-  background: #ffffff;
-}
-
-:host ::ng-deep .p-button.edit-btn:hover {
-  background: #fff5f5;
-  border-color: #b30000;
-  color: #b30000;
-}
-
-/* Delete button - solid red */
-:host ::ng-deep .p-button.delete-button {
-  background: #c40000;
-  border: 1px solid #c40000;
-}
-
-:host ::ng-deep .p-button.delete-button:hover {
-  background: #b30000;
-  border-color: #b30000;
-}
-
-/* =========================
-   Dialog (PrimeNG)
-========================= */
-:host ::ng-deep .p-dialog {
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid #eeeeee;
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
-}
-
-:host ::ng-deep .p-dialog .p-dialog-header {
-  background: linear-gradient(180deg, #fff5f5, #ffffff);
-  border-bottom: 1px solid #ffe1e1;
-  padding: 14px 16px;
-}
-
-:host ::ng-deep .p-dialog .p-dialog-title {
-  color: #111827;
-  font-weight: 900;
-  letter-spacing: 0.2px;
-}
-
-:host ::ng-deep .p-dialog .p-dialog-content {
-  background: #ffffff; /* ✅ לא שקוף */
-  padding: 16px;
-}
-
-:host ::ng-deep .p-dialog .p-dialog-footer {
-  background: #ffffff;
-  border-top: 1px solid #f1f1f1;
-  padding: 12px 16px;
-}
-
-/* Backdrop */
-:host ::ng-deep .p-dialog-mask {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-/* =========================
-   Edit Form
-========================= */
-.edit-form {
-  display: grid;
-  gap: 12px;
-}
-
-.field {
-  display: grid;
-  gap: 6px;
-}
-
-.field label {
-  font-weight: 800;
-  color: #111827;
-  font-size: 12px;
-}
-
-:host ::ng-deep .p-inputtext {
-  width: 100%;
-  border-radius: 14px;
-  padding: 10px 12px;
-  border: 1px solid #e5e7eb;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-:host ::ng-deep .p-inputtext:focus {
-  border-color: #c40000;
-  box-shadow: 0 0 0 4px rgba(196, 0, 0, 0.12);
-}
-
-.err {
-  color: #c40000;
-  font-size: 12px;
-  font-weight: 700;
-  margin-top: 2px;
-}
-
-/* Footer buttons */
-:host ::ng-deep .p-dialog-footer .btn-save {
-  background: #c40000 !important;
-  border: 1px solid #c40000 !important;
-}
-
-:host ::ng-deep .p-dialog-footer .btn-save:hover {
-  background: #b30000 !important;
-  border-color: #b30000 !important;
-}
-
-:host ::ng-deep .p-dialog-footer .btn-cancel {
-  color: #c40000 !important;
-  border-color: #c40000 !important;
-}
-
-:host ::ng-deep .p-dialog-footer .btn-cancel:hover {
-  background: #fff5f5 !important;
-
-}
-
-.filter-bar {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
-  gap: 12px;
-  align-items: end;
-  padding: 14px;
-  background: #ffffff;
-  border: 1px solid #eeeeee;
-  border-radius: 18px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
-  margin-bottom: 16px;
-}
-
-.filter-field {
-  display: grid;
-  gap: 6px;
-
-  label {
-    font-size: 12px;
-    font-weight: 800;
-    color: #111827;
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(220, 38, 38, 0.1);
+    border-color: #fceaea;
   }
 }
 
-.filter-actions {
-  display: flex;
-  justify-content: flex-end;
-}
-.donations-block {
-  margin-top: 10px;
-  padding: 10px 10px;
-  border: 1px solid #eef0f3;
-  border-radius: 14px;
-  background: #fff;
+/* Action Pills */
+.card-pills-actions {
+  position: absolute; top: 15px; right: 15px; display: flex; gap: 8px;
+  .action-pill {
+    width: 30px; height: 30px; border-radius: 8px; border: none; cursor: pointer;
+    background: #fafafa; color: #ccc; transition: all 0.2s; font-size: 11px;
+    &:hover { background: #1a1a1a; color: #fff; }
+    &.delete:hover { background: #dc2626; color: #fff; }
+  }
 }
 
-.donations-title {
+/* Donor Content Centering */
+.donor-main-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  color: #111827;
-  font-weight: 800;
-  font-size: 13px;
-  margin-bottom: 8px;
+  width: 100%;
 }
 
-.donations-count {
-  background: #fff5f5;
-  border: 1px solid #ffd0d0;
-  color: #b30000;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-weight: 900;
-  font-size: 12px;
+.avatar-circle {
+  width: 55px; height: 55px; background: #fff5f5; color: #dc2626;
+  border-radius: 50%; display: grid; place-items: center;
+  font-weight: 800; font-size: 22px; margin-bottom: 12px; border: 1.5px solid #fceaea;
 }
 
-.donations-empty {
-  color: #6b7280;
-  font-size: 13px;
-  padding: 6px 2px;
+.donor-name { 
+  font-size: 18px; 
+  font-weight: 700; 
+  color: #1a1a1a; 
+  margin: 0; 
+  width: 100%;
 }
 
-.donations-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 8px;
+.donor-username { 
+  font-size: 12px; 
+  color: #bbb; 
+  margin-bottom: 12px;
+  display: block;
 }
 
-.donation-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border-radius: 12px;
-  border: 1px solid #f1f1f1;
-  background: #fafafa;
+.mini-info-list {
+  display: flex; 
+  flex-direction: column; 
+  gap: 5px; 
+  align-items: center; /* ממרכז את האייקון והטקסט */
+  margin-bottom: 15px;
+  
+  .mini-info-item {
+    font-size: 11px; color: #777; display: flex; align-items: center; gap: 6px;
+    i { color: #dc2626; font-size: 10px; opacity: 0.6; }
+    span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+  }
 }
 
-.donation-name {
-  font-weight: 900;
-  color: #111827;
-  font-size: 13px;
+/* --- DONATIONS DROPDOWN --- */
+.donations-dropdown {
+  position: absolute; bottom: 15px; left: 15px; right: 15px;
+  background: #ffffff; border-radius: 14px; border: 1px solid #f5f5f5;
+  z-index: 10;
+  text-align: left; /* התוכן בתוך הדרופדאון נשאר לשמאל כי זה רשימה */
+
+  &[open] { 
+    max-height: 220px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-color: #fceaea;
+  }
+
+  summary {
+    padding: 8px 12px; list-style: none; cursor: pointer; display: flex;
+    justify-content: space-between; align-items: center;
+    .summary-label { font-size: 10px; font-weight: 700; color: #dc2626; text-transform: uppercase; }
+    i { font-size: 9px; color: #dc2626; transition: 0.3s; }
+    &::-webkit-details-marker { display: none; }
+  }
 }
 
-.donation-meta {
-  margin-inline-start: auto;
-  color: #6b7280;
-  font-size: 12px;
-  font-weight: 700;
-  white-space: nowrap;
+.prizes-expanded-list {
+  padding: 0 8px 10px 8px; max-height: 140px; overflow-y: auto;
 }
 
-/* ===== Donor prizes list (NEW) ===== */
-.donations-block {
-  margin-top: 12px;
-  padding: 12px;
-  border: 1px solid #eef0f3;
-  border-radius: 16px;
-  background: #fff;
+.prize-item-premium {
+  display: flex; align-items: center; gap: 8px; padding: 6px;
+  background: #fff5f5; border-radius: 10px; margin-bottom: 5px; border: 1px solid #fef2f2;
+  img { width: 24px; height: 24px; border-radius: 5px; object-fit: cover; }
+  .prize-details {
+    display: flex; flex: 1; justify-content: space-between; align-items: center;
+    .p-name { font-size: 10px; font-weight: 700; color: #333; }
+    .p-price { font-size: 9px; font-weight: 800; color: #dc2626; }
+  }
 }
 
-.donations-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  color: #111827;
-  font-weight: 900;
-  font-size: 13px;
-  margin-bottom: 10px;
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: #ff8a8a; border-radius: 10px; }
+
+/* Dialog Form Styling */
+.edit-dialog-form {
+  display: flex; flex-direction: column; gap: 15px;
+  .form-group {
+    display: flex; flex-direction: column; gap: 4px;
+    label { font-size: 10px; font-weight: 700; color: #999; text-transform: uppercase; }
+    input { border-radius: 10px !important; font-size: 13px !important; }
+  }
+  .form-row { display: flex; gap: 12px; }
 }
-
-.donations-count {
-  background: #fff5f5;
-  border: 1px solid #ffd0d0;
-  color: #b30000;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-weight: 900;
-  font-size: 12px;
-}
-
-.donations-empty {
-  color: #6b7280;
-  font-size: 13px;
-  padding: 6px 2px;
-}
-
-.prizes-grid {
-  display: grid;
-  gap: 10px;
-}
-
-.prize-row {
-  display: grid;
-  grid-template-columns: 48px 1fr;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 14px;
-  border: 1px solid #f1f1f1;
-  background: #fafafa;
-}
-
-.prize-thumb {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  object-fit: cover;
-  border: 1px solid #eeeeee;
-  background: #fff;
-}
-
-.prize-thumb.placeholder {
-  display: grid;
-  place-items: center;
-  font-size: 18px;
-  color: #9ca3af;
-}
-
-.prize-name {
-  font-weight: 900;
-  color: #111827;
-  font-size: 13px;
-  margin-bottom: 2px;
-}
-
-.prize-desc {
-  color: #6b7280;
-  font-size: 12px;
-  line-height: 1.35;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.prize-meta {
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-  flex-wrap: wrap;
-}
-
-.chip {
-  font-size: 12px;
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: #ffffff;
-  border: 1px solid #eaeaea;
-  color: #374151;
-}
-
-

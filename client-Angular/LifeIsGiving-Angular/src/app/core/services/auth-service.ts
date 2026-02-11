@@ -36,7 +36,6 @@ export class AuthService {
   register(data: RegisterRequest) {
     return this.http.post<AuthResponse>(`${environment.apiUrl}/api/User`, data).pipe(
       tap(res => {
-        // אם השרת מחזיר token בהרשמה:
         if (res?.token) localStorage.setItem('token', res.token);
       })
     );
@@ -52,5 +51,25 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return !!this.getToken();
+  }
+
+  // פונקציה חדשה: בודקת האם המשתמש מנהל לפי הטוקן
+  isAdmin(): boolean {
+    const token = this.getToken();
+    if (!token) return false;
+
+    try {
+      // פענוח ה-JWT (החלק האמצעי מכיל את הנתונים)
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      
+      // בדיקה של השדות הנפוצים בטוקן לתפקיד מנהל
+      // לעיתים זה מופיע כ-'role' ולעיתים כקישור מלא של מיקרוסופט
+      const userRole = payload['role'] || 
+                       payload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      
+      return userRole === 'Admin';
+    } catch (e) {
+      return false;
+    }
   }
 }

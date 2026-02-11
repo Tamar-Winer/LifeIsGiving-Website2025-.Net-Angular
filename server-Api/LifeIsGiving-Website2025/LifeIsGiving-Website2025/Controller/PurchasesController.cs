@@ -67,7 +67,7 @@ public async Task<IActionResult> Add([FromBody] PurchaseCreateDto dto)
         // כרגע לא נוגעת בזה אצלך.
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Buyer")]
         public async Task<IActionResult> Update(int id, [FromBody] Purchase purchase)
         {
             if (id != purchase.Id) return BadRequest();
@@ -79,7 +79,7 @@ public async Task<IActionResult> Add([FromBody] PurchaseCreateDto dto)
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Buyer")]
         public async Task<IActionResult> Delete(int id)
         {
             var deleted = await _service.Delete(id);

@@ -1,115 +1,69 @@
 <div class="auth-bg">
-  <p-card styleClass="auth-card">
-    <ng-template pTemplate="header">
-      <div class="auth-header">
-        <h2>הרשמה</h2>
-        <p>צרי חשבון חדש תוך רגע</p>
-      </div>
-    </ng-template>
+  <div class="auth-card-container">
+    <p-card styleClass="auth-card">
+      <ng-template pTemplate="header">
+        <div class="auth-header">
+          <h2 class="shine-title">REGISTER</h2>
+          <div class="header-divider"></div>
+        </div>
+      </ng-template>
 
-    <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="submit()">
-
-      <div class="grid-2">
-        <div class="field">
-          <label>Username</label>
-          <input pInputText class="w-full" formControlName="username" />
-
-          @if (hasError('username')) {
-            <p-message
-              severity="error"
-              text="מינימום 3 תווים"
-              styleClass="msg"
-            />
-          }
+      <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="submit()">
+        
+        <div class="form-row">
+          <div class="field">
+            <label>Username</label>
+            <input pInputText class="w-full custom-input" formControlName="username" />
+          </div>
+          <div class="field">
+            <label>Full Name</label>
+            <input pInputText class="w-full custom-input" formControlName="name" />
+          </div>
         </div>
 
-        <div class="field">
-          <label>שם מלא</label>
-          <input pInputText class="w-full" formControlName="name" />
-
-          @if (hasError('name')) {
-            <p-message
-              severity="error"
-              text="שדה חובה"
-              styleClass="msg"
-            />
-          }
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="field">
-          <label>אימייל</label>
-          <input pInputText class="w-full" type="email" formControlName="email" />
-
-          @if (hasError('email')) {
-            <p-message
-              severity="error"
-              text="אימייל לא תקין"
-              styleClass="msg"
-            />
-          }
+        <div class="form-row">
+          <div class="field">
+            <label>Email</label>
+            <input pInputText class="w-full custom-input" type="email" formControlName="email" />
+          </div>
+          <div class="field">
+            <label>Phone</label>
+            <input pInputText class="w-full custom-input" formControlName="phone" />
+          </div>
         </div>
 
-        <div class="field">
-          <label>טלפון</label>
-          <input pInputText class="w-full" formControlName="phone" />
-
-          @if (hasError('phone')) {
-            <p-message
-              severity="error"
-              text="טלפון לא תקין"
-              styleClass="msg"
+        <div class="form-row">
+          <div class="field">
+            <label>Address</label>
+            <input pInputText class="w-full custom-input" formControlName="address" />
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <p-password
+              formControlName="password"
+              [toggleMask]="true"
+              [feedback]="false"
+              inputStyleClass="w-full custom-input"
+              styleClass="w-full"
             />
-          }
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label>כתובת</label>
-        <input pInputText class="w-full" formControlName="address" />
+        <div class="form-actions">
+          <button
+            pButton
+            type="submit"
+            class="w-full auth-btn"
+            label="CREATE ACCOUNT"
+            [disabled]="registerForm.invalid"
+          ></button>
+        </div>
 
-        @if (hasError('address')) {
-          <p-message
-            severity="error"
-            text="שדה חובה"
-            styleClass="msg"
-          />
-        }
-      </div>
-
-      <div class="field">
-        <label>סיסמה</label>
-        <p-password
-          formControlName="password"
-          [toggleMask]="true"
-          [feedback]="false"
-          inputStyleClass="w-full"
-          styleClass="w-full"
-        />
-
-        @if (hasError('password')) {
-          <p-message
-            severity="error"
-            text="מינימום 6 תווים"
-            styleClass="msg"
-          />
-        }
-      </div>
-
-      <button
-        pButton
-        type="submit"
-        class="w-full auth-btn"
-        label="צרי חשבון"
-        icon="pi pi-user-plus"
-        [disabled]="registerForm.invalid"
-      ></button>
-
-      <div class="links">
-        <span>יש לך כבר משתמש?</span>
-        <a routerLink="/login">להתחברות</a>
-      </div>
-    </form>
-  </p-card>
+        <div class="links">
+          <span>Already a member?</span>
+          <a routerLink="/login">Sign In</a>
+        </div>
+      </form>
+    </p-card>
+  </div>
 </div>
