@@ -21,7 +21,16 @@
             public int Quantity { get; set; }
         }
 
-
+      public class PurchaseReportDto
+{
+    public int PurchaseId { get; set; }
+    public string ?PrizeName { get; set; }
+    public decimal UnitPrice { get; set; }
+    public int Quantity { get; set; }
+    public decimal TotalAmount { get; set; }
+    public string ?CustomerFullName { get; set; }
+    public string ?CustomerEmail { get; set; }
+}
     }
 
 

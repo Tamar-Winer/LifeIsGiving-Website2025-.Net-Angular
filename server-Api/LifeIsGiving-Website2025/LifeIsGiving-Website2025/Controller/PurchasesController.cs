@@ -133,5 +133,22 @@ public async Task<IActionResult> GetMyDraftPurchases()
 
             return Ok("Purchase marked as completed");
         }
+
+
+
+        // PurchasesController.cs
+
+[HttpGet("admin/report")]
+[Authorize(Roles = "Admin")]
+public async Task<ActionResult<List<PurchaseReportDto>>> GetAdminPurchaseReport(
+    [FromQuery] int? prizeId = null, // הוספת פרמטר הסינון
+    [FromQuery] string? sortBy = null)
+{
+    var report = await _service.GetAdminPurchaseReport(prizeId, sortBy);
+    return Ok(report);
+}
     }
+
+
+    
 }

@@ -1,0 +1,140 @@
+.purchase-container {
+  padding: 25px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  text-align: left; // English alignment
+
+  // Close Button repositioned to top-right
+  .close-dialog-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px; // Changed from left to right
+    border: none;
+    background: #f8f9fa;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: #666;
+
+    &:hover {
+      background: #ff4d4d;
+      color: white;
+      transform: rotate(90deg);
+    }
+  }
+
+  .purchase-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    animation: fadeInDown 0.6s ease-out;
+
+    .header-icon {
+      background: linear-gradient(135deg, #e63946 0%, #b91c1c 100%);
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+      
+      i { color: white; font-size: 1.5rem; }
+    }
+
+    .header-text {
+      h3 { margin: 0; color: #1e293b; font-size: 1.4rem; font-weight: 700; }
+      p { margin: 0; color: #94a3b8; font-size: 0.9rem; }
+    }
+  }
+
+  .table-wrapper {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #f1f5f9;
+  }
+
+  ::ng-deep .custom-premium-table {
+    .p-datatable-thead > tr > th {
+      background-color: #f8fafc;
+      color: #475569;
+      font-weight: 600;
+      padding: 16px;
+      text-align: left; // Ensure header text is left-aligned
+      border-bottom: 2px solid #fee2e2;
+    }
+
+    .row-animation {
+      animation: slideInUp 0.4s ease-out forwards;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #fff5f5 !important;
+        transform: scale(1.005);
+      }
+    }
+
+    .customer-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .avatar {
+        width: 30px;
+        height: 30px;
+        background: #fee2e2;
+        color: #b91c1c;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.8rem;
+      }
+    }
+
+    .quantity-badge {
+      background-color: #1e293b;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+    }
+
+    .price-tag {
+      background: #fef2f2;
+      color: #b91c1c;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      border: 1px solid #fecaca;
+    }
+  }
+
+  .empty-msg-container {
+    text-align: center;
+    padding: 60px !important;
+    color: #cbd5e1;
+    
+    i { font-size: 3rem; margin-bottom: 10px; display: block; }
+  }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

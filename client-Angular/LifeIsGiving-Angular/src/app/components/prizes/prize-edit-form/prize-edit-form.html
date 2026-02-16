@@ -1,0 +1,71 @@
+<div class="prize-dialog-container">
+  <button class="close-btn" (click)="closeDialog()">
+    <i class="pi pi-times"></i>
+  </button>
+
+  <div class="prize-dialog-content">
+    <p-toast position="top-center"></p-toast>
+
+    <div class="auth-header">
+      <h1 class="shine-title">
+        @if (isEditMode) { Edit } @else { Create } Prize
+      </h1>
+      <div class="header-divider"></div>
+    </div>
+
+    <form [formGroup]="prizeForm" (ngSubmit)="savePrize()" class="auth-form">
+      
+      <div class="field" [class.field-error]="prizeForm.get('name')?.invalid && prizeForm.get('name')?.touched">
+        <label>Prize Name</label>
+        <input pInputText formControlName="name" class="custom-input" placeholder="Enter prize name" />
+      </div>
+
+      <div class="form-row">
+        <div class="field flex-1">
+          <label>Category (Number)</label>
+          <p-inputNumber formControlName="category" inputStyleClass="custom-input" [useGrouping]="false"></p-inputNumber>
+        </div>
+        <div class="field flex-1">
+          <label>Price</label>
+          <p-inputNumber formControlName="price" inputStyleClass="custom-input" mode="currency" currency="ILS" locale="he-IL"></p-inputNumber>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Donor ID</label>
+        <p-inputNumber formControlName="donorId" inputStyleClass="custom-input" [useGrouping]="false"></p-inputNumber>
+      </div>
+
+      <div class="field">
+        <label>Description</label>
+        <textarea pInputTextarea formControlName="description" class="custom-input" rows="2"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Upload Image</label>
+        <div class="file-upload-wrapper">
+          <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" hidden #fileInput>
+          <button type="button" class="upload-btn" (click)="fileInput.click()">
+            <i class="pi pi-upload"></i> Choose from Computer
+          </button>
+          @if (selectedFileName) {
+            <span class="file-name">{{ selectedFileName }}</span>
+          }
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Or Image URL</label>
+        <input pInputText formControlName="imageUrl" class="custom-input" placeholder="https://..." />
+      </div>
+
+      <button type="submit" class="auth-btn" [disabled]="loading">
+        @if (!loading) {
+          <span>{{ isEditMode ? 'UPDATE NOW' : 'SAVE PRIZE' }}</span>
+        } @else {
+          <i class="pi pi-spin pi-spinner"></i>
+        }
+      </button>
+    </form>
+  </div>
+</div>

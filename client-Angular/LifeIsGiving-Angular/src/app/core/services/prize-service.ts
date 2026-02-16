@@ -23,4 +23,12 @@ export class PrizeService {
   deletePrize(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
+  
+  addPrize(prize: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, prize);
+    }
+    
+  updatePrize(prize: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${prize.id}`, prize);
+  }
 }

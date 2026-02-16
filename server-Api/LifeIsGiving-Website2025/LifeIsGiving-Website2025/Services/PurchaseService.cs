@@ -286,5 +286,34 @@ namespace LifeIsGiving_Website2025.Services
                 throw;
             }
         }
+
+// בתוך PurchaseService.cs
+
+public async Task<List<PurchaseReportDto>> GetAdminPurchaseReport(int? prizeId, string? sortBy)
+{
+    _logger.LogInformation("GetAdminPurchaseReport started. PrizeId: {PrizeId}, SortBy: {SortBy}", prizeId, sortBy ?? "default");
+
+    try
+    {
+        // שליפת הנתונים המסוננים
+        var purchases = await _repo.GetAdminReportData(prizeId, sortBy);
+
+        return purchases.Select(p => new PurchaseReportDto
+        {
+            PurchaseId = p.Id,
+            PrizeName = p.Prize?.Name ?? "Unknown",
+            UnitPrice = p.Prize?.Price ?? 0,
+            Quantity = p.Quantity,
+            TotalAmount = p.Quantity * (p.Prize?.Price ?? 0),
+            CustomerFullName = p.User != null ? $"{p.User.Name}" : "Unknown User",
+            CustomerEmail = p.User?.Email ?? "N/A"
+        }).ToList();
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "Error occurred while generating admin purchase report");
+        throw;
+    }
+}
     }
 }

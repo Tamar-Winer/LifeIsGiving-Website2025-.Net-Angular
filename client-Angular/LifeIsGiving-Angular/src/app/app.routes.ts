@@ -8,6 +8,8 @@ import { Register } from './components/auth/register/register';
 import { DonorList } from './components/manager/donor-list/donor-list';
 import { AddDonor } from './components/manager/add-donor/add-donor';
 import { CartPage } from './components/cart/cart-page/cart-page';
+import { PrizeEditForm } from './components/prizes/prize-edit-form/prize-edit-form';
+import { PurchaseList } from './components/manager/purchase-list/purchase-list';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'prizes', pathMatch: 'full' },
@@ -15,9 +17,11 @@ export const routes: Routes = [
   { path: 'register', component: Register },
   { path: 'prizes', component: PrizeList },
   { path: 'prizes/:id', component: PrizeDetails },
+  { path: 'cart', component: CartPage },
   { path: 'about', component: About }, 
   { path: 'admin/donors', component: DonorList },
   { path: 'admin/addDonor', component: AddDonor },
-  { path: 'cart', component: CartPage },
+  { path: 'admin/addPrize', component: PrizeEditForm },
+  { path: 'admin/purchases', component: PurchaseList },
   { path: '**', redirectTo: 'prizes' },  
 ];

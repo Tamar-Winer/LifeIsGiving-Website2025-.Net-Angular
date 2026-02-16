@@ -1,0 +1,42 @@
+<div class="reports-container">
+  <h1 class="page-title">Sales & Winners Management</h1>
+
+  <div class="income-card">
+    <div class="income-info">
+      <span class="label">Total Sales Income</span>
+      <h2 class="amount">{{ totalIncome() | currency:'ILS':'symbol':'1.0-0' }}</h2>
+    </div>
+    <div class="income-icon">💰</div>
+  </div>
+
+  <div class="report-section">
+    <h3 class="section-title">Winners Report</h3>
+    
+    <div class="table-wrapper">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Prize Name</th>
+            <th>Winner Name</th>
+            <th>Lottery Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of winnersReport(); track $index) {
+            <tr>
+              <td class="prize-cell">{{ item.prizeName }}</td>
+              <td class="winner-cell">
+                <span class="winner-badge">👑 {{ item.winnerName }}</span>
+              </td>
+              <td class="date-cell">{{ item.lotteryDate | date:'dd/MM/yyyy HH:mm' }}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="3" class="empty-msg">No drawings completed yet.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

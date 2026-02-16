@@ -1,0 +1,60 @@
+<div class="purchase-container" dir="ltr">
+  <button class="close-dialog-btn" (click)="close()" title="Close">
+    <i class="pi pi-times"></i>
+  </button>
+
+  <div class="purchase-header">
+    <div class="header-icon">
+      <i class="pi pi-shopping-cart"></i>
+    </div>
+    <div class="header-text">
+      <h3>Purchase Details</h3>
+      <p>Updated list of donors and buyers</p>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <p-table 
+      [value]="purchases" 
+      [scrollable]="true" 
+      scrollHeight="400px" 
+      styleClass="p-datatable-striped custom-premium-table">
+      
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="customerFullName">Customer <p-sortIcon field="customerFullName"></p-sortIcon></th>
+          <th>Email</th>
+          <th pSortableColumn="quantity">Qty <p-sortIcon field="quantity"></p-sortIcon></th>
+          <th pSortableColumn="totalAmount">Total <p-sortIcon field="totalAmount"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-p>
+        <tr class="row-animation">
+          <td>
+            <div class="customer-info">
+              <div class="avatar">{{ p.customerFullName?.charAt(0) }}</div>
+              <span class="customer-name">{{ p.customerFullName }}</span>
+            </div>
+          </td>
+          <td class="email-cell">{{ p.customerEmail }}</td>
+          <td>
+            <span class="quantity-badge">{{ p.quantity }}</span>
+          </td>
+          <td class="total-price-cell">
+            <span class="price-tag">{{ p.totalAmount | currency:'ILS':'symbol':'1.0-0' }}</span>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4" class="empty-msg-container">
+            <i class="pi pi-inbox"></i>
+            <p>No purchases found for this prize yet</p>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

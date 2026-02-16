@@ -1,0 +1,48 @@
+<div class="lottery-container">
+  <div class="lottery-card">
+    
+    <h2 class="prize-title">{{ prize?.name }}</h2>
+
+    @if (isLoading()) {
+      <div class="loader-box">
+        <div class="spinner"></div>
+        <p>Checking Status...</p>
+      </div>
+    } @else {
+      
+      @if (alreadyHadWinner()) {
+        <div class="final-result-view">
+          <div class="status-badge">Drawing Completed</div>
+          <div class="crown-icon">👑</div>
+          <p class="result-label">The Lucky Winner is:</p>
+          <h1 class="winner-name-highlight">{{ winner()?.winnerName || winner()?.customerFullName }}</h1>
+          <div class="ui-divider"></div>
+          <button class="btn-close-final" (click)="close()">Close</button>
+        </div>
+      } @else {
+        <div class="wheel-box">
+          <div class="wheel-pointer"></div>
+          <div class="fortune-wheel" [style.transform]="'rotate(' + wheelRotation() + 'deg)'">
+            @for (p of purchasers; track $index) {
+              <div class="wheel-sector" [style.--i]="$index" [style.--total]="purchasers.length">
+                <span>{{ p.customerFullName }}</span>
+              </div>
+            }
+          </div>
+
+          <button class="spin-trigger" (click)="startDrawing()" [disabled]="isSpinning() || winner()">
+            {{ isSpinning() ? '...' : 'GO!' }}
+          </button>
+        </div>
+
+        @if (winner()) {
+          <div class="winner-display-animate">
+            <p class="congrats-text">Congratulations!</p>
+            <h1 class="winner-name-pop">{{ winner()?.customerFullName }}</h1>
+            <button class="btn-close-final" (click)="close()">Close</button>
+          </div>
+        }
+      }
+    }
+  </div>
+</div>

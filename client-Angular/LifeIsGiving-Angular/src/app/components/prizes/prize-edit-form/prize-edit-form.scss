@@ -1,0 +1,72 @@
+:host {
+  display: block;
+  direction: ltr;
+  font-family: 'Inter', sans-serif;
+}
+
+.prize-dialog-container {
+  position: relative;
+  max-height: 90vh; // מגביל גובה כדי שלא יצא מהמסך
+  overflow-y: auto; // מוסיף גלילה אם הטופס ארוך מדי
+  padding: 20px;
+  background: white;
+  border-radius: 16px;
+
+  // עיצוב פס הגלילה
+  &::-webkit-scrollbar { width: 6px; }
+  &::-webkit-scrollbar-thumb { background: #eee; border-radius: 10px; }
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #bbb;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s;
+  &:hover { color: #dc2626; }
+}
+
+.prize-dialog-content {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  .flex-1 { flex: 1; }
+}
+
+.file-upload-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.upload-btn {
+  background: #f0f0f0;
+  border: 1.5px dashed #ccc;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  &:hover { background: #e8e8e8; }
+}
+
+.file-name {
+  font-size: 11px;
+  color: #dc2626;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// שאר העיצובים שלך (shine-title, auth-btn וכו') נשארים אותו דבר...

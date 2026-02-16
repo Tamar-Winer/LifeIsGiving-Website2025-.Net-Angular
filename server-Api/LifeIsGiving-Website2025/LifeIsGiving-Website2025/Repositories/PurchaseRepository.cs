@@ -138,5 +138,32 @@ namespace LifeIsGiving_Website2025.Repositories
 
             return await query.ToListAsync();
         }
+
+
+        // בתוך PurchaseRepository.cs
+public async Task<List<Purchase>> GetAdminReportData(int? prizeId, string? sortBy)
+{
+    var query = _context.Purchases
+        .Include(p => p.User)
+        .Include(p => p.Prize)
+        .Where(p => p.Status == PurchaseStatus.Completed);
+
+    // סינון לפי פרס ספציפי במידה ונשלח ID
+    if (prizeId.HasValue)
+    {
+        query = query.Where(p => p.PrizeId == prizeId.Value);
+    }
+
+    // מיון
+    query = sortBy switch
+    {
+        "most_expensive" => query.OrderByDescending(p => p.Prize.Price),
+        "most_purchased" => query.OrderByDescending(p => p.Quantity),
+        "prize_name" => query.OrderBy(p => p.Prize.Name),
+        _ => query.OrderByDescending(p => p.CreatedAt)
+    };
+
+    return await query.ToListAsync();
+}
     }
 }

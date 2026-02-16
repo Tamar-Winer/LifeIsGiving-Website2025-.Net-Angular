@@ -9,12 +9,10 @@
       </a>
 
       @if (isAdmin()) {
-        <p-button 
-          label="Add New Prize" 
-          icon="pi pi-plus" 
-          styleClass="p-button-success p-button-rounded admin-main-add-btn"
-          (onClick)="addPrize()">
-        </p-button>
+        <button class="add-btn" (click)="addPrize()">
+          <i class="pi pi-plus"></i>
+          <span>הוספת פרס חדש</span>
+        </button>
       }
     </div>
   </div>
@@ -26,9 +24,19 @@
           
           @if (isAdmin()) {
             <div class="admin-floating-controls">
+              <button class="admin-btn lottery" (click)="onRunLottery(prize, $event)" title="Run Lottery" 
+                      style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer; margin-right: 5px; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.4);">
+                <i class="pi pi-ticket"></i>
+              </button>
+
+              <button class="admin-btn purchases" (click)="viewPurchases(prize, $event)" title="View Purchasers" style="background-color: #6366f1; color: white; border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer; margin-right: 5px;">
+                <i class="pi pi-users"></i>
+              </button>
+
               <button class="admin-btn edit" (click)="editPrize(prize, $event)" title="Edit Prize">
                 <i class="pi pi-pencil"></i>
               </button>
+              
               <button class="admin-btn delete" (click)="deletePrize(prize.id, $event)" title="Delete Prize">
                 <i class="pi pi-trash"></i>
               </button>

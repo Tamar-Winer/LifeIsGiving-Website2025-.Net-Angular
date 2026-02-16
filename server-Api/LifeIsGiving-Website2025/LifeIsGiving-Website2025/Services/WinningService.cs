@@ -22,52 +22,56 @@ namespace LifeIsGiving_Website2025.Services
             _emailService = emailService;
         }
 
-        public async Task RunLottery(int prizeId)
-        {
-            if (await _winningRepository.ExistsForPrize(prizeId))
-                throw new Exception("Lottery already done for this prize");
+  public async Task<WinningReportDto> RunLottery(int prizeId)
+{
+    if (await _winningRepository.ExistsForPrize(prizeId))
+        throw new Exception("Lottery already done for this prize");
 
-            var purchases = await _context.Purchases
-                .Where(p => p.PrizeId == prizeId)
-                .ToListAsync();
+    var purchases = await _context.Purchases
+        .Where(p => p.PrizeId == prizeId)
+        .ToListAsync();
 
-            if (!purchases.Any())
-                throw new Exception("No purchases for this prize");
+    if (!purchases.Any())
+        throw new Exception("No purchases for this prize");
 
-            var tickets = new List<int>();
-            foreach (var p in purchases)
-            {
-                for (int i = 0; i < p.Quantity; i++)
-                    tickets.Add(p.UserId);
-            }
+    var tickets = new List<int>();
+    foreach (var p in purchases)
+    {
+        for (int i = 0; i < p.Quantity; i++)
+            tickets.Add(p.UserId);
+    }
 
-            var rnd = new Random();
-            int winnerUserId = tickets[rnd.Next(tickets.Count)];
+    var rnd = new Random();
+    int winnerUserId = tickets[rnd.Next(tickets.Count)];
 
-            var winning = new Winning
-            {
-                PrizeId = prizeId,
-                WinnerUserId = winnerUserId,
-                LotteryDate = DateTime.Now
-            };
+    var winning = new Winning
+    {
+        PrizeId = prizeId,
+        WinnerUserId = winnerUserId,
+        LotteryDate = DateTime.Now
+    };
 
-            await _winningRepository.Add(winning);
-            var prize = await _context.Prizes.FirstOrDefaultAsync(p => p.Id == prizeId);
-            if (prize != null)
-            {
-                prize.CanPurchase = false;
-                _context.Prizes.Update(prize);
-                await _context.SaveChangesAsync();
-            }
+    await _winningRepository.Add(winning);
+    
+    // שליפת שם הזוכה ושם הפרס בשביל להחזיר לאנגולר
+    var prize = await _context.Prizes.FirstOrDefaultAsync(p => p.Id == prizeId);
+    var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == winnerUserId);
 
-            //// שליחת מייל
-            //var winner = await _context.Users.FirstAsync(u => u.Id == winnerUserId);
-            //var prize = await _context.Prizes.FirstAsync(p => p.Id == prizeId);
+    if (prize != null)
+    {
+        prize.CanPurchase = false;
+        _context.Prizes.Update(prize);
+        await _context.SaveChangesAsync();
+    }
 
-            //await _emailService.SendWinnerMail(winner.Email, prize.Name);
-        }
-
-        public async Task<List<WinningReportDto>> GetWinnersReport()
+    // כאן אנחנו מחזירים את האובייקט שהאנגולר מצפה לקבל
+    return new WinningReportDto
+    {
+        PrizeName = prize?.Name,
+        WinnerName = user?.Name, // וודאי שבמודל User קוראים לשם Name
+        LotteryDate = winning.LotteryDate
+    };
+}        public async Task<List<WinningReportDto>> GetWinnersReport()
         {
             var winnings = await _winningRepository.GetAll();
             return winnings.Select(w => new WinningReportDto
@@ -83,5 +87,24 @@ namespace LifeIsGiving_Website2025.Services
             return await _context.Purchases
                 .SumAsync(p => p.Quantity * p.PriceAtPurchase);
         }
+
+
+
+        public async Task<WinningReportDto> CheckIfDrawn(int prizeId)
+{
+    var winning = await _context.Winnings
+        .Include(w => w.WinnerUser)
+        .Include(w => w.Prize)
+        .FirstOrDefaultAsync(w => w.PrizeId == prizeId);
+
+    if (winning == null) return null;
+
+    return new WinningReportDto
+    {
+        PrizeName = winning.Prize.Name,
+        WinnerName = winning.WinnerUser.Name, // וודאי שבמודל User קוראים לזה Name
+        LotteryDate = winning.LotteryDate
+    };
+}
     }
 }

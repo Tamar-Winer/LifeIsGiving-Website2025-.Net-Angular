@@ -14,5 +14,6 @@ namespace LifeIsGiving_Website2025.Interfaces
         Task<List<Purchase>> GetAllSorted(string? sortBy = null);
         Task<List<Purchase>> GetDraftPurchases(int userId);     
         Task<List<Purchase>> GetCompletedPurchases(int? userId = null);
+            Task<List<Purchase>> GetAdminReportData(int? prizeId, string? sortBy);
     }
 }
