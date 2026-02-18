@@ -22,6 +22,11 @@
           <i class="pi pi-gift"></i>
           <input pInputText formControlName="prizeName" placeholder="Prize..." />
         </div>
+
+        <button type="button" class="add-donor-btn" (click)="showAddDialog = true" pTooltip="Add New Donor">
+          <i class="pi pi-user-plus"></i>
+        </button>
+
         <button type="button" class="refresh-btn" (click)="clearFilter()" pTooltip="Clear Search">
           <i class="pi pi-refresh"></i>
         </button>
@@ -89,45 +94,15 @@
     </div>
   }
 </div>
-
-<p-dialog
-  header="Edit Donor Profile"
-  [visible]="editDialogVisible()"
-  (visibleChange)="editDialogVisible.set($event)"
-  [modal]="true"
-  [draggable]="false"
+<p-dialog 
+  [(visible)]="showAddDialog" 
+  [modal]="true" 
+  [draggable]="false" 
   [resizable]="false"
-  [style]="{ width: '450px' }"
-  styleClass="custom-edit-dialog"
-  (onHide)="closeEditDialog()"
+  [showHeader]="false" 
+  [style]="{ width: '500px' }" 
+  styleClass="clean-dialog"
+  (onHide)="showAddDialog = false"
 >
-  <form [formGroup]="editForm" class="edit-dialog-form">
-    <div class="form-group">
-      <label>Full Name</label>
-      <input pInputText formControlName="name" />
-    </div>
-    <div class="form-group">
-      <label>Username</label>
-      <input pInputText formControlName="userName" />
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input pInputText formControlName="email" />
-    </div>
-    <div class="form-row">
-      <div class="form-group flex-1">
-        <label>Phone</label>
-        <input pInputText formControlName="phone" />
-      </div>
-      <div class="form-group flex-1">
-        <label>Address</label>
-        <input pInputText formControlName="address" />
-      </div>
-    </div>
-  </form>
-
-  <ng-template pTemplate="footer">
-    <button pButton type="button" class="p-button-text btn-cancel" (click)="closeEditDialog()">Cancel</button>
-    <button pButton type="button" class="p-button-danger btn-save" [disabled]="editForm.invalid" (click)="saveEdit()">Save Changes</button>
-  </ng-template>
+  <app-add-donor (onClose)="showAddDialog = false"></app-add-donor>
 </p-dialog>

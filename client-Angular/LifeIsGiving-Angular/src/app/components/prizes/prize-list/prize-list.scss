@@ -1,5 +1,6 @@
-// 1. משתנים (Variables) - פעם אחת בלבד
+// 1. משתנים (Variables)
 $primary-red: #dc3545;
+$luxury-red: #be123c;
 $dark-red: #b02a37;
 $bg-soft: #fcfcfc;
 $text-dark: #1a1a1a;
@@ -11,7 +12,7 @@ $text-gray: #718093;
   background-color: $bg-soft;
   min-height: 100vh;
   display: flex;
-  flex-direction: column; // מאפשר להודעת "אין תוצאות" למלא את הגובה
+  flex-direction: column;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 
   .header-section {
@@ -57,10 +58,10 @@ $text-gray: #718093;
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
-  flex-grow: 1; // מאפשר לגריד (או ל-empty state) למלא את שארית העמוד
+  flex-grow: 1;
 }
 
-// 4. עיצוב כרטיסייה (PrimeNG Customization)
+// 4. עיצוב כרטיסייה (Base & Customization)
 ::ng-deep .custom-product-card {
   position: relative;
   border-radius: 20px !important;
@@ -75,27 +76,73 @@ $text-gray: #718093;
     box-shadow: 0 20px 45px rgba(220, 53, 69, 0.15) !important;
   }
   .p-card-body, .p-card-content { padding: 0 !important; }
+
+  &.is-drawn {
+    filter: grayscale(0.2);
+    opacity: 0.95;
+    .product-image { filter: brightness(0.85); }
+  }
 }
 
 // 5. אלמנטים בתוך הכרטיסייה
 .admin-floating-controls {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 20;
+  top: 12px;
+  right: 12px;
   display: flex;
   gap: 8px;
+  z-index: 20;
+  padding: 5px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
 
-  .admin-btn {
-    width: 32px; height: 32px;
-    border-radius: 10px;
-    border: none;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; color: white; transition: 0.2s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    &.edit { background: #f39c12; &:hover { background: #e67e22; } }
-    &.delete { background: #e74c3c; &:hover { background: #c0392b; } }
+.card-item:hover .admin-floating-controls {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.admin-btn {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background: white !important;
+  color: #1a1a1a !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+
+  i { font-size: 0.9rem !important; }
+
+  &:hover {
+    background: #1a1a1a !important;
+    color: #dc2626 !important;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 5px 12px rgba(220, 38, 38, 0.2) !important;
   }
+
+  &.lottery:hover { color: #f59e0b !important; }
+  &.delete:hover { color: #ff4d4d !important; }
+  &:active { transform: scale(0.95); }
+}
+
+.disabled-admin-btn {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+  background-color: #94a3b8 !important;
+  pointer-events: none;
+  transform: none !important;
+  i { color: #f1f5f9 !important; }
 }
 
 .price-badge {
@@ -132,21 +179,29 @@ $text-gray: #718093;
 
 .card-content {
   padding: 1.25rem;
-  .category-text { font-size: 0.7rem; text-transform: uppercase; font-weight: 800; color: $primary-red; margin-bottom: 8px; display: block; }
-  .prize-name { font-size: 1.2rem; font-weight: 800; color: #2d3436; margin: 0 0 20px 0; height: 3rem; overflow: hidden; line-height: 1.3; &:hover { color: $primary-red; } }
+  .category-text {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: $luxury-red;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .prize-name { 
+    font-size: 1.2rem; font-weight: 800; color: #2d3436; margin: 0 0 20px 0; height: 3rem; overflow: hidden; line-height: 1.3; 
+    &:hover { color: $primary-red; } 
+  }
 }
 
 .actions-group {
   display: flex; gap: 12px; align-items: center;
-  ::ng-deep .full-width-btn {
-    flex: 1;
-    .p-button {
-      width: 100%; background: $primary-red !important; border: none !important; border-radius: 14px !important;
-      padding: 0.75rem !important; font-weight: 700 !important; transition: 0.3s;
-      box-shadow: 0 6px 15px rgba(220, 53, 69, 0.2) !important;
-      &:hover { background: $dark-red !important; transform: scale(1.03); animation: pulse 1.5s infinite; }
-      &:active { transform: scale(0.97); }
-    }
+  ::ng-deep .full-width-btn .p-button {
+    width: 100%; background: $primary-red !important; border: none !important; border-radius: 14px !important;
+    padding: 0.75rem !important; font-weight: 700 !important; transition: 0.3s;
+    box-shadow: 0 6px 15px rgba(220, 53, 69, 0.2) !important;
+    &:hover { background: $dark-red !important; transform: scale(1.03); animation: pulse 1.5s infinite; }
+    &:active { transform: scale(0.97); }
   }
   .wishlist-btn {
     width: 46px; height: 46px; border-radius: 14px; border: 1px solid #f1f2f6;
@@ -155,107 +210,153 @@ $text-gray: #718093;
   }
 }
 
-// 6. סרגל חיפוש
-.search-container {
-  display: flex; justify-content: center;
-  margin: 40px 0 20px 0; padding: 0 20px;
-  animation: fadeInDown 0.8s ease-out;
+// 6. סרגלי ניווט ואדמין
+.admin-control-panel {
+  display: flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 40px auto; flex-wrap: wrap;
+}
 
-  .search-box {
-    display: flex; background: #ffffff; padding: 10px 20px;
-    border-radius: 100px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(230, 57, 70, 0.12); gap: 10px; align-items: center; transition: all 0.3s ease;
+.admin-pill-btn {
+  display: flex; align-items: center; gap: 10px; background: #1a1a1a; color: white; border: none;
+  padding: 12px 25px; border-radius: 100px; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px;
+  cursor: pointer; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;
+  i { color: #dc2626; font-size: 1.1rem; }
+  &:hover { transform: translateY(-3px); background: #000; box-shadow: 0 12px 25px rgba(220, 38, 38, 0.2); }
+}
 
-    &:focus-within { box-shadow: 0 15px 50px rgba(230, 57, 70, 0.08); border-color: rgba(230, 57, 70, 0.3); transform: translateY(-2px); }
+.search-pill {
+  display: flex; align-items: center; background: white; padding: 6px 10px 6px 20px; border-radius: 100px;
+  border: 1px solid rgba(220, 38, 38, 0.1); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+  .input-group {
+    display: flex; align-items: center; gap: 10px; padding: 0 15px; border-right: 1px solid #f0f0f0;
+    &:last-of-type { border-right: none; }
+    i { color: #dc2626; font-size: 0.9rem; }
+    input { border: none; outline: none; font-size: 0.85rem; width: 120px; background: transparent; &::placeholder { color: #bbb; } }
+  }
+  .clear-pill-btn {
+    background: #f8f8f8; border: none; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; color: #999; transition: 0.3s;
+    &:hover { background: #dc2626; color: white; transform: rotate(90deg); }
+  }
+}
 
-    .input-group {
-      display: flex; align-items: center; gap: 12px; padding: 8px 15px;
-      border-right: 1px solid #f0f0f0;
-      &:last-of-type { border-right: none; }
-      i { color: #e63946; font-size: 0.95rem; opacity: 0.8; }
-      input {
-        border: none; outline: none; font-size: 0.9rem; color: #1d1d1f; width: 150px; background: transparent;
-        &::placeholder { color: #bcbcbc; }
-        &[type=number]::-webkit-inner-spin-button, &[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+// 7. טוסטים ודיאלוגים (PrimeNG)
+::ng-deep {
+  /* Toast Reset */
+  .p-toast {
+    opacity: 1 !important;
+    .p-toast-message {
+      background: #ffffff !important;
+      border-radius: 12px !important;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+      margin-bottom: 12px !important;
+      border: none !important;
+      outline: none !important;
+
+      .p-toast-message-content {
+        padding: 12px 18px !important;
+        display: flex !important;
+        align-items: center !important;
+        background: transparent !important;
       }
-    }
 
-    .clear-btn {
-      background: #f5f5f7; border: none; color: #86868b; width: 35px; height: 35px;
-      border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s;
-      &:hover { background: #e63946; color: white; transform: rotate(90deg); }
+      &.p-toast-message-success { border-left: 5px solid #10b981 !important; }
+      &.p-toast-message-error { 
+        border-left: 5px solid #ef4444 !important; 
+        border-right: 6px solid #ef4444 !important; // תומך בשני העיצובים שלך
+      }
+      &.p-toast-message-info { border-left: 5px solid #3b82f6 !important; }
+      &.p-toast-message-warn { 
+        border-left: 5px solid #f59e0b !important;
+        /* החרגה לתיבת המחיקה */
+        &:has(.confirm-dialog-class) {
+          background: transparent !important; box-shadow: none !important;
+          .p-toast-message-content { padding: 0 !important; }
+          .p-toast-message-icon, .p-toast-icon-close { display: none !important; }
+          overflow: visible !important;
+        }
+      }
+
+      .p-toast-summary { font-weight: 700 !important; color: #111827 !important; font-size: 0.95rem !important; }
+      .p-toast-detail { color: #6b7280 !important; font-size: 0.85rem !important; margin-top: 2px !important; }
+      .p-toast-message-icon { display: block !important; font-size: 1.2rem !important; margin-right: 12px !important; }
+      .p-toast-icon-close { color: #9ca3af !important; &:hover { background: #f1f5f9 !important; } }
+    }
+  }
+
+  /* Confirm Dialog */
+  .p-dialog-mask.p-component-overlay { background-color: rgba(0, 0, 0, 0.75) !important; backdrop-filter: blur(4px) !important; }
+  .p-confirm-dialog {
+    background: #ffffff !important; border-radius: 20px !important; box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
+    width: 90% !important; max-width: 400px !important; padding: 25px !important;
+    .p-dialog-header { 
+      padding: 0 0 15px 0 !important; border: none !important; 
+      .p-dialog-title { font-weight: 800 !important; font-size: 1.4rem !important; color: #1a1a1a !important; }
+      .p-dialog-header-icons { display: none !important; }
+    }
+    .p-dialog-content {
+      padding: 10px 0 25px 0 !important; display: flex !important; flex-direction: column !important; align-items: center !important; gap: 15px !important; border: none !important;
+      .p-confirm-dialog-icon { color: #dc2626 !important; font-size: 3rem !important; }
+      .p-confirm-dialog-message { text-align: center !important; font-size: 1.1rem !important; color: #4b5563 !important; line-height: 1.5 !important; }
+    }
+    .p-dialog-footer {
+      padding: 0 !important; border: none !important; display: flex !important; justify-content: center !important; gap: 12px !important;
+      button { flex: 1; padding: 12px !important; border-radius: 12px !important; font-weight: 700 !important; transition: 0.3s !important; border: none !important; }
+      .p-confirm-dialog-reject { background: #f3f4f6 !important; color: #4b5563 !important; &:hover { background: #e5e7eb !important; } }
+      .p-confirm-dialog-accept { background: #dc2626 !important; color: white !important; box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2) !important; &:hover { background: #b91c1c !important; transform: translateY(-2px); } }
     }
   }
 }
 
-// 7. מצב "אין תוצאות" - ללא גלילה
-.no-results {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1; // תופס את כל המקום הפנוי בגריד
-  min-height: 60vh; // מבטיח גובה משמעותי שמונע גלילה
-  padding: 40px;
-  text-align: center;
-  animation: fadeIn 0.5s ease-out;
-
-  i { font-size: 5rem; color: $primary-red; margin-bottom: 24px; opacity: 0.15; }
-  h3 { font-size: 2rem; color: #1d1d1f; margin-bottom: 12px; font-weight: 700; }
-  p { color: $text-gray; font-size: 1.1rem; margin-bottom: 30px; max-width: 400px; }
-
-  .reset-link {
-    background: $primary-red; color: white; border: none; padding: 12px 32px;
-    border-radius: 100px; font-weight: 600; cursor: pointer; transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.2);
-    &:hover { background: $dark-red; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(230, 57, 70, 0.3); }
+// 8. רכיבים נוספים ואנימציות
+.ribbon-wrapper {
+  width: 150px; height: 150px; overflow: hidden; position: absolute; top: -10px; left: -10px; z-index: 10;
+  .ribbon {
+    font-weight: 900; text-align: center; transform: rotate(-45deg); position: relative; padding: 7px 0; top: 30px; left: -40px; width: 200px;
+    background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%); color: #fff; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   }
 }
 
-// 8. אנימציות ומובייל
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+.winner-announcement.premium {
+  display: flex; align-items: center; gap: 12px; background: #f8fafc; padding: 12px 15px; border-radius: 16px; border: 1px solid #e2e8f0; margin-top: 10px;
+  .trophy-circle { width: 40px; height: 40px; background: #fef2f2; border-radius: 50%; display: flex; align-items: center; justify-content: center; i { color: #dc2626; font-size: 1.2rem; } }
+  .winner-details { display: flex; flex-direction: column; .winner-label { font-size: 0.65rem; font-weight: 800; color: #94a3b8; } .winner-name { font-size: 0.95rem; font-weight: 700; color: #1e293b; } }
 }
 
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); } 100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 850px) {
-  .search-container .search-box {
-    flex-direction: column; border-radius: 24px; width: 100%; padding: 15px;
+  .search-container .search-box { flex-direction: column; border-radius: 24px; width: 100%; padding: 15px;
     .input-group { border-right: none; border-bottom: 1px solid #f5f5f7; width: 100%; padding: 12px 5px; input { width: 100%; } }
     .clear-btn { align-self: flex-end; margin-top: 5px; }
   }
 }
 
-
+/* סרגל המיון */
 .sorting-toolbar {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
+  animation: fadeInDown 0.8s ease-out; // אנימציית כניסה עדינה
   
   .sort-group {
     display: flex;
     align-items: center;
     background: white;
-    padding: 8px 16px;
-    border-radius: 12px;
-    border: 1px solid #f0f0f0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 100px; // עיצוב Pill שמתאים לחיפוש
+    border: 1px solid rgba(220, 38, 38, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+    gap: 12px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: rgba(220, 38, 38, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
 
     i {
-      color: $primary-red;
+      color: #dc2626; // האדום של המיתוג שלך
       font-size: 0.9rem;
     }
 
@@ -264,488 +365,113 @@ $text-gray: #718093;
       outline: none;
       font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
+      font-weight: 600;
       color: #2d3436;
       cursor: pointer;
       background: transparent;
-      padding-right: 10px;
+      padding-right: 5px;
+      appearance: none; // מבטל את החץ הדיפולטיבי של הדפדפן (אופציונלי)
 
       &:focus {
-        color: $primary-red;
+        color: #dc2626;
       }
     }
   }
 }
-
-.admin-control-panel {
+.sort-select {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #2d3436;
+  cursor: pointer;
+  padding: 5px 10px;
+  
+  // זה יגרום לתיבה להיראות טוב, אבל לא לתפריט הנפתח
+  option {
+    background: white;
+    color: #2d3436;
+    padding: 10px;
+    font-size: 1rem;
+  }
+}
+/* עיצוב הודעת "לא נמצאו תוצאות" - מרוכז ואצילי */
+.no-results {
+  grid-column: 1 / -1; 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  margin: 20px auto 40px auto;
-  flex-wrap: wrap; // למקרה של מסכים קטנים
-}
-
-// כפתור ההוספה בסגנון ה-Pill
-.admin-pill-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #1a1a1a; // שחור יוקרתי
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 100px; // עיגול מושלם בקצוות
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-
-  i {
-    color: #dc2626; // הפלוס האדום שלך
-    font-size: 1.1rem;
-  }
-
-  &:hover {
-    transform: translateY(-3px);
-    background: #000;
-    box-shadow: 0 12px 25px rgba(220, 38, 38, 0.2);
-  }
-}
-
-// עיצוב מחדש לתיבת החיפוש שתתאים ב-100%
-.search-pill {
-  display: flex;
-  align-items: center;
-  background: white;
-  padding: 6px 10px 6px 20px;
-  border-radius: 100px;
-  border: 1px solid rgba(220, 38, 38, 0.1);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
-
-  .input-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0 15px;
-    border-right: 1px solid #f0f0f0;
-    
-    &:last-of-type { border-right: none; }
-
-    i { color: #dc2626; font-size: 0.9rem; }
-
-    input {
-      border: none;
-      outline: none;
-      font-size: 0.85rem;
-      width: 120px;
-      background: transparent;
-      &::placeholder { color: #bbb; }
-    }
-  }
-
-  .clear-pill-btn {
-    background: #f8f8f8;
-    border: none;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    cursor: pointer;
-    color: #999;
-    transition: 0.3s;
-    &:hover { background: #dc2626; color: white; transform: rotate(90deg); }
-  }
-}
-
-/* קונטיינר הכפתורים הצף */
-.admin-floating-controls {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  display: flex;
-  gap: 8px;
-  z-index: 10;
-  padding: 5px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.8); // רקע חצי שקוף ויוקרתי
-  backdrop-filter: blur(4px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.03);
-}
-
-/* עיצוב אחיד ויוקרתי לכל כפתורי האדמין */
-.admin-btn {
-  width: 34px !important;
-  height: 34px !important;
-  border-radius: 10px !important;
-  border: none !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  background: white !important; // בסיס לבן נקי
-  color: #1a1a1a !important; // איקון שחור
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
-
-  i {
-    font-size: 0.9rem !important;
-  }
-
-  /* אפקט Hover כללי - הופך לשחור עם איקון אדום */
-  &:hover {
-    background: #1a1a1a !important;
-    color: #dc2626 !important; // האיקון נהיה אדום ב-Hover
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 5px 12px rgba(220, 38, 38, 0.2) !important;
-  }
-
-  /* ייחודיות קלה לפי סוג (אופציונלי - רק אם רוצים רמז צבע קטן) */
-  &.lottery:hover {
-    color: #f59e0b !important; // זהב עדין רק להגרלה כדי להבדיל
-  }
-
-  &.delete:hover {
-    color: #ff4d4d !important; // אדום בהיר יותר למחיקה
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
-}
-
-/* בונוס: שהכפתורים יופיעו רק כשעומדים על הכרטיסייה (יותר נקי) */
-.card-item {
-  .admin-floating-controls {
-    opacity: 0;
-    transform: translateY(-5px);
-    transition: all 0.3s ease;
-  }
-
-  &:hover .admin-floating-controls {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-::ng-deep {
-  /* רקע מוחשך ויוקרתי */
-  .p-dialog-mask.p-component-overlay {
-    background-color: rgba(0, 0, 0, 0.75) !important;
-    backdrop-filter: blur(4px) !important;
-  }
-
-  /* תיקון המבנה של החלונית - שום דבר לא יירכב אחד על השני */
-  .p-confirm-dialog {
-    background: #ffffff !important;
-    border-radius: 20px !important;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
-    width: 90% !important;
-    max-width: 400px !important;
-    border: none !important;
-    padding: 25px !important;
-    display: block !important;
-
-    /* הכותרת (Delete Confirmation) */
-    .p-dialog-header {
-      padding: 0 0 15px 0 !important;
-      border: none !important;
-      background: transparent !important;
-      
-      .p-dialog-title {
-        font-weight: 800 !important;
-        font-size: 1.4rem !important;
-        color: #1a1a1a !important;
-        width: 100%;
-        display: block;
-      }
-
-      .p-dialog-header-icons { display: none !important; } // נבטל את ה-X המכוער
-    }
-
-    /* התוכן (אייקון + הודעה) */
-    .p-dialog-content {
-      padding: 10px 0 25px 0 !important;
-      background: transparent !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 15px !important;
-      border: none !important;
-
-      /* האייקון המשולש */
-      .p-confirm-dialog-icon {
-        color: #dc2626 !important;
-        font-size: 3rem !important;
-        margin-bottom: 10px !important;
-      }
-
-      /* הטקסט עצמו */
-      .p-confirm-dialog-message {
-        text-align: center !important;
-        font-size: 1.1rem !important;
-        color: #4b5563 !important;
-        line-height: 1.5 !important;
-        margin: 0 !important;
-        display: block !important;
-      }
-    }
-
-    /* הכפתורים בתחתית */
-    .p-dialog-footer {
-      padding: 0 !important;
-      border: none !important;
-      background: transparent !important;
-      display: flex !important;
-      justify-content: center !important;
-      gap: 12px !important;
-
-      button {
-        flex: 1;
-        padding: 12px !important;
-        border-radius: 12px !important;
-        font-weight: 700 !important;
-        font-family: inherit !important;
-        cursor: pointer !important;
-        border: none !important;
-        transition: 0.3s !important;
-      }
-
-      /* כפתור ביטול - אפרפר עדין */
-      .p-confirm-dialog-reject {
-        background: #f3f4f6 !important;
-        color: #4b5563 !important;
-        &:hover { background: #e5e7eb !important; }
-      }
-
-      /* כפתור מחיקה - אדום יוקרתי */
-      .p-confirm-dialog-accept {
-        background: #dc2626 !important;
-        color: white !important;
-        box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2) !important;
-        &:hover { background: #b91c1c !important; transform: translateY(-2px); }
-      }
-    }
-  }
-}
-
-::ng-deep {
-  /* ניקוי כללי לכל הטוסטים - ביטול מסגרות ורקעים שחורים */
-  .p-toast {
-    opacity: 1 !important;
-  }
-
-  .p-toast-message {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important; // מבטל את המסגרת השחורה הגסה
-  }
-
-  .p-toast-message-content {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-  }
-
-  /* עיצוב הודעות ההצלחה (Success) והשגיאה (Error) הרגילות */
-  .p-toast-message-success, .p-toast-message-error {
-    background: #ffffff !important;
-    border-radius: 16px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
-    margin-bottom: 10px !important;
-    border-left: 6px solid #22c55e !important; // פס ירוק להצלחה
-
-    .p-toast-message-text {
-      color: #1f2937 !important;
-      font-family: 'Inter', sans-serif !important;
-    }
-    
-    .p-toast-icon-close {
-      color: #9ca3af !important;
-    }
-  }
-
-  .p-toast-message-error {
-    border-left: 6px solid #ef4444 !important; // פס אדום לשגיאה
-  }
-
-  /* ביטול האייקונים הדיפולטיביים כדי שלא יתקעו מעל העיצוב שלנו */
-  .p-toast-message-icon {
-    display: none !important;
-  }
-}
-
-::ng-deep {
-  /* 1. הטוסטים של ההודעות (הצלחה ושגיאה) */
-  .p-toast-message-success, .p-toast-message-error {
-    background: #ffffff !important;
-    border-radius: 12px !important;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
-    margin-bottom: 12px !important;
-    border: none !important;
-    
-    /* הפס הצבעוני בצד - ירוק להצלחה, אדום לשגיאה */
-    &.p-toast-message-success { border-left: 5px solid #10b981 !important; }
-    &.p-toast-message-error { border-left: 5px solid #ef4444 !important; }
-
-    .p-toast-message-content {
-      padding: 12px 18px !important;
-      background: transparent !important;
-      border: none !important;
-      display: flex !important;
-      align-items: center !important;
-    }
-
-    /* הטקסטים של ההודעות */
-    .p-toast-summary {
-      font-weight: 700 !important;
-      color: #111827 !important;
-      font-size: 0.95rem !important;
-    }
-    .p-toast-detail {
-      color: #6b7280 !important;
-      font-size: 0.85rem !important;
-      margin-top: 2px !important;
-    }
-  }
-
-  /* 2. הגנה על תיבת המחיקה שלך (ה-Warn) - לא נוגעים בעיצוב הפנימי שלה! */
-  .p-toast-message-warn {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-
-    .p-toast-message-content {
-      background: transparent !important;
-      border: none !important;
-      padding: 0 !important;
-    }
-    
-    /* מוודא שאין שום צל או מסגרת של PrimeNG שנדחפת לתיבה המושלמת שלך */
-    .p-toast-message-icon, .p-toast-icon-close {
-      display: none !important;
-    }
-  }
-
-  /* תיקון אייקונים בטוסטים של הצלחה/שגיאה בלבד */
-  .p-toast-message-success .p-toast-message-icon,
-  .p-toast-message-error .p-toast-message-icon {
-    display: block !important;
-    font-size: 1.2rem !important;
-    margin-right: 12px !important;
-  }
-}
-::ng-deep {
-  .p-toast-message-warn {
-    /* מוודא שההילה יכולה "לצאת" החוצה מהגבולות של הטוסט */
-    overflow: visible !important; 
-    
-    .p-toast-message-content {
-      overflow: visible !important;
-    }
-  }
-}
-
-/* Ribbon Container */
-.ribbon-wrapper {
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  z-index: 10;
-}
-
-.ribbon {
-  font-weight: 900;
+  
+  /* הגבלת הרוחב כדי שלא יימרח */
+  max-width: 600px; 
+  margin: 40px auto; // ממרכז את כל הבלוק בדף
+  padding: 60px 40px;
+  
   text-align: center;
-  transform: rotate(-45deg);
-  position: relative;
-  padding: 7px 0;
-  top: 30px;
-  left: -40px;
-  width: 200px;
-  background-color: #dc2626;
-  background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%);
-  color: #fff;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-}
-
-/* אפקט "אפור" עדין לכרטיס שהוגרל */
-.custom-product-card.is-drawn {
-  filter: grayscale(0.2); // לא אפור לגמרי, רק טיפה כדי לתת דגש
-  opacity: 0.95;
+  background: #ffffff; // רקע לבן נקי
+  border-radius: 32px; // פינות מעוגלות מאוד
+  border: 1px solid rgba(0, 0, 0, 0.03); // מסגרת כמעט שקופה
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04); // צל עמוק ורך
   
-  .product-image {
-    filter: brightness(0.85);
-  }
-}
+  animation: fadeInScale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-/* עיצוב הזוכה - Winner Announcement */
-.winner-announcement.premium {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: #f8fafc;
-  padding: 12px 15px;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  margin-top: 10px;
-
-  .trophy-circle {
-    width: 40px;
-    height: 40px;
-    background: #fef2f2;
+  i.pi-search-plus {
+    font-size: 4rem;
+    color: #fda4af; 
+    background: #fff1f2; 
+    width: 120px;
+    height: 120px;
+    line-height: 120px; // למרכז את האייקון בתוך העיגול
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    i { color: #dc2626; font-size: 1.2rem; }
+    margin-bottom: 2rem;
+    display: inline-block;
   }
 
-  .winner-details {
-    display: flex;
-    flex-direction: column;
-    
-    .winner-label {
-      font-size: 0.65rem;
-      font-weight: 800;
-      color: #94a3b8;
-      letter-spacing: 0.5px;
-    }
-    
-    .winner-name {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #1e293b;
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 0.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .reset-link {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.15);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(220, 38, 38, 0.25);
+      background: #be123c;
     }
   }
 }
 
-/* סגנון לכפתורי אדמין חסומים */
-.disabled-admin-btn {
-  opacity: 0.4 !important;
-  cursor: not-allowed !important;
-  background-color: #94a3b8 !important; /* אפור Slate */
-  border-color: #cbd5e1 !important;
-  pointer-events: none; /* מונע לחיצות לחלוטין */
-  transform: none !important; /* מבטל אפקטי hover אם היו */
-  
-  i {
-    color: #f1f5f9 !important;
+/* אנימציה שמוסיפה תחושה של "קפיצה" עדינה לכניסה */
+@keyframes fadeInScale {
+  from { 
+    opacity: 0; 
+    transform: scale(0.9); 
   }
-}
-
-/* אופציונלי: שינוי קטן ל-admin-floating-controls כדי שיראו טוב גם כשחלק חסום */
-.admin-floating-controls {
-  display: flex;
-  gap: 8px;
-  // שאר הסטייל הקיים שלך...
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
 }

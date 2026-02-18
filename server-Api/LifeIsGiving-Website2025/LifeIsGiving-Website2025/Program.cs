@@ -112,6 +112,7 @@ var app = builder.Build();
 
 // CORS MUST be BEFORE everything else
 app.UseCors("AllowAngular");
+app.UseStaticFiles();
 
 // HTTPS redirection only in Production
 if (!app.Environment.IsDevelopment())

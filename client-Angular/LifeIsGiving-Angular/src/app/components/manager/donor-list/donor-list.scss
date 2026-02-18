@@ -182,3 +182,191 @@
   }
   .form-row { display: flex; gap: 12px; }
 }
+
+/* כפתור הוספה חדש בתוך ה-Pill */
+.add-donor-btn {
+  background: #111827; // שחור יוקרתי
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  i { font-size: 0.9rem; }
+
+  &:hover {
+    background: #000;
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* התאמת ריווח בין הכפתורים */
+.refresh-btn {
+  margin-left: 8px;
+}
+
+/* הסרת העיצוב המובנה של פריים לדיאלוג העטיפה */
+::ng-deep .luxury-wrapper-dialog {
+  .p-dialog-content {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+  .p-dialog-header { display: none; }
+}
+
+// תוסיפי/עדכני את זה כדי לוודא שהדיאלוג לא משבש את הדף
+::ng-deep .clean-luxury-dialog {
+  background: white !important;
+  border-radius: 28px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  border: none !important;
+  
+  .p-dialog-content {
+    padding: 0 !important;
+    border-radius: 28px !important;
+    overflow: hidden !important;
+  }
+}
+
+// וודאי שה-Grid לא מוסתר
+.donors-grid {
+  position: relative;
+  z-index: 1; // מבטיח שזה מעל הרקע של הדף אבל מתחת לדיאלוגים
+}
+:host {
+  display: block;
+  direction: ltr;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.donor-page {
+  padding: 50px 20px;
+  background: radial-gradient(circle at top right, #fffafa 0%, #ffffff 100%);
+  min-height: 100vh;
+  position: relative;
+  z-index: 1; // מבטיח שהדף תמיד בבסיס
+}
+
+/* ה-Grid - הלב של העמוד */
+.donors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 260px);
+  justify-content: center;
+  gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+/* שאר העיצוב של ה-Card וה-Header נשאר בדיוק כפי שאהבת קודם... */
+/* (תשמרי על הסטייל המקורי של ה-donor-card וה-header-section) */
+
+/* כפתור הוספה חדש בתוך ה-Pill */
+.add-donor-btn {
+  background: #111827;
+  border: none;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
+  &:hover { background: #000; transform: scale(1.1); }
+}
+
+/* תיקון הדיאלוג שלא ימרח את המסך */
+::ng-deep .clean-luxury-dialog {
+  border: none !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  
+  .p-dialog-content {
+    padding: 0 !important;
+    border-radius: 28px !important;
+    background: white !important;
+  }
+  
+  .p-component-overlay {
+    backdrop-filter: blur(4px); // מוסיף טשטוש יפה לרקע במקום סתם חושך
+  }
+}
+
+/* --- LUXURY TOAST CUSTOMIZATION --- */
+::ng-deep {
+  .p-toast {
+    opacity: 0.98;
+    width: 320px;
+
+    .p-toast-message {
+      background: #ffffff !important;
+      border: none !important;
+      border-radius: 18px !important;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+      margin-bottom: 15px !important;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(0, 0, 0, 0.03) !important;
+
+      .p-toast-message-content {
+        padding: 1rem !important;
+        align-items: center !important;
+        
+        /* אייקונים */
+        .p-toast-message-icon {
+          font-size: 1.4rem !important;
+          &.pi-check-circle { color: #10b981 !important; } // ירוק אמרלד
+          &.pi-exclamation-triangle { color: #f59e0b !important; } // כתום ענבר
+          &.pi-times-circle { color: #dc2626 !important; } // אדום שלך
+          &.pi-info-circle { color: #3b82f6 !important; } // כחול
+        }
+
+        .p-toast-message-text {
+          margin: 0 0 0 12px !important;
+          
+          .p-toast-summary {
+            font-weight: 800 !important;
+            font-size: 13px !important;
+            color: #1a1a1a !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+          
+          .p-toast-detail {
+            font-size: 12px !important;
+            color: #6b7280 !important;
+            margin-top: 2px !important;
+            font-weight: 400 !important;
+          }
+        }
+
+        /* כפתור סגירה */
+        .p-toast-icon-close {
+          width: 24px !important;
+          height: 24px !important;
+          border-radius: 50% !important;
+          background: #f9fafb !important;
+          transition: all 0.2s !important;
+          
+          &:hover {
+            background: #f3f4f6 !important;
+            color: #dc2626 !important;
+          }
+        }
+      }
+      
+      /* פס צדדי דק ויוקרתי לפי סוג ההודעה */
+      &.p-toast-message-success { border-left: 4px solid #10b981 !important; }
+      &.p-toast-message-info { border-left: 4px solid #3b82f6 !important; }
+      &.p-toast-message-warn { border-left: 4px solid #f59e0b !important; }
+      &.p-toast-message-error { border-left: 4px solid #dc2626 !important; }
+    }
+  }
+}

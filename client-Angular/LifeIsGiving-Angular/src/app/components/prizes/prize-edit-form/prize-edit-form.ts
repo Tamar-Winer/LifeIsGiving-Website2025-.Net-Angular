@@ -34,6 +34,7 @@ export class PrizeEditForm implements OnInit {
   loading: boolean = false;
   selectedFileName: string = '';
   donors: any[] = []; // לאחסון רשימת התורמים
+  selectedFile: File | null = null;
 
   categories = [
     { label: 'Toys', value: 1 },
@@ -111,31 +112,31 @@ export class PrizeEditForm implements OnInit {
       : this.prizeService.addPrize(prizeToSave);
 
     request.subscribe({
-      next: (res) => {
-        this.messageService.add({ 
-          severity: 'success', 
-          summary: 'Success!', 
-          detail: this.isEditMode ? 'The prize has been updated.' : 'A new prize has been created.',
-          life: 2000
-        });
-        
-        setTimeout(() => {
-          this.loading = false;
-          let finalResult;
-          if (!this.isEditMode) {
-            if (res && typeof res === 'object') {
-              finalResult = res;
-            } else if (res && typeof res === 'number') {
-              finalResult = { ...prizeToSave, id: res };
-            } else {
-              finalResult = prizeToSave;
-            }
-          } else {
-            finalResult = res && Object.keys(res).length > 0 ? res : prizeToSave;
-          }
-          this.ref?.close(finalResult);
-        }, 1200);
-      },
+      // בתוך ה-next של ה-request.subscribe:
+next: (res) => {
+  this.messageService.add({ /* ... הגדרות הטוסט ... */ });
+
+  setTimeout(() => {
+    this.loading = false;
+    
+    // יצירת אובייקט שממזג: 
+    // 1. את המידע המקורי (כולל winner, isDrawn וכו')
+    // 2. את המידע החדש מהטופס
+    // 3. את התשובה מהשרת (res) במידה והיא מכילה את האובייקט המעודכן
+    
+    const originalPrize = this.config?.data?.prize || {};
+    const updatedFormValues = prizeToSave;
+    
+    // מיזוג זהיר: הנתונים החדשים דורסים את הישנים, אבל שדות חסרים נשמרים מהמקור
+    const finalResult = {
+      ...originalPrize,
+      ...updatedFormValues,
+      ...(typeof res === 'object' ? res : {})
+    };
+
+    this.ref?.close(finalResult);
+  }, 1200);
+},
       error: (err) => {
         this.loading = false;
         this.messageService.add({ 
@@ -153,9 +154,26 @@ export class PrizeEditForm implements OnInit {
   closeDialog() { if (this.ref) this.ref.close(); }
 
   onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      this.selectedFileName = file.name;
-    }
+  const file: File = event.target.files[0];
+  if (file) {
+    this.selectedFile = file;
+    this.selectedFileName = file.name;
+
+    // העלאה מיידית לשרת
+    const formData = new FormData();
+    formData.append('file', file);
+
+    // אנחנו צריכים להוסיף פונקציית uploadImage ב-PrizeService
+    this.prizeService.uploadImage(formData).subscribe({
+      next: (res: any) => {
+        // עדכון השדה בטופס עם הכתובת שהתקבלה מהשרת
+        this.prizeForm.patchValue({ imageUrl: res.url });
+        this.messageService.add({ severity: 'info', summary: 'Image Uploaded', detail: 'Preview ready' });
+      },
+      error: (err) => console.error('Upload failed', err)
+    });
   }
+}
+
+  
 }

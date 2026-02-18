@@ -1,194 +1,267 @@
-$royal-red: #be1e2d;
-$dark-text: #1a1a1b;
-$soft-bg: #fdfdfd;
+$royal-red: #dc2626;
+$deep-dark: #0a0a0b; // שחור עמוק יותר
+$text-gray: #6b7280;
 
-.page {
-  direction: ltr;
-  min-height: 100vh;
-  background: #f8f9fa;
-  color: $dark-text;
-  font-family: 'Inter', -apple-system, sans-serif;
+.about-page {
+  background: #fdfdfd;
+  color: $deep-dark;
+  font-family: 'Inter', sans-serif;
 }
 
-/* HERO SECTION - Elegant Gradient & Image */
-.hero {
-  position: relative;
-  height: 400px;
-  overflow: hidden;
-  background-image: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&q=80&w=2000');
-  background-size: cover;
-  background-position: center;
+/* אפקט נצנוץ (Shine) על טקסט */
+.shine-title {
+  display: inline-block;
+  background: linear-gradient(
+    to right, 
+    #111 0%, 
+    #111 40%, 
+    #fff 50%, 
+    #111 60%, 
+    #111 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite;
+  font-weight: 900;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+.luxury-hero {
+  height: 450px;
+  background: $deep-dark;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  // שילוב של גרדיינט לבן יוקרתי שמנקה את התמונה
-  background: linear-gradient(to bottom, rgba(255,255,255,0.7), rgba(248,249,250,1));
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 2;
   text-align: center;
+  color: white;
+
+  .main-title, .shine-title {
+    font-size: 5rem;
+    letter-spacing: -2px;
+    /* נצנוץ מותאם לרקע כהה */
+    background: linear-gradient(
+      to right, 
+      #fff 0%, 
+      #fff 40%, 
+      $royal-red 50%, 
+      #fff 60%, 
+      #fff 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+  }
+
+  .kicker {
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    color: $royal-red;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  .hero-divider {
+    width: 40px;
+    height: 2px;
+    background: $royal-red;
+    margin: 20px auto;
+  }
+}
+
+.main-content {
+  max-width: 900px;
+  margin: -60px auto 100px;
   padding: 0 20px;
-  animation: fadeInDown 1s ease-out;
 }
 
-.kicker {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  color: $royal-red;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.title {
-  font-size: 3.5rem;
-  font-weight: 900;
-  margin: 0;
-  color: $dark-text;
-  letter-spacing: -1px;
-
-  @media (max-width: 600px) { font-size: 2.4rem; }
-}
-
-.underline {
-  width: 80px;
-  height: 4px;
-  background: $royal-red;
-  margin: 20px auto;
-  border-radius: 2px;
-}
-
-.subtitle {
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 1.15rem;
-  color: #4a5568;
-  line-height: 1.6;
-}
-
-/* CONTENT AREA */
-.content {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px 80px;
-}
-
-.paper {
-  background: #ffffff;
-  border-radius: 30px;
-  padding: 50px;
-  margin-top: -60px; // אפקט ה"נייר" שעולה על ה-Hero
-  position: relative;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.02);
-  animation: fadeInUp 1s ease-out;
-
-  @media (max-width: 600px) { padding: 30px 20px; }
-}
-
-.section-title {
-  font-size: 1.8rem;
-  font-weight: 800;
-  margin-bottom: 20px;
-  color: $dark-text;
-}
-
-.p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #4a5568;
-  margin-bottom: 30px;
-}
-
-/* CARDS SECTION */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-  margin: 40px 0;
-
-  @media (max-width: 850px) { grid-template-columns: 1fr; }
-}
-
-.info-card {
-  background: #fdfdfd;
-  padding: 30px;
-  border-radius: 20px;
+.glass-container {
+  background: white;
+  border-radius: 0; // פינות ישרות יותר משדרות רצינות ויוקרה
+  padding: 80px;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.04);
   border: 1px solid #f1f1f1;
-  transition: all 0.3s ease;
+}
+
+.about-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.section-heading {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: $text-gray;
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+/* רשימת תכונות מינימליסטית */
+.luxury-traits {
+  margin-top: 40px;
+  .trait {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    span {
+      font-size: 0.7rem;
+      color: $royal-red;
+      border: 1px solid $royal-red;
+      padding: 2px 6px;
+    }
+  }
+}
+
+/* Badge יוקרתי בצד */
+.luxury-badge {
+  width: 180px;
+  height: 180px;
+  border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+  
+  .badge-content {
+    transform: rotate(-45deg);
+    text-align: center;
+    i { font-size: 2rem; color: $royal-red; display: block; margin-bottom: 10px; }
+    span { font-weight: 800; font-size: 0.8rem; letter-spacing: 2px; }
+  }
+}
+
+.minimal-quote {
+  margin-top: 80px;
+  text-align: center;
+  font-family: serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  color: #333;
+  border-top: 1px solid #eee;
+  padding-top: 40px;
+}
+
+/* --- Luxury Badge Circle Design --- */
+.luxury-badge-circle {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle at center, #ffffff 0%, #f9fafb 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.05),
+    inset 0 0 20px rgba(220, 38, 38, 0.02);
+  border: 1px solid rgba(0,0,0,0.03);
+  padding: 30px;
+  text-align: center;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba($royal-red, 0.08);
-    border-color: rgba($royal-red, 0.2);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.08);
+    
+    .outer-ring {
+      border-color: rgba($royal-red, 0.4);
+      transform: rotate(180deg);
+    }
   }
 
-  .icon {
-    font-size: 2rem;
-    color: $royal-red;
-    margin-bottom: 15px;
+  .inner-glow {
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    border: 1px dashed rgba($royal-red, 0.1);
   }
 
-  .card-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    margin-bottom: 10px;
+  .badge-content {
+    z-index: 2;
+    
+    i {
+      font-size: 2.2rem;
+      color: $royal-red;
+      margin-bottom: 15px;
+      display: block;
+      opacity: 0.8;
+    }
+
+    .badge-title {
+      display: block;
+      font-weight: 900;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      color: $deep-dark;
+      margin-bottom: 10px;
+    }
+
+    .badge-text {
+      font-size: 0.8rem;
+      color: $text-gray;
+      line-height: 1.5;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+
+    .badge-date {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: $royal-red;
+      letter-spacing: 3px;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+      display: inline-block;
+    }
   }
 
-  .card-text {
-    font-size: 0.95rem;
-    color: #718096;
-    line-height: 1.6;
+  /* טבעת דקורטיבית חיצונית */
+  .outer-ring {
+    position: absolute;
+    inset: -15px;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 50%;
+    transition: all 1.5s ease;
+    pointer-events: none;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -5px;
+      width: 10px;
+      height: 10px;
+      background: $royal-red;
+      border-radius: 50%;
+      box-shadow: 0 0 10px $royal-red;
+    }
   }
 }
 
-/* ELEGANT QUOTE */
-.quote {
-  background: rgba($royal-red, 0.03);
-  padding: 40px;
-  border-radius: 24px;
-  border-right: 5px solid $royal-red; // פס דקורטיבי
-  margin: 40px 0;
-  display: flex;
-  gap: 20px;
-
-  .quote-mark {
-    font-size: 3rem;
-    line-height: 1;
-    color: $royal-red;
-    opacity: 0.3;
-    font-family: serif;
+/* התאמה של ה-Grid כדי שהעיגול יישב יפה */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px; // נותן מקום מוגדר לעיגול
+  align-items: center;
+  gap: 60px;
+  
+  @media (max-width: 850px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
-
-  .quote-text {
-    font-size: 1.25rem;
-    font-style: italic;
-    color: #2d3748;
-    line-height: 1.7;
-    font-weight: 500;
-  }
-}
-
-.muted {
-  font-size: 0.9rem;
-  text-align: center;
-  color: #a0aec0;
-}
-
-/* ANIMATIONS */
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
 }

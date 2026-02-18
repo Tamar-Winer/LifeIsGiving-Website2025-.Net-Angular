@@ -54,6 +54,15 @@ export class PrizeList implements OnInit {
     exactBuyers: null as number | null
   };
 
+  categoryNames: { [key: number]: string } = {
+    1: 'Toys',
+    2: 'Electronics',
+    3: 'Fashion',
+    4: 'Cosmetics',
+    5: 'Home',
+    6: 'Experiences'
+  };
+
   private searchSubject = new Subject<void>();
 
   private authService = inject(AuthService);
@@ -240,14 +249,23 @@ addToCart(prize: Prize, ev: MouseEvent) {
 
     // אנחנו קוראים ל-add מה-Service
     this.cart.add(prize, 1).subscribe({
-      next: () => { 
-        // 1. זה יפעיל את הקונפטי בלי הפרעות
-        this.fireConfetti(); 
-
-        // 2. חשוב מאוד: הסיגנל בתוך CartService יתעדכן אוטומטית 
-        // בזכות ה-refreshCart שיש שם, ולכן ה-Navbar יתעדכן לבד!
-      },
-      error: () => alert('Error adding to cart')
+      next: () => {
+    this.messageService.add({ 
+      severity: 'success', 
+      summary: 'Success!', 
+      detail: 'The item was added to the cart successfully', 
+      life: 3000 
+    });
+  },
+  error: () => {
+    // כאן מחליפים את ה-alert
+    this.messageService.add({ 
+      severity: 'error', 
+      summary: 'Error', 
+      detail: 'Failed to add item to cart, try again!', 
+      life: 4000 
+    });
+  }
     });
 
     // מחקתי את window.location.reload() - הוא האויב של האפליקציה שלך!
@@ -295,11 +313,12 @@ addToCart(prize: Prize, ev: MouseEvent) {
     this.purchaseService.getPurchasesByPrize(prize.id).subscribe({
       next: (purchasers) => {
         if (purchasers.length === 0) {
-          this.messageService.add({ 
-            severity: 'warn', 
-            summary: 'No Tickets', 
-            detail: 'No purchasers for this prize yet!' 
-          });
+         this.messageService.add({ 
+  severity: 'warn', 
+  summary: 'no tickets purchased', 
+  detail: 'No tickets purchased for this prize yet!',
+  life: 3000 // ההודעה תיעלם אחרי 3 שניות
+});
           return;
         }
 

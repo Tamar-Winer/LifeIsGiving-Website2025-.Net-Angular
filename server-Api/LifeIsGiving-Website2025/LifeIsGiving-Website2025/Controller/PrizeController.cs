@@ -64,5 +64,31 @@ namespace LifeIsGiving_Website2025.Controller
             return Ok(results);
         }
 
+
+        [HttpPost("upload")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> UploadImage(IFormFile file)
+        {
+            if (file == null || file.Length == 0) return BadRequest("No file uploaded");
+
+            // 1. יצירת נתיב לתיקיית wwwroot/uploads
+            var uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+            if (!Directory.Exists(uploadsPath)) Directory.CreateDirectory(uploadsPath);
+
+            // 2. יצירת שם ייחודי לקובץ כדי למנוע דריסה
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+            var filePath = Path.Combine(uploadsPath, fileName);
+
+            // 3. שמירת הקובץ פיזית בשרת
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            // 4. החזרת ה-URL המלא (הדפדפן ישתמש בזה)
+            var fileUrl = $"{Request.Scheme}://{Request.Host}/uploads/{fileName}";
+            return Ok(new { url = fileUrl });
+        }
+
     }
 }

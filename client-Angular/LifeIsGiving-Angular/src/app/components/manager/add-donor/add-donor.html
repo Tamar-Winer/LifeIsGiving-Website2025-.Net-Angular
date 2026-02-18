@@ -1,128 +1,63 @@
-<!-- Overlay -->
-<div class="overlay" (click)="close()" aria-hidden="true"></div>
+<p-toast></p-toast>
 
-<!-- Dialog -->
-<div class="dialog" role="dialog" aria-modal="true" aria-label="Add donor dialog">
-  <div class="dialog-header">
-    <div class="title-wrap">
-      <h2 class="title">הוספת תורם</h2>
-      <p class="subtitle">מלאי פרטים והמערכת תיצור תורם חדש (role=3)</p>
-    </div>
+<div class="luxury-dialog">
+  <button type="button" class="close-btn" (click)="close()">✕</button>
 
-    <button type="button" class="icon-btn" (click)="close()" aria-label="סגור">
-      ✕
-    </button>
+  <div class="auth-header">
+    <h2 class="shine-title">Add <span>Donor</span></h2>
+    <p class="subtitle">Partner with us for a better future</p>
+    <div class="header-divider"></div>
   </div>
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="dialog-body">
-    <!-- Alerts -->
-    <div class="alert error" *ngIf="errorMsg">
-      <span class="dot"></span>
-      <div class="alert-text">{{ errorMsg }}</div>
-    </div>
-
-    <div class="alert success" *ngIf="successMsg">
-      <span class="dot"></span>
-      <div class="alert-text">{{ successMsg }}</div>
-    </div>
-
-    <!-- Grid -->
-    <div class="grid">
-      <!-- userName -->
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form">
+    <div class="grid-layout">
+      
       <div class="field">
-        <label for="userName">שם משתמש</label>
-        <input
-          id="userName"
-          type="text"
-          formControlName="userName"
-          placeholder="לדוגמה: tamar123"
-          [class.invalid]="form.controls.userName.touched && form.controls.userName.invalid"
-        />
+        <label>Username</label>
+        <div class="input-wrapper">
+          <i class="pi pi-user"></i>
+          <input type="text" formControlName="userName" class="custom-input" 
+                 [class.invalid]="form.controls.userName.touched && form.controls.userName.invalid" />
+        </div>
+        @if (form.controls.userName.touched && form.controls.userName.invalid) {
+          <span class="error-hint">Min 3 characters required</span>
+        }
+      </div>
 
-        <div class="hint" *ngIf="form.controls.userName.touched && form.controls.userName.invalid">
-          <span *ngIf="form.controls.userName.hasError('required')">חובה להזין שם משתמש</span>
-          <span *ngIf="form.controls.userName.hasError('minlength')">מינימום 3 תווים</span>
+      <div class="field">
+        <label>Full Name</label>
+        <div class="input-wrapper">
+          <i class="pi pi-id-card"></i>
+          <input type="text" formControlName="name" class="custom-input"
+                 [class.invalid]="form.controls.name.touched && form.controls.name.invalid" />
         </div>
       </div>
 
-      <!-- name -->
       <div class="field">
-        <label for="name">שם מלא</label>
-        <input
-          id="name"
-          type="text"
-          formControlName="name"
-          placeholder="שם פרטי ומשפחה"
-          [class.invalid]="form.controls.name.touched && form.controls.name.invalid"
-        />
-
-        <div class="hint" *ngIf="form.controls.name.touched && form.controls.name.invalid">
-          <span *ngIf="form.controls.name.hasError('required')">חובה להזין שם מלא</span>
-          <span *ngIf="form.controls.name.hasError('minlength')">מינימום 2 תווים</span>
+        <label>Email Address</label>
+        <div class="input-wrapper">
+          <i class="pi pi-envelope"></i>
+          <input type="email" formControlName="email" class="custom-input"
+                 [class.invalid]="form.controls.email.touched && form.controls.email.invalid" />
         </div>
+        @if (form.controls.email.touched && form.controls.email.invalid) {
+          <span class="error-hint">Valid email required</span>
+        }
       </div>
 
-      <!-- email -->
       <div class="field">
-        <label for="email">אימייל</label>
-        <input
-          id="email"
-          type="email"
-          formControlName="email"
-          placeholder="name@example.com"
-          [class.invalid]="form.controls.email.touched && form.controls.email.invalid"
-        />
-
-        <div class="hint" *ngIf="form.controls.email.touched && form.controls.email.invalid">
-          <span *ngIf="form.controls.email.hasError('required')">חובה להזין אימייל</span>
-          <span *ngIf="form.controls.email.hasError('email')">אימייל לא תקין</span>
-        </div>
-      </div>
-
-      <!-- phone -->
-      <div class="field">
-        <label for="phone">טלפון (לא חובה)</label>
-        <input id="phone" type="text" formControlName="phone" placeholder="050-0000000" />
-      </div>
-
-      <!-- address -->
-      <div class="field full">
-        <label for="address">כתובת (לא חובה)</label>
-        <input id="address" type="text" formControlName="address" placeholder="עיר, רחוב, מספר" />
-      </div>
-
-      <!-- password -->
-      <div class="field full">
-        <label for="password">סיסמה</label>
-        <input
-          id="password"
-          type="password"
-          formControlName="password"
-          placeholder="לפחות 6 תווים"
-          [class.invalid]="form.controls.password.touched && form.controls.password.invalid"
-        />
-
-        <div class="hint" *ngIf="form.controls.password.touched && form.controls.password.invalid">
-          <span *ngIf="form.controls.password.hasError('required')">חובה להזין סיסמה</span>
-          <span *ngIf="form.controls.password.hasError('minlength')">מינימום 6 תווים</span>
+        <label>Security Password</label>
+        <div class="input-wrapper">
+          <i class="pi pi-lock"></i>
+          <input type="password" formControlName="password" class="custom-input"
+                 [class.invalid]="form.controls.password.touched && form.controls.password.invalid" />
         </div>
       </div>
     </div>
 
-    <!-- Footer buttons -->
-    <div class="dialog-footer">
-      <button type="button" class="btn ghost" (click)="reset()" [disabled]="loading">
-        נקה
-      </button>
-
-      <button type="button" class="btn ghost" (click)="close()" [disabled]="loading">
-        ביטול
-      </button>
-
-      <button type="submit" class="btn primary" [disabled]="loading">
-        <span class="spinner" *ngIf="loading"></span>
-        {{ loading ? 'שומר...' : 'הוספת תורם' }}
-      </button>
-    </div>
+    <button type="submit" class="auth-btn" [disabled]="loading">
+      <i class="pi pi-spin pi-spinner" *ngIf="loading"></i>
+      {{ loading ? 'SAVING...' : 'CREATE DONOR' }}
+    </button>
   </form>
 </div>

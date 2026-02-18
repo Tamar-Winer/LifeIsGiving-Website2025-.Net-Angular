@@ -144,3 +144,4 @@ C:\Users\user1\Desktop\PROGRAMING\תשפו יד\Project-Api-Angular-2025\server-
 C:\Users\user1\Desktop\PROGRAMING\תשפו יד\Project-Api-Angular-2025\server-Api\LifeIsGiving-Website2025\LifeIsGiving-Website2025\obj\Debug\net8.0\ref\LifeIsGiving-Website2025.dll
 C:\Users\user1\Desktop\PROGRAMING\תשפו יד\Project-Api-Angular-2025\server-Api\LifeIsGiving-Website2025\LifeIsGiving-Website2025\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\user1\Desktop\PROGRAMING\תשפו יד\Project-Api-Angular-2025\server-Api\LifeIsGiving-Website2025\LifeIsGiving-Website2025\obj\Debug\net8.0\LifeIsGiving-Website2025.sourcelink.json
+C:\Users\user1\Desktop\PROGRAMING\תשפו יד\Project-Api-Angular-2025\server-Api\LifeIsGiving-Website2025\LifeIsGiving-Website2025\bin\Debug\net8.0\LifeIsGiving-Website2025.staticwebassets.runtime.json
