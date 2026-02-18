@@ -1,82 +1,81 @@
-<ng-container *ngIf="prize; else loading">
-  <div class="luxury-details-page" dir="ltr">
-    <div class="breadcrumb-nav">
-      <a routerLink="/prizes" class="back-link">
-        <i class="pi pi-arrow-left"></i>
-        <span>Back to Prizes Gallery</span>
-      </a>
-    </div>
+@if (prize) {
+<div class="luxury-details-page" dir="ltr">
+  <div class="nav-container">
+    <a routerLink="/prizes" class="modern-back-btn">
+      <i class="pi pi-chevron-left"></i>
+      <span>Back to Gallery</span>
+    </a>
+  </div>
 
+  <div class="compact-container">
     <p-card styleClass="premium-glass-card">
       <div class="main-grid">
+        
         <div class="media-column">
-          <div class="image-container">
-            <div class="floating-price">{{ prize.price }} $</div>
+          <div class="image-wrapper">
+            @if (!prize.canPurchase) {
+              <div class="ribbon-wrapper">
+                <div class="ribbon">DRAWN</div>
+              </div>
+            }
+            <div class="floating-price-tag">{{ prize.price }}$</div>
             <img class="hero-image" [src]="prize.imageUrl || 'assets/gift-placeholder.png'" [alt]="prize.name" />
           </div>
         </div>
 
         <div class="info-column">
           <div class="content-header">
-            <span class="category-tag">{{ categoryNames[prize.category] }}</span>
-            <h1 class="main-title">{{ prize.name }}</h1>
-            <div class="status-badge" [class.completed]="!prize.canPurchase">
-              <span class="dot"></span>
-              <ng-container *ngIf="prize.canPurchase; else drawnTemplate">
-                Active Raffle
-              </ng-container>
-              <ng-template #drawnTemplate>
-                Raffle Completed
-              </ng-template>
-            </div>
-          </div>
-
-          <p-divider></p-divider>
-
-          <div class="description-area">
-            <h3 class="section-subtitle">About this prize:</h3>
-            <p class="text">{{ prize.description }}</p>
-          </div>
-
-          <div class="specs-row">
-            <div class="spec-box">
-              <i class="pi pi-th-large"></i>
-              <div class="spec-text">
-                <span class="label">Category</span>
-                <span class="val">{{ categoryNames[prize.category] }}</span>
+            <div class="meta-row">
+              <span class="category-tag-red">{{ categoryNames[prize.category] }}</span>
+              <div class="status-badge-mini" [class.is-completed]="!prize.canPurchase">
+                <span class="dot"></span>
+                {{ prize.canPurchase ? 'Active Raffle' : 'Completed' }}
               </div>
             </div>
-            <div class="spec-box">
-              <i class="pi pi-user"></i>
-              <div class="spec-text">
-                <span class="label">Donor Name</span>
-                <span class="val">{{ prize.donorName }}</span>
+            <h1 class="main-title">{{ prize.name }}</h1>
+          </div>
+
+          <div class="description-section">
+            <p class="description-text">{{ prize.description }}</p>
+          </div>
+
+          <div class="info-strip-premium">
+            <div class="info-item">
+              <i class="pi pi-heart-fill red-accent-icon"></i>
+              <div class="item-text">
+                <label>Donor</label>
+                <span class="donor-name-highlight">{{ prize.donorName }}</span>
               </div>
             </div>
           </div>
 
           <div class="action-zone">
-            <div class="buttons-wrapper">
-              <p-button label="ADD TO CART" icon="pi pi-shopping-bag" styleClass="luxury-cta"
-                (click)="addToCart(prize, $event)"></p-button>
+            @if (prize.canPurchase) {
+              <div class="buttons-row-aligned">
+                <p-button label="ADD TO CART" icon="pi pi-shopping-bag" 
+                  styleClass="luxury-cta-red"
+                  (click)="addToCart(prize, $event)">
+                </p-button>
 
-              <button type="button" class="heart-btn">
-                <i class="pi pi-heart"></i>
-              </button>
-            </div>
-
-            <div class="security-footer">
-              <span><i class="pi pi-shield"></i> Secure Checkout</span>
-              <span><i class="pi pi-verified"></i> Legal Supervision</span>
-            </div>
+                <button type="button" class="wish-btn-compact" title="Add to favorites">
+                  <i class="pi pi-heart"></i>
+                </button>
+              </div>
+            } @else {
+              <div class="drawn-status-refined">
+                <div class="status-icon"><i class="pi pi-verified"></i></div>
+                <div class="status-content">
+                  <span class="st-label">OFFICIAL STATUS</span>
+                  <span class="st-value">Raffle Completed</span>
+                </div>
+              </div>
+            }
           </div>
         </div>
       </div>
     </p-card>
   </div>
-</ng-container>
+</div>
+}
 
-<ng-template #loading>
-</ng-template>
-
-<p-toast position="bottom-right"></p-toast>
+<p-toast position="bottom-right" styleClass="luxury-toast-container"></p-toast>

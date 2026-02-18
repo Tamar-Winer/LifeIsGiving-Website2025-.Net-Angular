@@ -14,8 +14,9 @@ import { Toast } from "primeng/toast";
 
 @Component({
   selector: 'app-prize-details',
-  imports: [CommonModule, RouterModule, Card, Button, Divider, Toast],
-  providers: [MessageService],
+  standalone: true, // וודאי שזה standalone אם את משתמשת ב-imports
+  imports: [CommonModule, RouterModule, Card, Button, Toast], // ה-Toast חייב להיות כאן!
+  providers: [MessageService], // המופע הזה חייב להיות תואם ל-Toast ב-HTML
   templateUrl: './prize-details.html',
   styleUrls: ['./prize-details.scss'],
 })
@@ -60,18 +61,19 @@ categoryNames: { [key: number]: string } = {
     this.cart.add(prize, 1).subscribe({
       next: () => { 
         // ההודעה היפה והמעוצבת
-        this.messageService.add({
-          severity: 'success',
-          summary: 'success',
-          detail: `נוסף לסל שלך "${prize.name}" הפרס`,
-          life: 3000 // ייעלם אחרי 3 שניות
-        });
+       this.messageService.add({
+    severity: 'custom', // מאפשר לנו שליטה מלאה
+    summary: 'Success',
+    detail: `"${prize.name}" added to your bag`,
+    life: 3000,
+    icon: 'pi pi-shopping-bag'
+});
       },
       error: () => {
         this.messageService.add({
           severity: 'error',
-          summary: 'שגיאה',
-          detail: 'לא הצלחנו להוסיף את הפריט לסל'
+          summary: 'Error',
+          detail: 'Failed to add item to cart'
         });
       }
     });

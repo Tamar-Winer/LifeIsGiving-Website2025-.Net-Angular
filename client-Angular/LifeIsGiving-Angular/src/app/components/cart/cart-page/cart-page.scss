@@ -1,4 +1,4 @@
-// Variables for consistency
+// Variables for consistency (המקוריים שלך)
 $primary-red: #dc3545;
 $dark-red: #b02a37;
 $light-red: #fff5f5;
@@ -224,7 +224,7 @@ $shadow-hover: 0 15px 35px rgba(220, 53, 69, 0.12);
   border-radius: 32px;
   box-shadow: $shadow-soft;
   
-  .pi-shopping-cart {
+  .empty-icon-wrapper {
     background: $light-red;
     color: $primary-red;
     width: 100px;
@@ -244,16 +244,40 @@ $shadow-hover: 0 15px 35px rgba(220, 53, 69, 0.12);
   }
 }
 
-// Responsive
-@media (max-width: 992px) {
-  .cart-grid { grid-template-columns: 1fr; }
-  .cart-summary { order: -1; } // Summary on top for mobile
+// --- עיצוב חלונית התשלום (Modal) בלבד ---
+
+.payment-backdrop {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4); // רקע כהה שקוף מעט
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-@media (max-width: 576px) {
-  .card-body {
-    flex-direction: column;
-    text-align: center;
-    .item-price { text-align: center; margin-top: 15px; }
+.payment-modal {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+
+  .modal-body {
+    .spinner-icon { font-size: 3rem; color: $primary-red; margin-bottom: 20px; }
+    h3 { margin: 15px 0; color: $text-main; }
+    p { color: $text-secondary; }
   }
 }
+
+.success-circle {
+  width: 80px; height: 80px; background: #2ecc71; color: white;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; margin: 0 auto 20px;
+}
+
+.animate-success { animation: scaleUp 0.4s ease-out; }
+@keyframes scaleUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }

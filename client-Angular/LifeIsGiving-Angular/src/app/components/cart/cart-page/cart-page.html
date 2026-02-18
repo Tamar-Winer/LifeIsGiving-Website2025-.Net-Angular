@@ -22,8 +22,8 @@
             <div class="card-body">
               <div class="item-img-container">
                 <img class="item-img" 
-                     [src]="item.prize?.imageUrl || item.Prize?.imageUrl || 'assets/gift-placeholder.png'" 
-                     [alt]="item.prizeName || item.prize?.name">
+                      [src]="item.prize?.imageUrl || item.Prize?.imageUrl || 'assets/gift-placeholder.png'" 
+                      [alt]="item.prizeName || item.prize?.name">
               </div>
               
               <div class="item-info">
@@ -74,7 +74,7 @@
           </div>
           
           <div class="actions">
-            <button pButton label="Proceed to Checkout" class="checkout-btn w-full" (click)="cart.checkout()"></button>
+            <button pButton label="Proceed to Checkout" class="checkout-btn w-full" (click)="onCheckout()"></button>
             <button pButton label="Clear Shopping Cart" class="p-button-text p-button-secondary clear-btn w-full" (click)="cart.clear()"></button>
           </div>
           
@@ -86,4 +86,25 @@
       </aside>
     </div>
   }
+
+  <div class="payment-backdrop" *ngIf="isProcessing || showSuccess">
+    <div class="payment-modal">
+      
+      <div *ngIf="isProcessing" class="modal-body">
+        <i class="pi pi-spin pi-spinner spinner-icon"></i>
+        <h3>Processing Payment...</h3>
+        <p>Verifying your transaction</p>
+      </div>
+
+      <div *ngIf="showSuccess" class="modal-body animate-success">
+        <div class="success-circle">
+          <i class="pi pi-check"></i>
+        </div>
+        <h3>Success!</h3>
+        <p>Your tickets have been registered.</p>
+        <button pButton label="Close" class="p-button-text p-button-danger mt-3" (click)="showSuccess = false"></button>
+      </div>
+
+    </div>
+  </div>
 </div>

@@ -96,6 +96,10 @@ remove(purchaseId: number) {
   });
 }
 
+clearItemsLocally() {
+    this._items.set([]);
+  }
+
   clear() {
     this._items().forEach(item => {
       this.http.delete(`${this.apiUrl}/${item.id || item.Id}`, this.getOptions()).subscribe({

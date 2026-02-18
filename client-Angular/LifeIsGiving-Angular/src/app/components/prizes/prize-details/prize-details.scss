@@ -1,212 +1,291 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+/* --- משתני ליבה ואנימציות --- */
+$luxury-red: #be123c;
+$red-gradient: linear-gradient(135deg, #be123c 0%, #9f1239 100%);
+$dark-slate: #0f172a;
+$text-muted: #64748b;
+$radius-main: 24px;
+$radius-sm: 12px;
 
-$premium-red: #be1e2d;
-$dark-red-hover: #9e1826;
-$dark-bg: #1a1a1a;
-$soft-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+@keyframes fadeInPop {
+  0% { transform: scale(0.95) translateY(10px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
 
-// 1. הגדרות כלליות לדף
+/* --- הגדרות דף --- */
 .luxury-details-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 90vh;
-  max-width: 1000px;
+  font-family: 'Inter', system-ui, sans-serif;
+  padding: 40px 20px;
+  background: #f8fafc;
+  min-height: 100vh;
+  color: $dark-slate;
+  animation: fadeInPop 0.6s ease-out;
+}
+
+.compact-container, .nav-container {
+  max-width: 1050px;
   margin: 0 auto;
-  padding: 2rem;
-  font-family: 'Inter', sans-serif;
-  animation: fadeInContainer 0.8s ease-out;
 }
 
-@keyframes fadeInContainer {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-// ניווט
-.breadcrumb-nav {
-  align-self: flex-start;
-  margin-bottom: 1rem;
-  .back-link {
-    text-decoration: none; color: #999; font-size: 0.85rem; font-weight: 600;
-    display: flex; align-items: center; gap: 8px; transition: 0.3s;
-    &:hover { color: $premium-red; }
+/* --- כפתור חזרה --- */
+.modern-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: white;
+  color: $dark-slate;
+  text-decoration: none;
+  border-radius: $radius-sm;
+  font-weight: 700;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: $dark-slate;
+    color: white;
+    i { transform: translateX(-4px); }
   }
 }
 
-// 2. כרטיס המוצר
-::ng-deep .premium-glass-card {
-  width: 100%;
-  background: #ffffff !important;
-  border-radius: 40px !important;
-  border: none !important;
-  box-shadow: $soft-shadow !important;
-  overflow: hidden !important;
-  transition: transform 0.4s ease;
-
-  &:hover { transform: translateY(-5px); }
-  .p-card-body, .p-card-content { padding: 0 !important; }
+/* --- מבנה הכרטיס --- */
+::ng-deep .premium-glass-card .p-card {
+  border-radius: $radius-main;
+  border: none;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06) !important;
+  overflow: visible !important;
+  
+  .p-card-body { padding: 0 !important; }
 }
 
 .main-grid {
   display: grid;
-  grid-template-columns: 420px 1fr;
-  height: 520px;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-    height: auto;
-  }
+  grid-template-columns: 460px 1fr;
+  background: white;
+  border-radius: $radius-main;
 }
 
-// 3. צד התמונה
+/* --- עמודת תמונה וריבון --- */
 .media-column {
-  padding: 1.5rem;
-  background: #fafafa;
+  padding: 25px;
+  position: relative;
 
-  .image-container {
+  .image-wrapper {
     position: relative;
     height: 100%;
-    border-radius: 25px;
+    min-height: 400px;
+    border-radius: 20px;
     overflow: hidden;
-    
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
     .hero-image {
       width: 100%; height: 100%; object-fit: cover;
-      transition: transform 1.5s ease;
+      transition: transform 0.8s ease;
     }
-    &:hover { .hero-image { transform: scale(1.1); } }
-
-    .floating-price {
-      position: absolute; top: 20px; right: 20px;
-      background: $premium-red; color: white;
-      padding: 10px 20px; border-radius: 15px;
-      font-weight: 800; font-size: 1.4rem; z-index: 10;
-      box-shadow: 0 10px 20px rgba($premium-red, 0.3);
-      animation: floatBadge 3s infinite ease-in-out;
-    }
+    &:hover .hero-image { transform: scale(1.05); }
   }
 }
 
-@keyframes floatBadge {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.ribbon-wrapper {
+  width: 150px; height: 150px;
+  overflow: hidden;
+  position: absolute;
+  top: -2px; left: -2px;
+  z-index: 10;
+
+  .ribbon {
+    font-weight: 800;
+    text-align: center;
+    transform: rotate(-45deg);
+    position: relative;
+    padding: 8px 0;
+    top: 30px; left: -40px;
+    width: 200px;
+    background: $red-gradient;
+    color: #fff;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
 }
 
-// 4. צד המידע
+.floating-price-tag {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: $dark-slate;
+  color: white;
+  padding: 10px 20px;
+  border-radius: $radius-sm;
+  font-weight: 800;
+  font-size: 1.2rem;
+  z-index: 30;
+}
+
+/* --- עמודת תוכן --- */
 .info-column {
-  padding: 3rem;
+  padding: 40px 45px 40px 15px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 15px;
 
-  .category-tag {
-    color: $premium-red; font-weight: 800; font-size: 0.7rem;
-    text-transform: uppercase; letter-spacing: 3px;
+  .category-tag-red {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: $luxury-red;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
   }
 
   .main-title {
-    font-size: 2.8rem; font-weight: 900; color: #1a1a1a;
-    margin: 10px 0; line-height: 1; letter-spacing: -1.5px;
+    font-size: 2.6rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 5px 0;
   }
 
-  .status-badge {
-    display: flex; align-items: center; gap: 8px; color: #2ecc71;
-    font-size: 0.85rem; font-weight: 700;
-    .dot { 
-      width: 8px; height: 8px; background: #2ecc71; border-radius: 50%;
-      box-shadow: 0 0 10px #2ecc71;
-    }
-  }
-}
-
-.description-area {
-  margin: 1rem 0;
-  .section-subtitle { font-size: 1rem; font-weight: 800; color: #333; margin-bottom: 5px; }
-  .text { 
-    color: #666; font-size: 1rem; line-height: 1.6;
-    max-height: 80px; overflow-y: auto;
+  .description-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #475569;
+    margin: 10px 0;
+    max-width: 90%;
   }
 }
 
-.specs-row {
-  display: flex; gap: 15px; margin-bottom: 1.5rem;
-  .spec-box {
-    background: #f8f8f8; padding: 12px 20px; border-radius: 15px;
-    display: flex; align-items: center; gap: 12px;
-    i { color: $premium-red; font-size: 1.1rem; }
-    .spec-text {
-      .label { display: block; font-size: 0.65rem; color: #aaa; font-weight: 700; }
-      .val { font-weight: 700; color: #222; font-size: 0.9rem; }
-    }
+/* --- פרטי תורם וסטריפ מידע --- */
+.info-strip-premium {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fffafa;
+  border: 1px solid #fee2e2;
+  padding: 18px;
+  border-radius: 16px;
+  margin-top: 10px;
+
+  .red-accent-icon { color: $luxury-red; font-size: 1.3rem; }
+  
+  .item-text {
+    display: flex;
+    flex-direction: column;
+    label { font-size: 0.7rem; font-weight: 800; color: $text-muted; text-transform: uppercase; }
+    span { font-size: 1.05rem; font-weight: 700; }
+    .donor-name-highlight { color: $luxury-red; }
   }
 }
 
-// 5. הכפתור האדום המשודרג (החלק שחיכינו לו)
+/* --- אזור כפתורים וסטטוס --- */
 .action-zone {
-  margin-top: auto; // דוחף את כל האזור לתחתית
+  margin-top: auto;
+  padding-top: 20px;
+}
 
-  .buttons-wrapper {
-    display: flex; 
-    gap: 15px; 
-    margin-top: 2rem; // רווח משמעותי מלמעלה
-    margin-bottom: 1.5rem;
-    
-    // סלקטור חזק מאוד כדי לדרוס את ה-CSS של פריים
-    ::ng-deep .luxury-cta.p-button, 
-    ::ng-deep .p-button.luxury-cta {
-      flex: 1;
-      background: linear-gradient(135deg, $premium-red 0%, #9e1826 100%) !important; 
-      border: none !important;
-      padding: 1.2rem !important; 
-      border-radius: 18px !important;
-      box-shadow: 0 10px 25px rgba($premium-red, 0.4) !important;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-      
-      .p-button-label {
-        font-weight: 800 !important;
-        font-size: 1.1rem !important;
-        color: white !important;
-        letter-spacing: 1px;
-      }
+.buttons-row-aligned {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 
-      .p-button-icon {
-        color: white !important;
-        font-size: 1.2rem !important;
-      }
-
-      &:hover {
-        transform: translateY(-4px) !important;
-        background: linear-gradient(135deg, #d42435 0%, $premium-red 100%) !important;
-        box-shadow: 0 15px 30px rgba($premium-red, 0.5) !important;
-      }
-
-      &:active {
-        transform: translateY(0) !important;
-      }
-    }
-
-    .heart-btn {
-      width: 60px; height: 60px; border-radius: 18px; border: 2px solid #f0f0f0;
-      background: white; color: #ddd; cursor: pointer; transition: 0.3s;
-      display: flex; align-items: center; justify-content: center;
-      &:hover { color: $premium-red; border-color: $premium-red; }
-      i { font-size: 1.3rem; }
-    }
-  }
-
-  .security-footer {
-    display: flex; justify-content: space-between; border-top: 1px solid #f5f5f5; padding-top: 1rem;
-    span { color: #ccc; font-size: 0.75rem; display: flex; align-items: center; gap: 6px; }
+  ::ng-deep .luxury-cta-red {
+    background: $red-gradient !important;
+    border: none !important;
+    height: 55px !important;
+    padding: 0 40px !important;
+    border-radius: $radius-sm !important;
+    font-weight: 800 !important;
+    transition: all 0.3s ease !important;
+    &:hover { box-shadow: 0 8px 20px rgba($luxury-red, 0.4) !important; transform: translateY(-2px); }
   }
 }
 
-// 6. Toast Design
-::ng-deep .p-toast .p-toast-message {
-  background: #ffffff !important;
-  border-radius: 20px !important;
-  box-shadow: $soft-shadow !important;
-  border-right: 6px solid $premium-red !important; 
-  .p-toast-message-icon { color: $premium-red !important; }
-  .p-toast-summary { color: #1a1a1a; font-weight: 800; }
+.wish-btn-compact {
+  width: 55px; height: 55px;
+  border-radius: $radius-sm;
+  border: 2px solid #e2e8f0;
+  background: white;
+  color: $text-muted;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: all 0.2s;
+  &:hover { border-color: $luxury-red; color: $luxury-red; background: #fff1f2; }
+}
+
+.drawn-status-refined {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f8fafc;
+  padding: 18px 25px;
+  border-radius: 16px;
+  border-left: 5px solid $luxury-red;
+  
+  .status-icon { color: $luxury-red; font-size: 1.8rem; }
+  .st-label { font-size: 0.7rem; font-weight: 800; color: $text-muted; display: block; }
+  .st-value { font-size: 1.2rem; font-weight: 900; }
+}
+
+/* --- עיצוב ה-Toast היוקרתי --- */
+::ng-deep .luxury-toast-container {
+  opacity: 0.98;
+
+  .p-toast-message {
+    background: #ffffff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+    border: none !important;
+    margin-bottom: 1rem !important;
+    /* פס אדום דומיננטי בצד שמאל */
+    border-left: 6px solid #be123c !important; 
+    
+    .p-toast-message-content {
+      padding: 1rem !important;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* האייקון של הטווסט */
+    .p-toast-message-icon {
+      color: #be123c !important;
+      font-size: 1.5rem !important;
+    }
+
+    /* הטקסט בתוך הטווסט */
+    .p-toast-summary {
+      font-weight: 800 !important;
+      color: #0f172a !important;
+      font-size: 0.95rem !important;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .p-toast-detail {
+      font-weight: 500 !important;
+      color: #64748b !important;
+      font-size: 0.85rem !important;
+    }
+
+    /* כפתור הסגירה (ה-X) */
+    .p-toast-icon-close {
+      color: #94a3b8 !important;
+      &:hover {
+        background: #f1f5f9 !important;
+        color: #be123c !important;
+      }
+    }
+  }
+}
+
+/* --- אנימציית החלקה לטווסט --- */
+::ng-deep .p-toast-message-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+::ng-deep .p-toast-message-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
