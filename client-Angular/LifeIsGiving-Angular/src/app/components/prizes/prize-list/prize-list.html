@@ -4,32 +4,43 @@
     <h1 class="page-title">Exquisite Prizes</h1>
     <p class="subtitle">Every donation is a step towards giving. Choose your prize.</p>
     
-    @if (isAdmin()) {
-      <div class="admin-control-panel">
+@if (isAdmin()) {
+  <div class="admin-control-panel">
+    <div class="admin-centered-wrapper">
+      
+      <div class="admin-actions-group">
         <button class="admin-pill-btn add-btn" (click)="addPrize()">
           <i class="pi pi-plus-circle"></i>
           <span>ADD PRIZE</span>
         </button>
 
-        <div class="search-pill">
-          <div class="input-group">
-            <i class="pi pi-search"></i>
-            <input type="text" placeholder="Prize..." [(ngModel)]="searchFilters.prizeName" (input)="onSearch()">
-          </div>
-          <div class="input-group">
-            <i class="pi pi-user"></i>
-            <input type="text" placeholder="Donor..." [(ngModel)]="searchFilters.donorName" (input)="onSearch()">
-          </div>
-          <div class="input-group">
-            <i class="pi pi-users"></i>
-            <input type="number" placeholder="Min..." [(ngModel)]="searchFilters.exactBuyers" (input)="onSearch()">
-          </div>
-          <button class="clear-pill-btn" (click)="clearFilters()" title="Clear Filters">
-            <i class="pi pi-filter-slash"></i>
-          </button>
-        </div>
+        <button class="admin-pill-btn donor-btn" routerLink="/admin/donors">
+          <i class="pi pi-users"></i>
+          <span>DONORS</span>
+        </button>
       </div>
-    }
+
+      <div class="search-pill">
+        <div class="input-group">
+          <i class="pi pi-search"></i>
+          <input type="text" placeholder="Prize..." [(ngModel)]="searchFilters.prizeName" (input)="onSearch()">
+        </div>
+        <div class="input-group">
+          <i class="pi pi-user"></i>
+          <input type="text" placeholder="Donor..." [(ngModel)]="searchFilters.donorName" (input)="onSearch()">
+        </div>
+        <div class="input-group">
+          <i class="pi pi-users"></i>
+          <input type="number" placeholder="Min..." [(ngModel)]="searchFilters.exactBuyers" (input)="onSearch()">
+        </div>
+        <button class="clear-pill-btn" (click)="clearFilters()" title="Clear Filters">
+          <i class="pi pi-filter-slash"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+}
   </div>
 
   @if (prizes().length > 0) {

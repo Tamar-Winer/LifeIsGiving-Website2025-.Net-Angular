@@ -122,12 +122,7 @@ public async Task<IActionResult> GetMyDraftPurchases()
             var p = await _service.GetById(id);
             if (p == null) return NotFound("Purchase not found");
 
-            // אין לנו פה UserId ב-DTO שלך, אז הכי פשוט:
-            // או שתוסיפי UserId ל-PurchaseDto, או שנבדוק דרך repo.
-            // פתרון מינימלי: תעשי endpoint חדש ב-service/repo שמוודא שייכות.
-            // כרגע נשתמש בדרך המהירה: נדרוש ש-service יטפל בזה.
-            // אם אין לך - תגידי לי ואכתוב לך תוספת קטנה.
-
+           
             var result = await _service.CompletePurchase(id);
             if (!result) return NotFound("Purchase not found");
 

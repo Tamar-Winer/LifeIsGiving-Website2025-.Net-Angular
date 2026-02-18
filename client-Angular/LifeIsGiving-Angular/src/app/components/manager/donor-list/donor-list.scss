@@ -370,3 +370,286 @@
     }
   }
 }
+
+/* עיצוב חלונית האישור */
+::ng-deep .p-confirm-dialog {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: none;
+  overflow: hidden;
+
+  .p-dialog-header {
+    display: none; // מסתירים את הכותרת הדיפולטיבית בשביל העיצוב שלנו
+  }
+
+  .confirm-delete-container {
+    padding: 40px 30px 20px;
+    text-align: center;
+
+    .confirm-icon-wrapper {
+      width: 70px;
+      height: 70px;
+      background: #fef2f2;
+      color: #dc2626;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 2rem;
+    }
+
+    .confirm-text {
+      h3 {
+        font-weight: 800;
+        font-size: 1.4rem;
+        color: #111827;
+        margin-bottom: 10px;
+      }
+      p {
+        color: #6b7280;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .confirm-footer {
+    display: flex;
+    gap: 15px;
+    padding: 20px 30px 40px;
+
+    button {
+      flex: 1;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-cancel {
+      background: #f3f4f6;
+      color: #4b5563;
+      &:hover { background: #e5e7eb; }
+    }
+
+    .btn-confirm {
+      background: #dc2626;
+      color: white;
+      box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
+      &:hover { background: #b91c1c; transform: translateY(-2px); }
+    }
+  }
+}
+
+/* עיצוב הטוסט האישי */
+::ng-deep .custom-confirm-toast {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  min-width: 320px;
+
+  .toast-icon-box {
+    width: 60px;
+    height: 60px;
+    background: #fff1f2;
+    color: #e11d48;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .toast-title {
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+  }
+
+  .toast-detail {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .toast-actions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+
+    button {
+      flex: 1;
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-toast-secondary {
+      background: #f3f4f6;
+      color: #374151;
+      &:hover { background: #e5e7eb; }
+    }
+
+    .btn-toast-danger {
+      background: #dc2626;
+      color: white;
+      &:hover { 
+        background: #b91c1c;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+/* מעיף את העיצוב הדיפולטיבי של הטוסט כדי שהעיצוב שלנו ישלוט */
+::ng-deep .p-toast-message-warn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  
+  .p-toast-message-content {
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+  
+  .p-toast-icon-close {
+    display: none !important; // מעיף את ה-X הקטן בצד
+  }
+}
+
+/* עיצוב חלונית עריכת תורם */
+.edit-donor-container {
+  padding: 2rem;
+  background: white;
+  border-radius: 20px;
+
+  .edit-header {
+    margin-bottom: 2rem;
+    text-align: center;
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #111827;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+
+    p {
+      color: #6b7280;
+      font-size: 0.95rem;
+      margin-top: 5px;
+    }
+  }
+}
+
+.edit-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; // חלוקה ל-2 עמודות
+  gap: 1.5rem;
+
+  .full-width {
+    grid-column: span 2; // כתובת תתפרס על כל הרוחב
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #374151;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      background: #f9fafb;
+
+      &:focus {
+        background: white;
+        border-color: #dc2626; // אדום במעבר
+        box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+        outline: none;
+      }
+    }
+  }
+
+  .edit-actions {
+    grid-column: span 2;
+    display: flex;
+    gap: 12px;
+    margin-top: 1rem;
+
+    button {
+      flex: 1;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-cancel {
+      background: #f3f4f6;
+      color: #4b5563;
+      &:hover {
+        background: #e5e7eb;
+      }
+    }
+
+    .btn-save {
+      background: #dc2626; // האדום היוקרתי שלך
+      color: white;
+      box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.2);
+
+      &:hover:not(:disabled) {
+        background: #b91c1c;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        filter: grayscale(1);
+      }
+    }
+  }
+}
+
+/* התאמה למובייל אם צריך */
+@media (max-width: 480px) {
+  .edit-form-grid {
+    grid-template-columns: 1fr;
+    .full-width { grid-column: span 1; }
+    .edit-actions { grid-column: span 1; }
+  }
+}

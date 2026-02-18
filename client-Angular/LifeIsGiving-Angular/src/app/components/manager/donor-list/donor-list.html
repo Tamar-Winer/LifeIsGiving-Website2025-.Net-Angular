@@ -1,5 +1,23 @@
 <p-toast></p-toast>
 
+<p-toast position="top-center" key="confirmDelete" [baseZIndex]="99999">
+  <ng-template let-message pTemplate="message">
+    <div class="custom-confirm-toast">
+      <div class="toast-icon-box">
+        <i class="pi pi-exclamation-circle"></i>
+      </div>
+      <div class="toast-text-content">
+        <h3 class="toast-title">{{message.summary}}</h3>
+        <p class="toast-detail">{{message.detail}}</p>
+      </div>
+      <div class="toast-actions">
+        <button (click)="onRejectDelete()" class="btn-toast-secondary">CANCEL</button>
+        <button (click)="onConfirmDelete(message.data)" class="btn-toast-danger">YES, DELETE</button>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>
+
 <div class="donor-page">
   <div class="header-section">
     <h1 class="page-title">DONORS DIRECTORY</h1>
@@ -94,6 +112,7 @@
     </div>
   }
 </div>
+
 <p-dialog 
   [(visible)]="showAddDialog" 
   [modal]="true" 
@@ -105,4 +124,54 @@
   (onHide)="showAddDialog = false"
 >
   <app-add-donor (onClose)="showAddDialog = false"></app-add-donor>
+</p-dialog>
+
+<p-dialog 
+  [visible]="editDialogVisible()" 
+  [modal]="true" 
+  [draggable]="false" 
+  [resizable]="false"
+  [showHeader]="false" 
+  [style]="{ width: '500px' }" 
+  styleClass="clean-dialog"
+  (onHide)="closeEditDialog()"
+>
+  <div class="edit-donor-container">
+    <div class="edit-header">
+      <h2>Edit Donor Profile</h2>
+      <p>Update the information for this donor</p>
+    </div>
+
+    <form [formGroup]="editForm" (ngSubmit)="saveEdit()" class="edit-form-grid">
+      <div class="input-field">
+        <label>Full Name</label>
+        <input pInputText formControlName="name" placeholder="Enter name" />
+      </div>
+
+      <div class="input-field">
+        <label>Username</label>
+        <input pInputText formControlName="userName" placeholder="Username" />
+      </div>
+
+      <div class="input-field">
+        <label>Email Address</label>
+        <input pInputText formControlName="email" placeholder="Email" />
+      </div>
+
+      <div class="input-field">
+        <label>Phone Number</label>
+        <input pInputText formControlName="phone" placeholder="Phone" />
+      </div>
+
+      <div class="input-field full-width">
+        <label>Address</label>
+        <input pInputText formControlName="address" placeholder="Residential Address" />
+      </div>
+
+      <div class="edit-actions">
+        <button type="button" class="btn-cancel" (click)="closeEditDialog()">Cancel</button>
+        <button type="submit" class="btn-save" [disabled]="editForm.invalid">Save Changes</button>
+      </div>
+    </form>
+  </div>
 </p-dialog>

@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\065fcdda-d212-403a-b8ec-9783c1dde5a2.png",
+      "PackagePath": "staticwebassets\\uploads\\065fcdda-d212-403a-b8ec-9783c1dde5a2.png"
+    },
+    {
+      "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\6308747c-36a3-4f43-9415-d12fe7a55ba3.JPG",
+      "PackagePath": "staticwebassets\\uploads\\6308747c-36a3-4f43-9415-d12fe7a55ba3.JPG"
+    },
+    {
+      "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\77d59ffa-2e64-471e-9244-8e73d75fbcc2.JPG",
+      "PackagePath": "staticwebassets\\uploads\\77d59ffa-2e64-471e-9244-8e73d75fbcc2.JPG"
+    },
+    {
+      "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\c5fad5d4-0599-47e7-91c1-a1767ae62f32.png",
+      "PackagePath": "staticwebassets\\uploads\\c5fad5d4-0599-47e7-91c1-a1767ae62f32.png"
+    },
+    {
+      "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\fe30fe78-4761-4a6e-b90d-6f34710059f5.png",
+      "PackagePath": "staticwebassets\\uploads\\fe30fe78-4761-4a6e-b90d-6f34710059f5.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.LifeIsGiving-Website2025.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.LifeIsGiving-Website2025.props",
+      "PackagePath": "build\\LifeIsGiving-Website2025.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.LifeIsGiving-Website2025.props",
+      "PackagePath": "buildMultiTargeting\\LifeIsGiving-Website2025.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.LifeIsGiving-Website2025.props",
+      "PackagePath": "buildTransitive\\LifeIsGiving-Website2025.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
