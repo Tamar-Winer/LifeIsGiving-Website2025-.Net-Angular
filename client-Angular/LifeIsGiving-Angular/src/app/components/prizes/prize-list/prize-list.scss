@@ -648,3 +648,104 @@ $text-gray: #718093;
     }
   }
 }
+
+/* Ribbon Container */
+.ribbon-wrapper {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  z-index: 10;
+}
+
+.ribbon {
+  font-weight: 900;
+  text-align: center;
+  transform: rotate(-45deg);
+  position: relative;
+  padding: 7px 0;
+  top: 30px;
+  left: -40px;
+  width: 200px;
+  background-color: #dc2626;
+  background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%);
+  color: #fff;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* אפקט "אפור" עדין לכרטיס שהוגרל */
+.custom-product-card.is-drawn {
+  filter: grayscale(0.2); // לא אפור לגמרי, רק טיפה כדי לתת דגש
+  opacity: 0.95;
+  
+  .product-image {
+    filter: brightness(0.85);
+  }
+}
+
+/* עיצוב הזוכה - Winner Announcement */
+.winner-announcement.premium {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  padding: 12px 15px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  margin-top: 10px;
+
+  .trophy-circle {
+    width: 40px;
+    height: 40px;
+    background: #fef2f2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i { color: #dc2626; font-size: 1.2rem; }
+  }
+
+  .winner-details {
+    display: flex;
+    flex-direction: column;
+    
+    .winner-label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+    }
+    
+    .winner-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+  }
+}
+
+/* סגנון לכפתורי אדמין חסומים */
+.disabled-admin-btn {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+  background-color: #94a3b8 !important; /* אפור Slate */
+  border-color: #cbd5e1 !important;
+  pointer-events: none; /* מונע לחיצות לחלוטין */
+  transform: none !important; /* מבטל אפקטי hover אם היו */
+  
+  i {
+    color: #f1f5f9 !important;
+  }
+}
+
+/* אופציונלי: שינוי קטן ל-admin-floating-controls כדי שיראו טוב גם כשחלק חסום */
+.admin-floating-controls {
+  display: flex;
+  gap: 8px;
+  // שאר הסטייל הקיים שלך...
+}

@@ -6,4 +6,5 @@ export interface User {
   phone?: string;
   address?: string;
   role: 1 | 2 | 3; // 1 - משתמש רגיל, 2 - מנהל , 3 - תורם
+  
 }

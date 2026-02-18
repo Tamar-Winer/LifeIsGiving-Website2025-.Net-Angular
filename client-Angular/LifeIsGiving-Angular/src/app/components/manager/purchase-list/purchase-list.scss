@@ -3,13 +3,16 @@
   background: #ffffff;
   position: relative;
   overflow: hidden;
-  text-align: left; // English alignment
+  text-align: left;
+  
+  // 1. הוספת עיגול פינות לקונטיינר הראשי
+  border-radius: 24px; 
+  margin: 5px; // מבטיח שהצל לא ייחתך
 
-  // Close Button repositioned to top-right
   .close-dialog-btn {
     position: absolute;
     top: 15px;
-    right: 15px; // Changed from left to right
+    right: 15px;
     border: none;
     background: #f8f9fa;
     width: 32px;
@@ -41,7 +44,9 @@
       background: linear-gradient(135deg, #e63946 0%, #b91c1c 100%);
       width: 50px;
       height: 50px;
-      border-radius: 12px;
+      
+      // 2. עיגול פינות רך יותר לאייקון
+      border-radius: 16px; 
       display: flex;
       align-items: center;
       justify-content: center;
@@ -57,20 +62,29 @@
   }
 
   .table-wrapper {
-    border-radius: 15px;
+    // 3. הגדלת רדיוס הפינות של עטיפת הטבלה למראה מודרני
+    border-radius: 20px; 
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     border: 1px solid #f1f5f9;
   }
 
   ::ng-deep .custom-premium-table {
+    // 4. ריכוך הפינות הפנימיות של הטבלה
+    .p-datatable-wrapper {
+        border-radius: 20px;
+    }
+
     .p-datatable-thead > tr > th {
       background-color: #f8fafc;
       color: #475569;
       font-weight: 600;
-      padding: 16px;
-      text-align: left; // Ensure header text is left-aligned
+      padding: 18px 16px; // מעט יותר ריווח (Padding) לנשימה
+      text-align: left;
       border-bottom: 2px solid #fee2e2;
+      
+      // הסרת קווים חדים בין הכותרות
+      border-right: none; 
     }
 
     .row-animation {
@@ -79,7 +93,13 @@
 
       &:hover {
         background-color: #fff5f5 !important;
-        transform: scale(1.005);
+        // ביטול ה-scale אם זה מרגיש "קופצני" מדי, או השארה למראה אינטראקטיבי
+        transform: scale(1.002); 
+      }
+      
+      td {
+          padding: 14px 16px; // ריווח פנימי רך יותר
+          border: none; // מסיר קווים פנימיים חדים
       }
     }
 
@@ -89,32 +109,32 @@
       gap: 10px;
 
       .avatar {
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         background: #fee2e2;
         color: #b91c1c;
-        border-radius: 50%;
+        border-radius: 10px; // פינות מעוגלות (Squircle) במקום עיגול מושלם - נראה מאוד "Premium"
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: bold;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
       }
     }
 
     .quantity-badge {
       background-color: #1e293b;
       color: white;
-      padding: 4px 10px;
-      border-radius: 8px;
+      padding: 5px 12px;
+      border-radius: 10px; // פינות רכות יותר
       font-size: 0.8rem;
     }
 
     .price-tag {
       background: #fef2f2;
       color: #b91c1c;
-      padding: 6px 12px;
-      border-radius: 20px;
+      padding: 7px 14px;
+      border-radius: 12px; // רדיוס תואם לשאר האלמנטים
       font-weight: 700;
       border: 1px solid #fecaca;
     }
@@ -129,12 +149,19 @@
   }
 }
 
-@keyframes slideInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+// 5. בונוס: אם את משתמשת ב-DynamicDialog של PrimeNG, 
+// כדאי להוסיף את זה ב-styles.scss הראשי כדי לעגל את הדיאלוג עצמו:
+::ng-deep .p-dialog {
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+    
+    .p-dialog-header {
+        display: none; // כי יש לך כפתור סגירה מותאם אישית
+    }
+    
+    .p-dialog-content {
+        padding: 0 !important;
+        border-radius: 24px !important;
+    }
 }

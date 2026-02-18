@@ -6,7 +6,6 @@
     
     @if (isAdmin()) {
       <div class="admin-control-panel">
-        
         <button class="admin-pill-btn add-btn" (click)="addPrize()">
           <i class="pi pi-plus-circle"></i>
           <span>ADD PRIZE</span>
@@ -29,7 +28,6 @@
             <i class="pi pi-filter-slash"></i>
           </button>
         </div>
-
       </div>
     }
   </div>
@@ -52,11 +50,20 @@
   <div class="cards-grid">
     @for (prize of prizes(); track prize.id) {
       <div class="card-item">
-        <p-card styleClass="custom-product-card">
+        <p-card styleClass="custom-product-card" [class.is-drawn]="!prize.canPurchase">
           
+          @if (!prize.canPurchase) {
+            <div class="ribbon-wrapper">
+              <div class="ribbon">DRAWN</div>
+            </div>
+          }
+
           @if (isAdmin()) {
             <div class="admin-floating-controls">
-              <button class="admin-btn lottery" (click)="onRunLottery(prize, $event)" title="Run Lottery">
+              <button 
+                class="admin-btn lottery" 
+                (click)="onRunLottery(prize, $event)" 
+                [title]="prize.canPurchase ? 'Run Lottery' : 'View Lottery Results'">
                 <i class="pi pi-ticket"></i>
               </button>
 
@@ -64,23 +71,29 @@
                 <i class="pi pi-users"></i>
               </button>
 
-              <button class="admin-btn edit" (click)="editPrize(prize, $event)" title="Edit Prize">
+              <button 
+                class="admin-btn edit" 
+                [disabled]="!prize.canPurchase"
+                [class.disabled-admin-btn]="!prize.canPurchase"
+                (click)="editPrize(prize, $event)" 
+                [title]="prize.canPurchase ? 'Edit Prize' : 'Cannot edit drawn prize'">
                 <i class="pi pi-pencil"></i>
               </button>
-              
-              <button class="admin-btn delete" (click)="deletePrize(prize.id, $event)" title="Delete Prize">
+
+              <button 
+                class="admin-btn delete" 
+                [disabled]="!prize.canPurchase"
+                [class.disabled-admin-btn]="!prize.canPurchase"
+                (click)="deletePrize(prize.id, $event)" 
+                [title]="prize.canPurchase ? 'Delete Prize' : 'Cannot delete drawn prize'">
                 <i class="pi pi-trash"></i>
               </button>
             </div>
           }
 
-          <div class="price-badge">{{ prize.price }} ₪</div>
+          <div class="price-badge">{{ prize.price }} $</div>
           
           <div class="image-header" [routerLink]="['/prizes', prize.id]">
-            @if (!prize.canPurchase) {
-              <div class="drawn-badge">DRAWN</div>
-            }
-
             <img
               [src]="prize.imageUrl || 'assets/gift-placeholder.png'"
               [alt]="prize.name"
@@ -114,10 +127,12 @@
                 </button>
               </div>
             } @else {
-              <div class="winner-announcement">
-                <i class="pi pi-trophy"></i>
+              <div class="winner-announcement premium">
+                <div class="trophy-circle">
+                  <i class="pi pi-trophy"></i>
+                </div>
                 <div class="winner-details">
-                  <span class="winner-label">Status</span>
+                  <span class="winner-label">OFFICIAL STATUS</span>
                   <span class="winner-name">Raffle Completed</span>
                 </div>
               </div>
@@ -138,48 +153,15 @@
 
 <p-toast position="top-center" key="confirmDelete" [baseZIndex]="99999">
   <ng-template let-message pTemplate="message">
-    <div style="
-        background: #ffffff; 
-        padding: 35px; 
-        border-radius: 24px; 
-        width: 100%;
-        text-align: center;
-        border: none !important;
-        outline: none !important;
-        /* כאן הקסם - הילה אדומה רכה ועמוקה */
-        box-shadow: 0 0 50px rgba(220, 38, 38, 0.25), 0 10px 30px rgba(220, 38, 38, 0.15);
-    ">
-      <div style="
-          width: 70px; height: 70px; 
-          background: #fef2f2; 
-          border-radius: 50%; 
-          display: flex; align-items: center; justify-content: center; 
-          margin: 0 auto 20px;
-          border: 1px solid rgba(220, 38, 38, 0.1);
-      ">
+    <div style="background: #ffffff; padding: 35px; border-radius: 24px; width: 100%; text-align: center; box-shadow: 0 0 50px rgba(220, 38, 38, 0.25);">
+      <div style="width: 70px; height: 70px; background: #fef2f2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
         <i class="pi pi-trash" style="font-size: 2.2rem; color: #dc2626;"></i>
       </div>
-
-      <h3 style="margin: 0 0 10px 0; font-weight: 800; color: #111827; font-size: 1.4rem;">{{message.summary}}</h3>
-      <p style="margin: 0 0 30px 0; color: #4b5563; font-size: 1.05rem; line-height: 1.6;">{{message.detail}}</p>
-      
+      <h3 style="margin: 0 0 10px 0; font-weight: 800; color: #111827;">{{message.summary}}</h3>
+      <p style="margin: 0 0 30px 0; color: #4b5563;">{{message.detail}}</p>
       <div style="display: flex; gap: 15px;">
-        <button (click)="onRejectDelete()" style="
-            flex: 1; padding: 14px; border-radius: 12px; border: 1px solid #e5e7eb; 
-            background: #ffffff; color: #4b5563; font-weight: 700; cursor: pointer;
-            transition: 0.2s;
-        " onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='#ffffff'">
-          CANCEL
-        </button>
-        
-        <button (click)="onConfirmDelete(message.data)" style="
-            flex: 1; padding: 14px; border-radius: 12px; border: none; 
-            background: #dc2626; color: #ffffff; font-weight: 700; cursor: pointer;
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-            transition: 0.2s;
-        " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-          YES, DELETE
-        </button>
+        <button (click)="onRejectDelete()" style="flex: 1; padding: 14px; border-radius: 12px; border: 1px solid #e5e7eb; background: #ffffff; cursor: pointer;">CANCEL</button>
+        <button (click)="onConfirmDelete(message.data)" style="flex: 1; padding: 14px; border-radius: 12px; border: none; background: #dc2626; color: white; font-weight: 700; cursor: pointer;">YES, DELETE</button>
       </div>
     </div>
   </ng-template>

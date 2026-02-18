@@ -234,17 +234,23 @@ onConfirmDelete(prizeId: number) {
   }
 
   // --- לוגיקת משתמש ---
-
-  addToCart(prize: Prize, ev: MouseEvent) {
+addToCart(prize: Prize, ev: MouseEvent) {
     ev.preventDefault();
     ev.stopPropagation();
+
+    // אנחנו קוראים ל-add מה-Service
     this.cart.add(prize, 1).subscribe({
       next: () => { 
+        // 1. זה יפעיל את הקונפטי בלי הפרעות
         this.fireConfetti(); 
+
+        // 2. חשוב מאוד: הסיגנל בתוך CartService יתעדכן אוטומטית 
+        // בזכות ה-refreshCart שיש שם, ולכן ה-Navbar יתעדכן לבד!
       },
       error: () => alert('Error adding to cart')
     });
-    window.location.reload();
+
+    // מחקתי את window.location.reload() - הוא האויב של האפליקציה שלך!
   }
 
   private fireConfetti() {

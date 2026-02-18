@@ -11,6 +11,7 @@ import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 
 import { PrizeService } from '../../../core/services/prize-service';
+import { Users } from '../../../core/services/users'; // ודאי שהנתיב נכון
 
 @Component({
   selector: 'app-prize-edit-form',
@@ -32,10 +33,21 @@ export class PrizeEditForm implements OnInit {
   isEditMode: boolean = false;
   loading: boolean = false;
   selectedFileName: string = '';
+  donors: any[] = []; // לאחסון רשימת התורמים
+
+  categories = [
+    { label: 'Toys', value: 1 },
+    { label: 'Electronics', value: 2 },
+    { label: 'Fashion', value: 3 },
+    { label: 'Cosmetics', value: 4 },
+    { label: 'Home', value: 5 },
+    { label: 'Experiences', value: 6 }
+  ];
 
   constructor(
     private fb: FormBuilder,
     private prizeService: PrizeService,
+    private userService: Users, // הזרקת הסרוויס שלך
     private messageService: MessageService,
     @Optional() public ref: DynamicDialogRef, 
     @Optional() public config: DynamicDialogConfig,
@@ -52,10 +64,23 @@ export class PrizeEditForm implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadDonors(); // טעינת התורמים מיד עם פתיחת הטופס
+
     if (this.config?.data?.prize) {
       this.isEditMode = true;
       this.prizeForm.patchValue(this.config.data.prize);
     }
+  }
+
+  loadDonors() {
+    this.userService.GetDonors().subscribe({
+      next: (data) => {
+        this.donors = data;
+      },
+      error: (err) => {
+        console.error('Failed to load donors', err);
+      }
+    });
   }
 
   savePrize() {
@@ -64,14 +89,13 @@ export class PrizeEditForm implements OnInit {
       this.messageService.add({ 
         severity: 'warn', 
         summary: 'Incomplete Details', 
-        detail: 'Please fill in all required fields to continue.',
+        detail: 'Please fill in all required fields.',
         life: 3000
       });
       return;
     }
 
     this.loading = true;
-    
     const rawValues = this.prizeForm.value;
     const prizeToSave = {
       ...rawValues,
@@ -88,8 +112,6 @@ export class PrizeEditForm implements OnInit {
 
     request.subscribe({
       next: (res) => {
-        console.log('Server response:', res);
-
         this.messageService.add({ 
           severity: 'success', 
           summary: 'Success!', 
@@ -99,13 +121,8 @@ export class PrizeEditForm implements OnInit {
         
         setTimeout(() => {
           this.loading = false;
-          
           let finalResult;
-          
           if (!this.isEditMode) {
-            // לוגיקה מיוחדת להוספה:
-            // אם השרת החזיר אובייקט מלא, נשתמש בו. 
-            // אם הוא החזיר רק מספר (ה-ID החדש), נמזג אותו לתוך הנתונים ששלחנו.
             if (res && typeof res === 'object') {
               finalResult = res;
             } else if (res && typeof res === 'number') {
@@ -114,10 +131,8 @@ export class PrizeEditForm implements OnInit {
               finalResult = prizeToSave;
             }
           } else {
-            // בעריכה פשוט מחזירים את התוצאה או את מה ששלחנו
             finalResult = res && Object.keys(res).length > 0 ? res : prizeToSave;
           }
-
           this.ref?.close(finalResult);
         }, 1200);
       },
@@ -126,7 +141,7 @@ export class PrizeEditForm implements OnInit {
         this.messageService.add({ 
           severity: 'error', 
           summary: 'Action Failed', 
-          detail: 'Something went wrong. Please check your connection.',
+          detail: 'Something went wrong.',
           life: 4000 
         });
         console.error(err);
@@ -134,13 +149,8 @@ export class PrizeEditForm implements OnInit {
     });
   }
 
-  cancel() {
-    if (this.ref) this.ref.close();
-  }
-
-  closeDialog() {
-    if (this.ref) this.ref.close();
-  }
+  cancel() { if (this.ref) this.ref.close(); }
+  closeDialog() { if (this.ref) this.ref.close(); }
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];

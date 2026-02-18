@@ -1,6 +1,6 @@
 import { Injectable, computed, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Prize } from '../models/Prize'; // ודאי נתיב נכון
 
 @Injectable({ providedIn: 'root' })
@@ -62,23 +62,17 @@ updateQuantity(item: any, delta: number) {
 
  // cart-service.ts
 
-// 1. פונקציית הוספה/עדכון מעודכנת
 add(prizeOrId: any, quantity: number): Observable<any> {
-  // חילוץ ה-ID: תומך ב-id, Id, ובאובייקט שלם
   const prizeId = (prizeOrId && typeof prizeOrId === 'object') 
     ? (prizeOrId.id || prizeOrId.Id) 
     : prizeOrId;
 
-  // גוף הבקשה - שליחה עם אותיות גדולות וקטנות ליתר ביטחון
-  const body = { 
-    prizeId: prizeId, 
-    quantity: quantity 
-  };
+  const body = { prizeId, quantity };
 
-  console.log('Sending update to server:', body);
-
-  // חובה להוסיף את getOptions() כדי למנוע 403 Forbidden
-  return this.http.post(`${this.apiUrl}`, body, this.getOptions());
+  // אנחנו משתמשים ב-pipe(tap) כדי לרענן את הסל ברגע שההוספה הצליחה
+  return this.http.post(`${this.apiUrl}`, body, this.getOptions()).pipe(
+    tap(() => this.refreshCart()) // זה ידאג שה-Badge ב-Navbar יגדל מיד!
+  );
 }
 
 // cart-service.ts

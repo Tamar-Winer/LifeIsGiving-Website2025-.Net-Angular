@@ -6,5 +6,6 @@ export interface Prize {
   price: number; // ← במקום ticketPrice
   imageUrl?: string;
   donorId: number;
+  donorName?: string; // שדה נוסף להצגת שם התורם
   canPurchase: boolean;
 }

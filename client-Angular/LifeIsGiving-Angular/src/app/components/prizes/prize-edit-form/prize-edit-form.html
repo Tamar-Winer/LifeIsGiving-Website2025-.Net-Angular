@@ -29,30 +29,51 @@
           <label>Category</label>
           <div class="input-wrapper">
             <i class="pi pi-list"></i>
-            <p-inputNumber formControlName="category" inputStyleClass="custom-input" [useGrouping]="false" placeholder="ID"></p-inputNumber>
+            <select formControlName="category" class="custom-input custom-select">
+              <option [ngValue]="null" disabled selected>Select Category</option>
+              @for (cat of categories; track cat.value) {
+                <option [ngValue]="cat.value">{{ cat.label }}</option>
+              }
+            </select>
           </div>
         </div>
+
         <div class="field flex-1">
           <label>Price</label>
-          <div class="input-wrapper">
-            <i class="pi pi-ticket"></i>
-            <p-inputNumber formControlName="price" inputStyleClass="custom-input" mode="currency" currency="ILS" locale="he-IL"></p-inputNumber>
+          <div class="input-wrapper price-wrapper">
+            <i class="pi pi-dollar"></i>
+            <p-inputNumber 
+              formControlName="price" 
+              styleClass="w-full"
+              inputStyleClass="custom-input" 
+              mode="currency" 
+              currency="USD" 
+              locale="en-US"
+              placeholder="0.00">
+            </p-inputNumber>
           </div>
         </div>
       </div>
 
       <div class="field">
-        <label>Donor ID</label>
+        <label>Donor</label>
         <div class="input-wrapper">
           <i class="pi pi-user"></i>
-          <p-inputNumber formControlName="donorId" inputStyleClass="custom-input" [useGrouping]="false" placeholder="Enter Donor ID"></p-inputNumber>
+          <select formControlName="donorId" class="custom-input custom-select">
+            <option [ngValue]="null" disabled selected>Choose a donor...</option>
+            @for (donor of donors; track donor.id) {
+              <option [ngValue]="donor.id">
+                {{ donor.name }} 
+              </option>
+            }
+          </select>
         </div>
       </div>
 
       <div class="field">
-  <label>Description</label>
-  <textarea formControlName="description" class="custom-input" rows="3" placeholder="Tell us about this prize..."></textarea>
-</div>
+        <label>Description</label>
+        <textarea formControlName="description" class="custom-input" rows="3" placeholder="Tell us about this prize..."></textarea>
+      </div>
 
       <div class="field">
         <label>Prize Image</label>

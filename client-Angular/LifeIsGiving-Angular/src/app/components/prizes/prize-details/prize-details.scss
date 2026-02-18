@@ -1,15 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 $premium-red: #be1e2d;
+$dark-red-hover: #9e1826;
 $dark-bg: #1a1a1a;
 $soft-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 
-// 1. מרכוז מושלם של כל התוכן במרכז המסך
+// 1. הגדרות כלליות לדף
 .luxury-details-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 90vh; // גובה כמעט מלא של המסך למרכוז אנכי
-  max-width: 1000px; // רוחב אידיאלי שלא ימרח
+  min-height: 90vh;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
   font-family: 'Inter', sans-serif;
@@ -21,7 +24,7 @@ $soft-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   to { opacity: 1; transform: translateY(0); }
 }
 
-// ניווט חזרה - עדין וקטן
+// ניווט
 .breadcrumb-nav {
   align-self: flex-start;
   margin-bottom: 1rem;
@@ -32,7 +35,7 @@ $soft-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   }
 }
 
-// 2. כרטיס המוצר - "קופסת תכשיטים" מהודקת
+// 2. כרטיס המוצר
 ::ng-deep .premium-glass-card {
   width: 100%;
   background: #ffffff !important;
@@ -43,14 +46,13 @@ $soft-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   transition: transform 0.4s ease;
 
   &:hover { transform: translateY(-5px); }
-
   .p-card-body, .p-card-content { padding: 0 !important; }
 }
 
 .main-grid {
   display: grid;
-  grid-template-columns: 420px 1fr; // יחס קבוע לתמונה ולתוכן
-  height: 520px; // גובה קבוע שמונע מריחה אסטרונומית
+  grid-template-columns: 420px 1fr;
+  height: 520px;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
@@ -58,7 +60,7 @@ $soft-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   }
 }
 
-// 3. צד המדיה (תמונה)
+// 3. צד התמונה
 .media-column {
   padding: 1.5rem;
   background: #fafafa;
@@ -73,9 +75,8 @@ $soft-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
       width: 100%; height: 100%; object-fit: cover;
       transition: transform 1.5s ease;
     }
-    &:hover .hero-image { transform: scale(1.1); }
+    &:hover { .hero-image { transform: scale(1.1); } }
 
-    // תג מחיר צף עם אנימציה
     .floating-price {
       position: absolute; top: 20px; right: 20px;
       background: $premium-red; color: white;
@@ -92,7 +93,7 @@ $soft-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   50% { transform: translateY(-10px); }
 }
 
-// 4. צד המידע - קו נקי ואלגנטי
+// 4. צד המידע
 .info-column {
   padding: 3rem;
   display: flex;
@@ -120,51 +121,77 @@ $soft-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
 .description-area {
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   .section-subtitle { font-size: 1rem; font-weight: 800; color: #333; margin-bottom: 5px; }
   .text { 
     color: #666; font-size: 1rem; line-height: 1.6;
-    max-height: 80px; overflow-y: auto; // מונע מריחה אם הטקסט ארוך
+    max-height: 80px; overflow-y: auto;
   }
 }
 
 .specs-row {
-  display: flex; gap: 15px; margin-bottom: 2rem;
-  
+  display: flex; gap: 15px; margin-bottom: 1.5rem;
   .spec-box {
     background: #f8f8f8; padding: 12px 20px; border-radius: 15px;
     display: flex; align-items: center; gap: 12px;
-    transition: 0.3s;
     i { color: $premium-red; font-size: 1.1rem; }
     .spec-text {
       .label { display: block; font-size: 0.65rem; color: #aaa; font-weight: 700; }
       .val { font-weight: 700; color: #222; font-size: 0.9rem; }
     }
-    &:hover { background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
   }
 }
 
-// 5. כפתור הוספה לסל - אפקט זוהר ואדום יוקרתי
+// 5. הכפתור האדום המשודרג (החלק שחיכינו לו)
 .action-zone {
+  margin-top: auto; // דוחף את כל האזור לתחתית
+
   .buttons-wrapper {
-    display: flex; gap: 15px; margin-bottom: 1.5rem;
+    display: flex; 
+    gap: 15px; 
+    margin-top: 2rem; // רווח משמעותי מלמעלה
+    margin-bottom: 1.5rem;
     
-    ::ng-deep .cta-button {
+    // סלקטור חזק מאוד כדי לדרוס את ה-CSS של פריים
+    ::ng-deep .luxury-cta.p-button, 
+    ::ng-deep .p-button.luxury-cta {
       flex: 1;
-      .p-button {
-        width: 100%; background: $premium-red !important; border: none !important;
-        padding: 1.2rem !important; border-radius: 18px !important;
-        font-weight: 800 !important; font-size: 1.1rem !important;
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-        box-shadow: 0 10px 25px rgba($premium-red, 0.3) !important;
-        &:hover { transform: scale(1.02); background: #a51a27 !important; }
+      background: linear-gradient(135deg, $premium-red 0%, #9e1826 100%) !important; 
+      border: none !important;
+      padding: 1.2rem !important; 
+      border-radius: 18px !important;
+      box-shadow: 0 10px 25px rgba($premium-red, 0.4) !important;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+      
+      .p-button-label {
+        font-weight: 800 !important;
+        font-size: 1.1rem !important;
+        color: white !important;
+        letter-spacing: 1px;
+      }
+
+      .p-button-icon {
+        color: white !important;
+        font-size: 1.2rem !important;
+      }
+
+      &:hover {
+        transform: translateY(-4px) !important;
+        background: linear-gradient(135deg, #d42435 0%, $premium-red 100%) !important;
+        box-shadow: 0 15px 30px rgba($premium-red, 0.5) !important;
+      }
+
+      &:active {
+        transform: translateY(0) !important;
       }
     }
 
     .heart-btn {
       width: 60px; height: 60px; border-radius: 18px; border: 2px solid #f0f0f0;
       background: white; color: #ddd; cursor: pointer; transition: 0.3s;
+      display: flex; align-items: center; justify-content: center;
       &:hover { color: $premium-red; border-color: $premium-red; }
+      i { font-size: 1.3rem; }
     }
   }
 
@@ -172,4 +199,14 @@ $soft-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
     display: flex; justify-content: space-between; border-top: 1px solid #f5f5f5; padding-top: 1rem;
     span { color: #ccc; font-size: 0.75rem; display: flex; align-items: center; gap: 6px; }
   }
+}
+
+// 6. Toast Design
+::ng-deep .p-toast .p-toast-message {
+  background: #ffffff !important;
+  border-radius: 20px !important;
+  box-shadow: $soft-shadow !important;
+  border-right: 6px solid $premium-red !important; 
+  .p-toast-message-icon { color: $premium-red !important; }
+  .p-toast-summary { color: #1a1a1a; font-weight: 800; }
 }

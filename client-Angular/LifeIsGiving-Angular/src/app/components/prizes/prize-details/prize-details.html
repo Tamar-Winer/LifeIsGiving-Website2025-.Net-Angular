@@ -11,28 +11,30 @@
       <div class="main-grid">
         <div class="media-column">
           <div class="image-container">
-            <div class="floating-price">{{ prize.price }} ₪</div>
-            <img
-              class="hero-image"
-              [src]="prize.imageUrl || 'assets/gift-placeholder.png'"
-              [alt]="prize.name"
-            />
+            <div class="floating-price">{{ prize.price }} $</div>
+            <img class="hero-image" [src]="prize.imageUrl || 'assets/gift-placeholder.png'" [alt]="prize.name" />
           </div>
         </div>
 
         <div class="info-column">
           <div class="content-header">
-            <span class="category-tag">{{ prize.category }}</span>
+            <span class="category-tag">{{ categoryNames[prize.category] }}</span>
             <h1 class="main-title">{{ prize.name }}</h1>
-            <div class="status-badge">
-              <span class="dot"></span> Active Raffle
+            <div class="status-badge" [class.completed]="!prize.canPurchase">
+              <span class="dot"></span>
+              <ng-container *ngIf="prize.canPurchase; else drawnTemplate">
+                Active Raffle
+              </ng-container>
+              <ng-template #drawnTemplate>
+                Raffle Completed
+              </ng-template>
             </div>
           </div>
 
           <p-divider></p-divider>
 
           <div class="description-area">
-            <h3 class="section-subtitle">About this prize</h3>
+            <h3 class="section-subtitle">About this prize:</h3>
             <p class="text">{{ prize.description }}</p>
           </div>
 
@@ -41,32 +43,28 @@
               <i class="pi pi-th-large"></i>
               <div class="spec-text">
                 <span class="label">Category</span>
-                <span class="val">{{ prize.category }}</span>
+                <span class="val">{{ categoryNames[prize.category] }}</span>
               </div>
             </div>
             <div class="spec-box">
               <i class="pi pi-user"></i>
               <div class="spec-text">
-                <span class="label">Donor ID</span>
-                <span class="val">#{{ prize.donorId }}</span>
+                <span class="label">Donor Name</span>
+                <span class="val">{{ prize.donorName }}</span>
               </div>
             </div>
           </div>
 
           <div class="action-zone">
             <div class="buttons-wrapper">
-              <p-button
-                label="ADD TO CART"
-                icon="pi pi-shopping-bag"
-                styleClass="cta-button"
-                (onClick)="addToCart()"
-              ></p-button>
+              <p-button label="ADD TO CART" icon="pi pi-shopping-bag" styleClass="luxury-cta"
+                (click)="addToCart(prize, $event)"></p-button>
 
               <button type="button" class="heart-btn">
                 <i class="pi pi-heart"></i>
               </button>
             </div>
-            
+
             <div class="security-footer">
               <span><i class="pi pi-shield"></i> Secure Checkout</span>
               <span><i class="pi pi-verified"></i> Legal Supervision</span>
@@ -79,22 +77,6 @@
 </ng-container>
 
 <ng-template #loading>
-  <div class="luxury-details-page">
-    <p-card styleClass="premium-glass-card">
-      <div class="main-grid">
-        <div class="media-column">
-          <p-skeleton width="100%" height="500px" borderRadius="30px"></p-skeleton>
-        </div>
-        <div class="info-column">
-          <p-skeleton width="30%" height="20px" styleClass="mb-3"></p-skeleton>
-          <p-skeleton width="70%" height="50px" styleClass="mb-5"></p-skeleton>
-          <p-skeleton width="100%" height="120px" styleClass="mb-5"></p-skeleton>
-          <div class="specs-row">
-            <p-skeleton width="100%" height="60px" borderRadius="15px"></p-skeleton>
-            <p-skeleton width="100%" height="60px" borderRadius="15px"></p-skeleton>
-          </div>
-        </div>
-      </div>
-    </p-card>
-  </div>
 </ng-template>
+
+<p-toast position="bottom-right"></p-toast>

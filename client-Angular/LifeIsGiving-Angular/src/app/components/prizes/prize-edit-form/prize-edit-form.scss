@@ -210,3 +210,62 @@ textarea.custom-input {
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.3), 
               0 0 40px rgba(220, 38, 38, 0.15); // צל עמוק יותר שיבלוט על ה-Blur
 }
+
+/* תיקון לצבע הטקסט בתוך רשימת הבחירה */
+.custom-select {
+  color: #111827 !important; /* צבע טקסט כהה לשדה עצמו */
+  background-color: white !important; 
+
+  option {
+    color: #111827 !important; /* צבע טקסט כהה לאפשרויות ברשימה */
+    background-color: white !important; /* רקע לבן לאפשרויות */
+    padding: 10px;
+  }
+}
+
+/* במקרה שהדפדפן משתמש במצב כהה (Dark Mode) וזה משבש אותך */
+@media (prefers-color-scheme: dark) {
+  .custom-select option {
+    color: #000000 !important; 
+    background-color: #ffffff !important;
+  }
+}
+
+/* יישור גודל אחיד ל-p-inputNumber של המחיר */
+::ng-deep .price-wrapper {
+  p-inputNumber {
+    width: 100% !important;
+    display: flex !important;
+    
+    .p-inputnumber-input {
+      width: 100% !important;
+    }
+  }
+}
+
+/* עיצוב משלים ל-Select שייראה כמו שאר השדות */
+.custom-select {
+  appearance: none; /* הסתרת החץ המקורי של הדפדפן */
+  cursor: pointer;
+  padding-right: 35px !important;
+}
+
+/* הוספת חץ מעוצב לתיבות הבחירה */
+.input-wrapper:has(.custom-select)::after {
+  content: '\e902'; 
+  font-family: 'primeicons';
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #dc2626;
+  font-size: 0.75rem;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* תיקון צבע טקסט בתוך ה-options */
+.custom-select option {
+  color: #1a1a1a;
+  background-color: white;
+}
