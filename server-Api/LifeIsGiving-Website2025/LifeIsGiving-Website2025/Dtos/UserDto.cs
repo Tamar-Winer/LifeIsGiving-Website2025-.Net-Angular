@@ -51,6 +51,9 @@ namespace LifeIsGiving_Website2025.Dtos
         public string? Address { get; set; }
 
         [Required]
+        [MinLength(6, ErrorMessage = "Password must be at least 6 characters")]
+        [MaxLength(50)]
+        
         public string Password { get; set; } = null!;
 
         [Required]

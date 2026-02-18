@@ -1,0 +1,42 @@
+<nav class="luxury-nav">
+  <div class="nav-container">
+    <div class="nav-brand" routerLink="/">
+      <span class="dot"></span>
+      <span class="brand-text">LifeIs<span>Giving</span></span>
+    </div>
+
+    <ul class="nav-links">
+      <li>
+        <a routerLink="/about" routerLinkActive="active-link">Home</a>
+      </li>
+      <li>
+        <a routerLink="/prizes" routerLinkActive="active-link">Prizes</a>
+      </li>
+      <li class="cart-link-container">
+        <a routerLink="/cart" routerLinkActive="active-link" class="nav-cart-link">
+          My Cart
+         @if (userName() && cartCount() > 0) {
+      <span class="cart-badge">{{ cartCount() }}</span>
+    }
+        </a>
+      </li>
+      <li class="admin-tab">
+        <a routerLink="/admin/reports" routerLinkActive="active-link">Analytics</a>
+      </li>
+    </ul>
+
+   <div class="nav-actions">
+  @if (userName()) {
+    <div class="user-greeting">
+      <span class="welcome-text">hello</span>
+      <span class="user-name">{{ userName() }}</span>
+      <button class="logout-btn" (click)="onLogout()">
+        <i class="logout-icon"></i> Logout
+      </button>
+    </div>
+  } @else {
+    <button class="login-btn" routerLink="/login">Login</button>
+  }
+</div>
+  </div>
+</nav>

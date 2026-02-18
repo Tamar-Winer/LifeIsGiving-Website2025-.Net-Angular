@@ -1,4 +1,4 @@
-<div class="auth-bg">
+<p-toast></p-toast> <div class="auth-bg">
   <div class="auth-card-container">
     <p-card styleClass="auth-card">
       <ng-template pTemplate="header">
@@ -13,29 +13,34 @@
         <div class="form-row">
           <div class="field">
             <label>Username</label>
-            <input pInputText class="w-full custom-input" formControlName="username" />
+            <input pInputText class="w-full custom-input" formControlName="username" [class.ng-invalid]="hasError('username')" />
+            <small class="error-text" *ngIf="hasError('username')">Username is required (min 3 chars)</small>
           </div>
           <div class="field">
             <label>Full Name</label>
-            <input pInputText class="w-full custom-input" formControlName="name" />
+            <input pInputText class="w-full custom-input" formControlName="name" [class.ng-invalid]="hasError('name')" />
+            <small class="error-text" *ngIf="hasError('name')">Name is required</small>
           </div>
         </div>
 
         <div class="form-row">
           <div class="field">
             <label>Email</label>
-            <input pInputText class="w-full custom-input" type="email" formControlName="email" />
+            <input pInputText class="w-full custom-input" type="email" formControlName="email" [class.ng-invalid]="hasError('email')" />
+            <small class="error-text" *ngIf="hasError('email')">Valid email is required</small>
           </div>
           <div class="field">
             <label>Phone</label>
-            <input pInputText class="w-full custom-input" formControlName="phone" />
+            <input pInputText class="w-full custom-input" formControlName="phone" [class.ng-invalid]="hasError('phone')" />
+            <small class="error-text" *ngIf="hasError('phone')">Invalid phone format</small>
           </div>
         </div>
 
         <div class="form-row">
           <div class="field">
             <label>Address</label>
-            <input pInputText class="w-full custom-input" formControlName="address" />
+            <input pInputText class="w-full custom-input" formControlName="address" [class.ng-invalid]="hasError('address')" />
+            <small class="error-text" *ngIf="hasError('address')">Address is required</small>
           </div>
           <div class="field">
             <label>Password</label>
@@ -44,8 +49,9 @@
               [toggleMask]="true"
               [feedback]="false"
               inputStyleClass="w-full custom-input"
-              styleClass="w-full"
+              [styleClass]="'w-full ' + (hasError('password') ? 'ng-invalid' : '')"
             />
+            <small class="error-text" *ngIf="hasError('password')">Min 6 characters required</small>
           </div>
         </div>
 
@@ -54,8 +60,9 @@
             pButton
             type="submit"
             class="w-full auth-btn"
-            label="CREATE ACCOUNT"
-            [disabled]="registerForm.invalid"
+            [label]="loading ? 'PROCESSING...' : 'CREATE ACCOUNT'"
+            [icon]="loading ? 'pi pi-spin pi-spinner' : ''"
+            [disabled]="registerForm.invalid || loading"
           ></button>
         </div>
 

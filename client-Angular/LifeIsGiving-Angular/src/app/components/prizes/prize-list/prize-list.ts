@@ -1,19 +1,24 @@
 import { Component, signal, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms'; 
+import { Subject, debounceTime, distinctUntilChanged } from 'rxjs'; 
 
 // Services
 import { PrizeService } from '../../../core/services/prize-service';
 import { Prize } from '../../../core/models/Prize';
 import { CartService } from '../../../core/services/cart-service';
 import { AuthService } from '../../../core/services/auth-service';
-import { PurchaseService } from '../../../core/services/purchase-service'; // שירות הרכישות
+import { PurchaseService } from '../../../core/services/purchase-service';
 
 // PrimeNG
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { TooltipModule } from 'primeng/tooltip'; // מודול לטולטיפ
+import { TooltipModule } from 'primeng/tooltip';
+import { ConfirmDialogModule } from 'primeng/confirmdialog'; // הוסף עבור המחיקה
+import { ConfirmationService, MessageService } from 'primeng/api'; // הוסף עבור המחיקה
+import { ToastModule } from 'primeng/toast'; // להודעות אישור
 
 // Components & Extras
 import confetti from 'canvas-confetti';
@@ -30,9 +35,12 @@ import { Lottery } from '../../manager/lottery/lottery';
     RouterModule, 
     CardModule, 
     ButtonModule, 
-    TooltipModule
+    TooltipModule,
+    FormsModule,
+    ConfirmDialogModule, // מודול הדיאלוג
+    ToastModule // מודול הודעות הצפה
   ],
-  providers: [DialogService],
+  providers: [DialogService, ConfirmationService, MessageService], // הוספת הסרוויסים הדרושים
   templateUrl: './prize-list.html',
   styleUrls: ['./prize-list.scss']
 })
@@ -40,114 +48,192 @@ export class PrizeList implements OnInit {
   prizes = signal<Prize[]>([]);
   isAdmin = signal<boolean>(false);
 
-  // Injections
+  searchFilters = {
+    prizeName: '',
+    donorName: '',
+    exactBuyers: null as number | null
+  };
+
+  private searchSubject = new Subject<void>();
+
   private authService = inject(AuthService);
   private prizeService = inject(PrizeService);
   public cart = inject(CartService);
   private dialogService = inject(DialogService);
-  private purchaseService = inject(PurchaseService); // הזרקה חדשה
+  private purchaseService = inject(PurchaseService);
+  private confirmationService = inject(ConfirmationService); // סרוויס אישור מחיקה
+  private messageService = inject(MessageService); // סרוויס הודעות
 
   ngOnInit(): void {
-    // עדכון סטטוס מנהל
     this.isAdmin.set(this.authService.isAdmin());
+    this.loadPrizes();
 
-    // טעינת הפרסים מהשרת
+    this.searchSubject.pipe(
+      debounceTime(350) 
+    ).subscribe(() => {
+      this.performSearch();
+    });
+  }
+
+  // --- פונקציות חיפוש ---
+
+  onSearch() {
+    if (!this.searchFilters.prizeName && !this.searchFilters.donorName && this.searchFilters.exactBuyers === null) {
+      this.loadPrizes();
+    } else {
+      this.searchSubject.next();
+    }
+  }
+
+  performSearch() {
+    if (!this.searchFilters.prizeName && !this.searchFilters.donorName && this.searchFilters.exactBuyers === null) {
+      this.loadPrizes();
+      return;
+    }
+
+    this.prizeService.searchPrizes(
+      this.searchFilters.prizeName,
+      this.searchFilters.donorName,
+      this.searchFilters.exactBuyers
+    ).subscribe({
+      next: (results) => {
+        this.prizes.set(results);
+      },
+      error: (err) => {
+        console.error('Search error:', err);
+        this.prizes.set([]); 
+      }
+    });
+  }
+
+  clearFilters() {
+    this.searchFilters = { prizeName: '', donorName: '', exactBuyers: null };
+    this.loadPrizes(); 
+  }
+
+  loadPrizes() {
     this.prizeService.getAllPrizes().subscribe({
-      next: (prizes) => this.prizes.set(prizes),
+      next: (prizes) => {
+        this.prizes.set(prizes);
+      },
       error: (err) => console.error('Error loading prizes:', err)
     });
   }
 
-viewPurchases(prize: Prize, ev: MouseEvent) {
-  ev.preventDefault();
-  ev.stopPropagation();
+  // --- ניהול פרסים ---
 
-  // הקריאה לשירות עם ה-ID של הפרס הספציפי
-  this.purchaseService.getPurchasesByPrize(prize.id).subscribe({
-    next: (data) => {
-      this.dialogService.open(PurchaseList, {
-        data: { 
-          purchases: data // כאן יכנסו רק הרכישות שהשרת סינן עבורנו
-        },
-        header: `רשימת רוכשים - ${prize.name}`,
-        width: '600px',
-        // ... שאר ההגדרות
-      });
-    },
-    error: (err) => console.error('Error loading purchases:', err)
+  viewPurchases(prize: Prize, ev: MouseEvent) {
+    ev.preventDefault();
+    ev.stopPropagation();
+
+    this.purchaseService.getPurchasesByPrize(prize.id).subscribe({
+      next: (data) => {
+        this.dialogService.open(PurchaseList, {
+          data: { purchases: data },
+          header: `Purchasers List - ${prize.name}`,
+          width: '600px',
+        });
+      },
+      error: (err) => console.error('Error loading purchases:', err)
+    });
+  }
+addPrize() {
+  const ref = this.dialogService.open(PrizeEditForm, {
+    width: '450px',
+    showHeader: false,
+    contentStyle: { 'padding': '0', 'border-radius': '20px', 'background': '#ffffff' },
+    baseZIndex: 10000,
+    dismissableMask: true
+  });
+
+  ref?.onClose.subscribe((newPrize: Prize) => {
+    // אם חזר אובייקט מהטופס
+    if (newPrize) {
+      console.log('New prize received:', newPrize);
+      
+      // הוספה ידנית לסיגנל - זה חייב לעדכן את המסך מיד!
+      this.prizes.update(prev => [newPrize, ...prev]);
+    }
   });
 }
 
-  // --- פונקציות קיימות (ללא שינוי) ---
+editPrize(prize: Prize, ev: MouseEvent) {
+  ev.preventDefault();
+  ev.stopPropagation();
+  
+  const ref = this.dialogService.open(PrizeEditForm, {
+    data: { prize: prize },
+    width: '450px',
+    showHeader: false,
+    contentStyle: { 'padding': '0', 'border-radius': '20px', 'background': '#ffffff' },
+    baseZIndex: 10000,
+    dismissableMask: true
+  });
 
-  addPrize() {
-    const ref = this.dialogService.open(PrizeEditForm, {
-      width: '450px',
-      showHeader: false,
-      contentStyle: { 
-        'padding': '0', 
-        'border-radius': '20px', 
-        'overflow': 'hidden',
-        'background': '#ffffff'
-      },
-      baseZIndex: 10000,
-      dismissableMask: true
-    });
+  ref?.onClose.subscribe((updatedPrize: Prize) => {
+    if (updatedPrize) {
+      console.log('Updated prize received:', updatedPrize);
 
-    if (ref) {
-      ref.onClose.subscribe((newPrize: Prize) => {
-        if (newPrize) {
-          this.prizes.update(prev => [newPrize, ...prev]);
-        }
-      });
+      // עדכון ידני של האיבר הספציפי בתוך הסיגנל
+      this.prizes.update(all => 
+        all.map(p => p.id === updatedPrize.id ? updatedPrize : p)
+      );
     }
-  }
+  });
+}
 
-  editPrize(prize: Prize, ev: MouseEvent) {
-    ev.preventDefault();
-    ev.stopPropagation();
-    
-    const ref = this.dialogService.open(PrizeEditForm, {
-      data: { prize: prize },
-      width: '450px',
-      showHeader: false,
-      contentStyle: { 
-        'padding': '0', 
-        'border-radius': '20px', 
-        'overflow': 'hidden',
-        'background': '#ffffff'
-      },
-      baseZIndex: 10000,
-      dismissableMask: true
-    });
-
-    if (ref) {
-      ref.onClose.subscribe((updatedPrize: Prize) => {
-        if (updatedPrize) {
-          this.prizes.update(all => 
-            all.map(p => p.id === updatedPrize.id ? updatedPrize : p)
-          );
-        }
-      });
-    }
-  }
-
+// פונקציית המחיקה - עכשיו משתמשת בטוסט אישור
   deletePrize(prizeId: number, ev: MouseEvent) {
     ev.preventDefault();
     ev.stopPropagation();
     
-    if (confirm('Are you sure you want to delete this prize?')) {
-      this.prizeService.deletePrize(prizeId).subscribe({
-        next: () => {
-          this.prizes.set(this.prizes().filter(p => p.id !== prizeId));
-        },
-        error: (err) => {
-          console.error('Error deleting prize:', err);
-          alert('Error deleting prize');
-        }
-      });
-    }
+    // מציג טוסט אישור עם מפתח מיוחד
+    this.messageService.add({
+      key: 'confirmDelete',
+      sticky: true,
+      severity: 'warn',
+      summary: 'Delete Confirmation',
+      detail: 'Are you sure you want to delete this prize?',
+      data: prizeId // מעבירים את ה-ID לטוסט
+    });
   }
+
+onConfirmDelete(prizeId: number) {
+  this.messageService.clear('confirmDelete');
+
+  this.prizeService.deletePrize(prizeId).subscribe({
+    next: () => {
+      this.prizes.update(all => all.filter(p => p.id !== prizeId));
+      
+      // הודעת הצלחה יוקרתית (תופיע בזכות ה-SCSS החדש)
+      setTimeout(() => {
+        this.messageService.add({ 
+          severity: 'success', 
+          summary: 'Successfully Removed', 
+          detail: 'The prize has been deleted from the catalog.', 
+          life: 3000 
+        });
+      }, 150);
+    },
+    error: (err) => {
+      setTimeout(() => {
+        this.messageService.add({ 
+          severity: 'error', 
+          summary: 'Delete Failed', 
+          detail: 'Cannot delete this prize (check if it has purchasers).',
+          life: 5000
+        });
+      }, 150);
+    }
+  });
+}
+
+  // ביטול מתוך הטוסט
+  onRejectDelete() {
+    this.messageService.clear('confirmDelete');
+  }
+
+  // --- לוגיקת משתמש ---
 
   addToCart(prize: Prize, ev: MouseEvent) {
     ev.preventDefault();
@@ -158,6 +244,7 @@ viewPurchases(prize: Prize, ev: MouseEvent) {
       },
       error: () => alert('Error adding to cart')
     });
+    window.location.reload();
   }
 
   private fireConfetti() {
@@ -174,31 +261,53 @@ viewPurchases(prize: Prize, ev: MouseEvent) {
   toggleFavorite(prize: Prize, ev: MouseEvent) { ev.preventDefault(); ev.stopPropagation(); }
 
 
+  sortPrizes(event: any) {
+    const criteria = event.target.value;
+    const currentPrizes = [...this.prizes()];
+
+    switch (criteria) {
+      case 'price-asc':
+        currentPrizes.sort((a, b) => a.price - b.price);
+        break;
+      case 'price-desc':
+        currentPrizes.sort((a, b) => b.price - a.price);
+        break;
+      case 'category':
+        currentPrizes.sort((a, b) => String(a.category).localeCompare(String(b.category)));
+        break;
+      case 'name':
+        currentPrizes.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+    }
+    this.prizes.set(currentPrizes);
+  }
 
   onRunLottery(prize: Prize, ev: MouseEvent) {
-  ev.preventDefault();
-  ev.stopPropagation();
+    ev.preventDefault();
+    ev.stopPropagation();
 
-  // קודם נשלח בקשה לקבל את הרוכשים כדי להזין את הספינר
-  this.purchaseService.getPurchasesByPrize(prize.id).subscribe({
-    next: (purchasers) => {
-      if (purchasers.length === 0) {
-        alert('No purchasers for this prize yet!');
-        return;
+    this.purchaseService.getPurchasesByPrize(prize.id).subscribe({
+      next: (purchasers) => {
+        if (purchasers.length === 0) {
+          this.messageService.add({ 
+            severity: 'warn', 
+            summary: 'No Tickets', 
+            detail: 'No purchasers for this prize yet!' 
+          });
+          return;
+        }
+
+        this.dialogService.open(Lottery, {
+          data: { 
+            purchases: purchasers,
+            prize: prize 
+          },
+          header: 'Live Lottery Draw',
+          width: '550px',
+          contentStyle: { 'padding': '0', 'border-radius': '24px' },
+          showHeader: false
+        });
       }
-
-      // פתיחת חלונית ההגרלה עם הספינר
-      this.dialogService.open(Lottery, {
-        data: { 
-          purchases: purchasers,
-          prize: prize 
-        },
-        header: 'Live Lottery Draw',
-        width: '550px',
-        contentStyle: { 'padding': '0', 'border-radius': '24px' },
-        showHeader: false // אנחנו רוצים עיצוב נקי
-      });
-    }
-  });
-}
+    });
+  }
 }

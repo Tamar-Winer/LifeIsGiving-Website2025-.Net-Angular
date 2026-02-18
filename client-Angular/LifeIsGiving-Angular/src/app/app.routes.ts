@@ -10,6 +10,7 @@ import { AddDonor } from './components/manager/add-donor/add-donor';
 import { CartPage } from './components/cart/cart-page/cart-page';
 import { PrizeEditForm } from './components/prizes/prize-edit-form/prize-edit-form';
 import { PurchaseList } from './components/manager/purchase-list/purchase-list';
+import { AdminReports } from './components/manager/admin-reports/admin-reports';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'prizes', pathMatch: 'full' },
@@ -23,5 +24,6 @@ export const routes: Routes = [
   { path: 'admin/addDonor', component: AddDonor },
   { path: 'admin/addPrize', component: PrizeEditForm },
   { path: 'admin/purchases', component: PurchaseList },
+  { path: 'admin/reports', component: AdminReports },
   { path: '**', redirectTo: 'prizes' },  
 ];

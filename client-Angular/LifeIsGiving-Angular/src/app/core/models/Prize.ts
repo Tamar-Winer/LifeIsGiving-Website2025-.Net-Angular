@@ -6,4 +6,5 @@ export interface Prize {
   price: number; // ← במקום ticketPrice
   imageUrl?: string;
   donorId: number;
+  canPurchase: boolean;
 }

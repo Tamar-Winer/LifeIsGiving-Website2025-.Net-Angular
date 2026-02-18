@@ -1,42 +1,76 @@
-<div class="reports-container">
-  <h1 class="page-title">Sales & Winners Management</h1>
-
-  <div class="income-card">
-    <div class="income-info">
-      <span class="label">Total Sales Income</span>
-      <h2 class="amount">{{ totalIncome() | currency:'ILS':'symbol':'1.0-0' }}</h2>
+<div class="luxury-white-dashboard">
+  <header class="main-header">
+    <div class="title-section">
+      <span class="top-label">Management Console</span>
+      <h1>Executive Dashboard</h1>
     </div>
-    <div class="income-icon">💰</div>
+    <div class="actions">
+      <div class="live-indicator">
+        <span class="ping"></span>
+        <span class="text">Live Data</span>
+      </div>
+      <button class="btn-refresh" (click)="loadData()">
+        <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm-1.46 10.1c.45-.83.7-1.79.7-2.8H9.3c0 3.31 2.69 6 6 6v3l4-4-4-4v3c-1.01 0-1.97-.25-2.8-.7l-1.46 1.46z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="stats-grid">
+    <div class="stat-box income">
+      <div class="stat-content">
+        <p class="label">Total Revenue</p>
+        <h2 class="value">{{ totalIncome() | currency:'USD':'symbol':'1.0-0' }}</h2>
+      </div>
+      <div class="stat-icon-wrapper">
+        <div class="icon-circle red-accent-bg">
+          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-box winners">
+      <div class="stat-content">
+        <p class="label">Total Winners</p>
+        <h2 class="value">{{ winnersReport().length }}</h2>
+      </div>
+      <div class="stat-icon-wrapper">
+        <div class="icon-circle red-accent-bg">
+          <svg viewBox="0 0 24 24"><path d="M18 2H6v2H4v7c0 2.21 1.79 4 4 4h1v2c0 2.12 1.38 3.91 3.3 4.58C11.74 20.19 11 21.02 11 22h2c0-.98-.74-1.81-1.3-2.42 1.92-.67 3.3-2.46 3.3-4.58v-2h1c2.21 0 4-1.79 4-4V4h-2V2zM8 13c-1.1 0-2-.9-2-2V6h2v7zm10-2c0 1.1-.9 2-2 2V6h2v5z"/></svg>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="report-section">
-    <h3 class="section-title">Winners Report</h3>
-    
-    <div class="table-wrapper">
-      <table class="custom-table">
+  <section class="table-section">
+    <div class="section-title-group">
+      <h3>Winner History</h3>
+      <div class="accent-line"></div>
+    </div>
+
+    <div class="table-container">
+      <table class="lean-table">
         <thead>
           <tr>
-            <th>Prize Name</th>
-            <th>Winner Name</th>
-            <th>Lottery Date</th>
+            <th>Item</th>
+            <th>Winner</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
           @for (item of winnersReport(); track $index) {
-            <tr>
-              <td class="prize-cell">{{ item.prizeName }}</td>
-              <td class="winner-cell">
-                <span class="winner-badge">👑 {{ item.winnerName }}</span>
-              </td>
-              <td class="date-cell">{{ item.lotteryDate | date:'dd/MM/yyyy HH:mm' }}</td>
-            </tr>
-          } @empty {
-            <tr>
-              <td colspan="3" class="empty-msg">No drawings completed yet.</td>
-            </tr>
+          <tr class="prize-card reveal-row" [style.animation-delay]="$index * 50 + 'ms'">
+            <td class="item-name">{{ item.prizeName }}</td>
+            <td>
+              <div class="winner-tag">
+                <span class="crown-mini">👑</span>
+                {{ item.winnerName }}
+              </div>
+            </td>
+            <td class="date-col">{{ item.lotteryDate | date:'dd MMM yyyy' }}</td>
+          </tr>
           }
         </tbody>
       </table>
     </div>
-  </div>
+  </section>
 </div>

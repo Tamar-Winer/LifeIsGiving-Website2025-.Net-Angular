@@ -2,13 +2,14 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
+import { Navbar } from './components/navbar/navbar';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,ToastModule],
-  template: `<router-outlet></router-outlet>`,
+  imports: [RouterOutlet,ToastModule,Navbar],
+  template: `<app-navbar></app-navbar><router-outlet></router-outlet>`,
   styleUrls: ['./app.scss']
 })
 export class App {

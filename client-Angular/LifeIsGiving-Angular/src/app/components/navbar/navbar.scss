@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+// המשתנה חייב להיות כאן למעלה כדי שלא תהיה שגיאת Undefined variable
+$brand-red: #e63946;
+
+.luxury-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(230, 57, 70, 0.1);
+  font-family: 'Inter', sans-serif;
+
+  .nav-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 0 20px;
+    position: relative; 
+  }
+
+  .nav-brand {
+    position: absolute;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    .dot { width: 8px; height: 8px; background: $brand-red; border-radius: 50%; box-shadow: 0 0 8px $brand-red; }
+    .brand-text { 
+      font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px;
+      span { color: $brand-red; font-weight: 400; }
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    margin: 0;
+    a {
+      text-decoration: none;
+      color: #86868b;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: 0.3s;
+      position: relative;
+      &:hover { color: #1d1d1f; }
+      &.active-link {
+        color: #1d1d1f;
+        &::after {
+          content: ''; position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%);
+          width: 5px; height: 5px; background: $brand-red; border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .nav-actions {
+    position: absolute; 
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 80px; // הרווח הגדול שביקשת בין השם ללוגאאוט
+
+    .user-greeting {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      
+      .welcome-text { color: #86868b; font-weight: 400; font-size: 0.95rem; }
+      .user-name {
+        color: #1d1d1f;
+        font-weight: 700;
+        font-size: 1.05rem;
+        position: relative;
+        padding: 0 4px;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: $brand-red;
+          border-radius: 2px;
+        }
+      }
+    }
+
+    .logout-btn {
+      background: transparent;
+      border: 1.5px solid #1d1d1f;
+      padding: 8px 24px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #1d1d1f;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #1d1d1f;
+        color: white;
+        transform: translateY(-2px);
+      }
+    }
+
+    .login-btn {
+      background: transparent;
+      border: 1px solid rgba(230, 57, 70, 0.3);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: $brand-red;
+      cursor: pointer;
+      transition: 0.3s;
+      
+      &:hover {
+        background: $brand-red;
+        color: white;
+        box-shadow: 0 4px 12px rgba(230, 57, 70, 0.2);
+      }
+    }
+  }
+}
+
+// שאר העיצובים של העגלה נשארים ללא שינוי
+.nav-cart-link { position: relative; display: flex; align-items: center; gap: 8px; }
+.cart-badge {
+  background-color: #ff4757; color: white; font-size: 0.7rem; font-weight: 700;
+  min-width: 18px; height: 18px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; padding: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: badgePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes badgePop { 0% { transform: scale(0); } 100% { transform: scale(1); } }

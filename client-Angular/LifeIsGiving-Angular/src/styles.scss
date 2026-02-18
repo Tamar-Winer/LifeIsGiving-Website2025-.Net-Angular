@@ -24,6 +24,176 @@ body {
   }
 }
 
+/* בתוך styles.scss הגלובלי בלבד! */
+
+body .p-component-overlay-enter {
+    animation: fadeInOverlay 0.3s forwards;
+}
+
+/* זה הסלקטור שתופס את השכבה שמאחורי הדיאלוג */
+body .p-dialog-mask, 
+body .p-component-overlay {
+    background-color: rgba(0, 0, 0, 0.7) !important; /* החשכה חזקה וברורה */
+    backdrop-filter: none !important; /* נבטל את הטשטוש כדי לוודא שההחשכה עובדת */
+    opacity: 1 !important;
+    display: flex !important;
+}
+
+@keyframes fadeInOverlay {
+    from { background-color: rgba(0, 0, 0, 0); }
+    to { background-color: rgba(0, 0, 0, 0.7); }
+}
+
+/* עיצוב דיאלוג אישור המחיקה */
+::ng-deep .p-confirm-dialog {
+  .p-dialog-content {
+    padding: 30px !important;
+    text-align: center;
+    border-radius: 20px;
+  }
+
+  .p-confirm-dialog-icon {
+    font-size: 3rem;
+    color: #dc2626; // אדום אזהרה
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  .p-confirm-dialog-message {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-top: 10px;
+  }
+
+  .p-dialog-footer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 25px !important;
+    border: none !important;
+
+    // כפתור ביטול
+    .p-confirm-dialog-reject {
+      background: #f3f4f6 !important;
+      color: #4b5563 !important;
+      border: none !important;
+      border-radius: 12px !important;
+      font-weight: 700 !important;
+      padding: 10px 20px !important;
+      
+      &:hover { background: #e5e7eb !important; }
+    }
+
+    // כפתור מחיקה סופית
+    .p-confirm-dialog-accept {
+      background: #dc2626 !important; // אדום עוצמתי
+      color: white !important;
+      border: none !important;
+      border-radius: 12px !important;
+      font-weight: 700 !important;
+      padding: 10px 20px !important;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2) !important;
+
+      &:hover { 
+        background: #b91c1c !important;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+/* עיצוב גלובלי לדיאלוג אישור המחיקה - להדביק ב-styles.scss */
+
+/* 1. עיצוב המעטפת והרקע */
+.p-dialog-mask.p-component-overlay {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+/* 2. עיצוב גוף הדיאלוג */
+.p-confirm-dialog.p-dialog {
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+    border: none !important;
+    overflow: hidden;
+
+    .p-dialog-header {
+        background: #ffffff !important;
+        border: none !important;
+        padding: 20px 25px 0 25px !important;
+        
+        .p-dialog-title {
+            font-weight: 800;
+            color: #1a1a1a;
+            font-size: 1.3rem;
+        }
+    }
+
+    .p-dialog-content {
+        background: #ffffff !important;
+        border: none !important;
+        padding: 30px 25px !important;
+        text-align: center;
+
+        /* האייקון האדום הגדול */
+        .p-confirm-dialog-icon {
+            color: #dc2626 !important;
+            font-size: 3.5rem !important;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .p-confirm-dialog-message {
+            font-size: 1.1rem;
+            color: #4b5563;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+    }
+
+    /* 3. עיצוב הכפתורים בתחתית */
+    .p-dialog-footer {
+        background: #f9fafb !important;
+        padding: 20px 25px !important;
+        border: none !important;
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+
+        /* כפתור ביטול */
+        .p-confirm-dialog-reject {
+            background: transparent !important;
+            color: #6b7280 !important;
+            border: 1px solid #e5e7eb !important;
+            border-radius: 12px !important;
+            font-weight: 700 !important;
+            transition: 0.3s;
+
+            &:hover {
+                background: #f3f4f6 !important;
+            }
+        }
+
+        /* כפתור מחיקה - אדום יוקרתי */
+        .p-confirm-dialog-accept {
+            background: #dc2626 !important;
+            border: none !important;
+            color: white !important;
+            border-radius: 12px !important;
+            font-weight: 700 !important;
+            padding: 10px 25px !important;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2) !important;
+
+            &:hover {
+                background: #b91c1c !important;
+                transform: translateY(-2px);
+            }
+        }
+    }
+}
+
 
 
 

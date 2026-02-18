@@ -27,6 +27,8 @@ namespace LifeIsGiving_Website2025.Dtos
 
         [Required]
         public int DonorId { get; set; }
+        public string DonorName { get; set; } = string.Empty;
+        public bool CanPurchase { get; set; }
     }
 
     public class PrizeCreateDto

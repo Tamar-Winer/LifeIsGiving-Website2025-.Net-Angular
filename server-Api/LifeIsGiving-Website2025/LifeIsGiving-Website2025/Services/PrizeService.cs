@@ -26,7 +26,9 @@ namespace LifeIsGiving_Website2025.Services
                 Category = p.Category,
                 Price = p.Price,
                 ImageUrl = p.ImageUrl,
-                DonorId = p.DonorId
+                DonorId = p.DonorId,
+                DonorName = p.Donor.Name,
+                CanPurchase = p.CanPurchase
             }).ToList();
         }
 
@@ -43,7 +45,9 @@ namespace LifeIsGiving_Website2025.Services
                 Category = p.Category,
                 Price = p.Price,
                 ImageUrl = p.ImageUrl,
-                DonorId = p.DonorId
+                DonorId = p.DonorId,
+                DonorName = p.Donor.Name,
+                CanPurchase = p.CanPurchase
             };
         }
 
@@ -73,6 +77,7 @@ namespace LifeIsGiving_Website2025.Services
             prize.Price = dto.Price;
             prize.ImageUrl = dto.ImageUrl;
             prize.DonorId = dto.DonorId;
+
 
             await _repo.UpdatePrize(prize);
         }

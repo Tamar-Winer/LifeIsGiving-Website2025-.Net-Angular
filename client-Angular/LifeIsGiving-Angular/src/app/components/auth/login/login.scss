@@ -196,3 +196,57 @@
     &:hover { text-decoration: underline; }
   }
 }
+
+/* --- שדרוג ה-Toast שייראה יוקרתי --- */
+::ng-deep {
+  .p-toast {
+    width: 350px;
+    opacity: 0.98;
+
+    .p-toast-message {
+      background: #ffffff !important;
+      border: none !important;
+      border-radius: 20px !important; /* פינות מעוגלות כמו ב-Card */
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
+      margin-bottom: 15px;
+
+      .p-toast-message-content {
+        padding: 1.2rem !important;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      /* צבעים לפי סוג ההודעה */
+      &.p-toast-message-success {
+        border-right: 6px solid #22c55e !important; /* פס ירוק להצלחה */
+        .p-toast-message-icon { color: #22c55e !important; }
+        .p-toast-summary, .p-toast-detail { color: #166534 !important; }
+      }
+
+      &.p-toast-message-error {
+        border-right: 6px solid #dc2626 !important; /* פס אדום לשגיאה - תואם ללוגו שלך */
+        .p-toast-message-icon { color: #dc2626 !important; }
+        .p-toast-summary, .p-toast-detail { color: #991b1b !important; }
+      }
+
+      &.p-toast-message-warn {
+        border-right: 6px solid #f59e0b !important;
+        .p-toast-message-icon { color: #f59e0b !important; }
+        .p-toast-summary, .p-toast-detail { color: #92400e !important; }
+      }
+    }
+
+    /* עיצוב הטקסט בתוך הטווסט */
+    .p-toast-summary {
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      margin-bottom: 4px;
+    }
+
+    .p-toast-detail {
+      font-size: 13px !important;
+      font-weight: 400 !important;
+    }
+  }
+}

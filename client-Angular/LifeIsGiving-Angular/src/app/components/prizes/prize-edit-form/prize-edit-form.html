@@ -1,5 +1,5 @@
 <div class="prize-dialog-container">
-  <button class="close-btn" (click)="closeDialog()">
+  <button class="close-btn" (click)="closeDialog()" title="Close">
     <i class="pi pi-times"></i>
   </button>
 
@@ -8,8 +8,9 @@
 
     <div class="auth-header">
       <h1 class="shine-title">
-        @if (isEditMode) { Edit } @else { Create } Prize
+        {{ isEditMode ? 'Edit' : 'Create' }} <span>Prize</span>
       </h1>
+      <p class="subtitle">Complete the details below to update the collection</p>
       <div class="header-divider"></div>
     </div>
 
@@ -17,51 +18,68 @@
       
       <div class="field" [class.field-error]="prizeForm.get('name')?.invalid && prizeForm.get('name')?.touched">
         <label>Prize Name</label>
-        <input pInputText formControlName="name" class="custom-input" placeholder="Enter prize name" />
+        <div class="input-wrapper">
+          <i class="pi pi-tag"></i>
+          <input pInputText formControlName="name" class="custom-input" placeholder="Enter prize name" />
+        </div>
       </div>
 
       <div class="form-row">
         <div class="field flex-1">
-          <label>Category (Number)</label>
-          <p-inputNumber formControlName="category" inputStyleClass="custom-input" [useGrouping]="false"></p-inputNumber>
+          <label>Category</label>
+          <div class="input-wrapper">
+            <i class="pi pi-list"></i>
+            <p-inputNumber formControlName="category" inputStyleClass="custom-input" [useGrouping]="false" placeholder="ID"></p-inputNumber>
+          </div>
         </div>
         <div class="field flex-1">
           <label>Price</label>
-          <p-inputNumber formControlName="price" inputStyleClass="custom-input" mode="currency" currency="ILS" locale="he-IL"></p-inputNumber>
+          <div class="input-wrapper">
+            <i class="pi pi-ticket"></i>
+            <p-inputNumber formControlName="price" inputStyleClass="custom-input" mode="currency" currency="ILS" locale="he-IL"></p-inputNumber>
+          </div>
         </div>
       </div>
 
       <div class="field">
         <label>Donor ID</label>
-        <p-inputNumber formControlName="donorId" inputStyleClass="custom-input" [useGrouping]="false"></p-inputNumber>
-      </div>
-
-      <div class="field">
-        <label>Description</label>
-        <textarea pInputTextarea formControlName="description" class="custom-input" rows="2"></textarea>
-      </div>
-
-      <div class="field">
-        <label>Upload Image</label>
-        <div class="file-upload-wrapper">
-          <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" hidden #fileInput>
-          <button type="button" class="upload-btn" (click)="fileInput.click()">
-            <i class="pi pi-upload"></i> Choose from Computer
-          </button>
-          @if (selectedFileName) {
-            <span class="file-name">{{ selectedFileName }}</span>
-          }
+        <div class="input-wrapper">
+          <i class="pi pi-user"></i>
+          <p-inputNumber formControlName="donorId" inputStyleClass="custom-input" [useGrouping]="false" placeholder="Enter Donor ID"></p-inputNumber>
         </div>
       </div>
 
       <div class="field">
-        <label>Or Image URL</label>
-        <input pInputText formControlName="imageUrl" class="custom-input" placeholder="https://..." />
+  <label>Description</label>
+  <textarea formControlName="description" class="custom-input" rows="3" placeholder="Tell us about this prize..."></textarea>
+</div>
+
+      <div class="field">
+        <label>Prize Image</label>
+        <div class="image-options">
+          <div class="file-upload-wrapper">
+            <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" hidden #fileInput>
+            <button type="button" class="upload-btn" (click)="fileInput.click()">
+              <i class="pi pi-cloud-upload"></i> Choose File
+            </button>
+            @if (selectedFileName) {
+              <span class="file-name" [title]="selectedFileName">{{ selectedFileName }}</span>
+            }
+          </div>
+          <div class="separator"><span>OR</span></div>
+          <div class="input-wrapper">
+            <i class="pi pi-link"></i>
+            <input pInputText formControlName="imageUrl" class="custom-input" placeholder="Paste image URL here" />
+          </div>
+        </div>
       </div>
 
-      <button type="submit" class="auth-btn" [disabled]="loading">
+      <button type="submit" class="auth-btn" [disabled]="loading || prizeForm.invalid">
         @if (!loading) {
-          <span>{{ isEditMode ? 'UPDATE NOW' : 'SAVE PRIZE' }}</span>
+          <div class="btn-content">
+            <span>{{ isEditMode ? 'UPDATE PRIZE' : 'CREATE PRIZE' }}</span>
+            <i class="pi pi-arrow-right"></i>
+          </div>
         } @else {
           <i class="pi pi-spin pi-spinner"></i>
         }

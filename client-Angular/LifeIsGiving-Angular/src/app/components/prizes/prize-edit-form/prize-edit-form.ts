@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
-// ייבוא המודולים של PrimeNG
+
+// PrimeNG Modules
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { ToastModule } from 'primeng/toast'; // חסר היה ונשלח עכשיו לתיקון השגיאה
+import { ToastModule } from 'primeng/toast'; 
 import { ButtonModule } from 'primeng/button';
 
 import { PrizeService } from '../../../core/services/prize-service';
@@ -20,7 +21,7 @@ import { PrizeService } from '../../../core/services/prize-service';
     ReactiveFormsModule, 
     InputTextModule, 
     InputNumberModule, 
-    ToastModule, // כאן התיקון לשגיאה NG8001
+    ToastModule, 
     ButtonModule
   ],
   templateUrl: './prize-edit-form.html',
@@ -50,8 +51,6 @@ export class PrizeEditForm implements OnInit {
     });
   }
 
-  
-
   ngOnInit(): void {
     if (this.config?.data?.prize) {
       this.isEditMode = true;
@@ -59,69 +58,94 @@ export class PrizeEditForm implements OnInit {
     }
   }
 
-  
+  savePrize() {
+    if (this.prizeForm.invalid) {
+      this.prizeForm.markAllAsTouched(); 
+      this.messageService.add({ 
+        severity: 'warn', 
+        summary: 'Incomplete Details', 
+        detail: 'Please fill in all required fields to continue.',
+        life: 3000
+      });
+      return;
+    }
 
-savePrize() {
-  // 1. אם הטופס לא תקין - אל תשלח לשרת, פשוט תראה למשתמש איפה הטעות
-  if (this.prizeForm.invalid) {
-    this.prizeForm.markAllAsTouched(); // צובע את השדות הבעייתיים
-    this.messageService.add({ 
-      severity: 'warn', 
-      summary: 'Missing Info', 
-      detail: 'Please fill all required fields correctly.' 
+    this.loading = true;
+    
+    const rawValues = this.prizeForm.value;
+    const prizeToSave = {
+      ...rawValues,
+      id: this.isEditMode ? Number(rawValues.id) : 0,
+      category: Number(rawValues.category),
+      price: Number(rawValues.price),
+      donorId: Number(rawValues.donorId),
+      imageUrl: rawValues.imageUrl?.trim() || null
+    };
+
+    const request = this.isEditMode 
+      ? this.prizeService.updatePrize(prizeToSave) 
+      : this.prizeService.addPrize(prizeToSave);
+
+    request.subscribe({
+      next: (res) => {
+        console.log('Server response:', res);
+
+        this.messageService.add({ 
+          severity: 'success', 
+          summary: 'Success!', 
+          detail: this.isEditMode ? 'The prize has been updated.' : 'A new prize has been created.',
+          life: 2000
+        });
+        
+        setTimeout(() => {
+          this.loading = false;
+          
+          let finalResult;
+          
+          if (!this.isEditMode) {
+            // לוגיקה מיוחדת להוספה:
+            // אם השרת החזיר אובייקט מלא, נשתמש בו. 
+            // אם הוא החזיר רק מספר (ה-ID החדש), נמזג אותו לתוך הנתונים ששלחנו.
+            if (res && typeof res === 'object') {
+              finalResult = res;
+            } else if (res && typeof res === 'number') {
+              finalResult = { ...prizeToSave, id: res };
+            } else {
+              finalResult = prizeToSave;
+            }
+          } else {
+            // בעריכה פשוט מחזירים את התוצאה או את מה ששלחנו
+            finalResult = res && Object.keys(res).length > 0 ? res : prizeToSave;
+          }
+
+          this.ref?.close(finalResult);
+        }, 1200);
+      },
+      error: (err) => {
+        this.loading = false;
+        this.messageService.add({ 
+          severity: 'error', 
+          summary: 'Action Failed', 
+          detail: 'Something went wrong. Please check your connection.',
+          life: 4000 
+        });
+        console.error(err);
+      }
     });
-    return;
   }
 
-  // 2. אם הכל תקין - ממשיכים לשמירה
-  this.loading = true;
-  
-  const rawValues = this.prizeForm.value;
-  const prizeToSave = {
-    ...rawValues,
-    id: this.isEditMode ? Number(rawValues.id) : 0,
-    category: Number(rawValues.category),
-    price: Number(rawValues.price),
-    donorId: Number(rawValues.donorId),
-    imageUrl: rawValues.imageUrl?.trim() || null
-  };
-
-  const request = this.isEditMode 
-    ? this.prizeService.updatePrize(prizeToSave) 
-    : this.prizeService.addPrize(prizeToSave);
-
-  request.subscribe({
-    next: (res) => {
-      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Saved!' });
-      setTimeout(() => {
-        this.loading = false;
-        this.ref?.close(res);
-      }, 1000);
-    },
-    error: (err) => {
-      this.loading = false;
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Check server connection' });
-      console.error(err);
-    }
-  });
-}
-
   cancel() {
-    if (this.ref) {
-      this.ref.close();
-    }
+    if (this.ref) this.ref.close();
   }
 
   closeDialog() {
-  this.ref.close(); // סוגר את הדיאלוג וחוזר לעמוד הפרסים
-}
+    if (this.ref) this.ref.close();
+  }
 
-onFileSelected(event: any) {
-  const file: File = event.target.files[0];
-  if (file) {
-    this.selectedFileName = file.name;
-    // כאן אפשר להפוך את הקובץ ל-Base64 או להעלות לשרת
-    // דוגמה לעדכון ה-form:
-    // this.prizeForm.patchValue({ imageUrl: 'נתיב זמני או שם הקובץ' });
-  }}
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.selectedFileName = file.name;
+    }
+  }
 }
