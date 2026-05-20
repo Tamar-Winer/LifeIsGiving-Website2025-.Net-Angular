@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/user1/Desktop/PROGRAMING/���� ��/**)",
+      "Bash(ls -la \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\")",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\server-Api\" -type f -name \"*.cs\")",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\server-Api\" -type f -name \"*.cs\" -path \"*/Models/*\")",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\server-Api\" -type f -name \"*Service.cs\")",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\server-Api\" -type f -name \"*Dto.cs\")",
+      "Bash(ls -la \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\client-Angular\")",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\client-Angular\\\\\\\\LifeIsGiving-Angular\\\\\\\\src\" -type f -name \"*.ts\")",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\client-Angular\\\\\\\\LifeIsGiving-Angular\\\\\\\\src\\\\\\\\app\" -type f -name \"*.ts\")",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\client-Angular\\\\\\\\LifeIsGiving-Angular\\\\\\\\src\\\\\\\\app\" -type f -name \"*.ts\" -not -name \"*.spec.ts\")",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\server-Api\" -type f -name \"*.cs\" -path \"*/Services/*\" -o -type f -name \"*Repository.cs\")",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\" -type f \\\\\\( -name \"*test*\" -o -name \"*Test*\" -o -name \"*.spec.ts\" \\\\\\))",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\client-Angular\\\\\\\\LifeIsGiving-Angular\\\\\\\\src\" -type f -name \"*.spec.ts\")",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\client-Angular\\\\\\\\LifeIsGiving-Angular\\\\\\\\src\" -type f -name \"main.ts\" -o -name \"environment*\")",
+      "Bash(ls -la \"c:\\\\\\\\Users\\\\\\\\user1\\\\\\\\Desktop\\\\\\\\PROGRAMING\\\\\\\\תשפו יד\\\\\\\\Project-Api-Angular-2025\\\\\\\\server-Api\\\\\\\\LifeIsGiving-Website2025\\\\\\\\LifeIsGiving-Website2025\")"
+    ]
+  }
+}
