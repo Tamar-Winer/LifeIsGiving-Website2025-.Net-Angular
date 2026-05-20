@@ -126,10 +126,10 @@ next: (res) => {
     
     const originalPrize = this.config?.data?.prize || {};
     const updatedFormValues = prizeToSave;
-    
-    // מיזוג זהיר: הנתונים החדשים דורסים את הישנים, אבל שדות חסרים נשמרים מהמקור
+
     const finalResult = {
-      ...originalPrize,
+      canPurchase: true,        // default for new prizes; overridden below if editing
+      ...originalPrize,         // edit mode: real canPurchase from original prize
       ...updatedFormValues,
       ...(typeof res === 'object' ? res : {})
     };

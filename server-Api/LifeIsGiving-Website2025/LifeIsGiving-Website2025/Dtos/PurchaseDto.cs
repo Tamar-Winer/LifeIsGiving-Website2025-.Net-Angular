@@ -7,9 +7,10 @@
        public class PurchaseDto
 {
     public int Id { get; set; }
-    public int PrizeId { get; set; } // <--- תוסיפי את השורה הזו!
+    public int PrizeId { get; set; }
     public string UserName { get; set; } = string.Empty;
     public string PrizeName { get; set; } = string.Empty;
+    public string? PrizeImageUrl { get; set; }
     public decimal PriceAtPurchase { get; set; }
     public int Quantity { get; set; }
     public string Status { get; set; } = string.Empty;

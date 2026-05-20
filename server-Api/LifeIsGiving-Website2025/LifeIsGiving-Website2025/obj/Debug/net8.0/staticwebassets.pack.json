@@ -1,8 +1,16 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\012030e5-3d19-4d5b-b3c6-8f87ec9028ed.jpg",
+      "PackagePath": "staticwebassets\\uploads\\012030e5-3d19-4d5b-b3c6-8f87ec9028ed.jpg"
+    },
+    {
       "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\065fcdda-d212-403a-b8ec-9783c1dde5a2.png",
       "PackagePath": "staticwebassets\\uploads\\065fcdda-d212-403a-b8ec-9783c1dde5a2.png"
+    },
+    {
+      "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\2aa66ac2-848a-4509-827f-911437c0014c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\2aa66ac2-848a-4509-827f-911437c0014c.jpg"
     },
     {
       "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\4c5976d1-114c-4742-8438-e0e8fe1eae99.JPG",
@@ -31,6 +39,10 @@
     {
       "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\c5fad5d4-0599-47e7-91c1-a1767ae62f32.png",
       "PackagePath": "staticwebassets\\uploads\\c5fad5d4-0599-47e7-91c1-a1767ae62f32.png"
+    },
+    {
+      "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\dd73fb07-82d7-4f64-ba0a-ebccd1fa557a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\dd73fb07-82d7-4f64-ba0a-ebccd1fa557a.jpg"
     },
     {
       "Id": "C:\\Users\\user1\\Desktop\\PROGRAMING\\תשפו יד\\Project-Api-Angular-2025\\server-Api\\LifeIsGiving-Website2025\\LifeIsGiving-Website2025\\wwwroot\\uploads\\fe30fe78-4761-4a6e-b90d-6f34710059f5.png",

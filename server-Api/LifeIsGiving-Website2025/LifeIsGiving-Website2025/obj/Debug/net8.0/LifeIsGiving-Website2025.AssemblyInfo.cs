@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LifeIsGiving-Website2025")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+313d7f77b5a60dbdb7d405efb4f28742bc2a85aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b32cc03fb59c36bb8cc4fce3dfa93d2eef9fece")]
 [assembly: System.Reflection.AssemblyProductAttribute("LifeIsGiving-Website2025")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LifeIsGiving-Website2025")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
