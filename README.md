@@ -30,6 +30,8 @@
 
 > The more tickets a buyer holds for a prize, the greater their odds — making every purchase feel meaningful and exciting.
 
+<img width="1917" height="913" alt="20260521012715839" src="https://github.com/user-attachments/assets/a74f8d0f-2059-469d-a3ce-01f65180716b" />
+
 ### How It Works
 
 ```
